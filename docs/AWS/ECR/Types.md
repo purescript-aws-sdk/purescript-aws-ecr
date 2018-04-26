@@ -26,7 +26,7 @@ Encode Arn
 
 ``` purescript
 newtype AuthorizationData
-  = AuthorizationData { authorizationToken :: NullOrUndefined (Base64), expiresAt :: NullOrUndefined (ExpirationTimestamp), proxyEndpoint :: NullOrUndefined (ProxyEndpoint) }
+  = AuthorizationData { authorizationToken :: Maybe (Base64), expiresAt :: Maybe (ExpirationTimestamp), proxyEndpoint :: Maybe (ProxyEndpoint) }
 ```
 
 <p>An object representing authorization data for an Amazon ECR registry.</p>
@@ -51,7 +51,7 @@ Constructs AuthorizationData from required parameters
 #### `newAuthorizationData'`
 
 ``` purescript
-newAuthorizationData' :: ({ authorizationToken :: NullOrUndefined (Base64), expiresAt :: NullOrUndefined (ExpirationTimestamp), proxyEndpoint :: NullOrUndefined (ProxyEndpoint) } -> { authorizationToken :: NullOrUndefined (Base64), expiresAt :: NullOrUndefined (ExpirationTimestamp), proxyEndpoint :: NullOrUndefined (ProxyEndpoint) }) -> AuthorizationData
+newAuthorizationData' :: ({ authorizationToken :: Maybe (Base64), expiresAt :: Maybe (ExpirationTimestamp), proxyEndpoint :: Maybe (ProxyEndpoint) } -> { authorizationToken :: Maybe (Base64), expiresAt :: Maybe (ExpirationTimestamp), proxyEndpoint :: Maybe (ProxyEndpoint) }) -> AuthorizationData
 ```
 
 Constructs AuthorizationData's fields from required parameters
@@ -92,7 +92,7 @@ Encode Base64
 
 ``` purescript
 newtype BatchCheckLayerAvailabilityRequest
-  = BatchCheckLayerAvailabilityRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList }
+  = BatchCheckLayerAvailabilityRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList }
 ```
 
 ##### Instances
@@ -115,7 +115,7 @@ Constructs BatchCheckLayerAvailabilityRequest from required parameters
 #### `newBatchCheckLayerAvailabilityRequest'`
 
 ``` purescript
-newBatchCheckLayerAvailabilityRequest' :: BatchedOperationLayerDigestList -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList }) -> BatchCheckLayerAvailabilityRequest
+newBatchCheckLayerAvailabilityRequest' :: BatchedOperationLayerDigestList -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigests :: BatchedOperationLayerDigestList }) -> BatchCheckLayerAvailabilityRequest
 ```
 
 Constructs BatchCheckLayerAvailabilityRequest's fields from required parameters
@@ -124,7 +124,7 @@ Constructs BatchCheckLayerAvailabilityRequest's fields from required parameters
 
 ``` purescript
 newtype BatchCheckLayerAvailabilityResponse
-  = BatchCheckLayerAvailabilityResponse { layers :: NullOrUndefined (LayerList), failures :: NullOrUndefined (LayerFailureList) }
+  = BatchCheckLayerAvailabilityResponse { layers :: Maybe (LayerList), failures :: Maybe (LayerFailureList) }
 ```
 
 ##### Instances
@@ -147,7 +147,7 @@ Constructs BatchCheckLayerAvailabilityResponse from required parameters
 #### `newBatchCheckLayerAvailabilityResponse'`
 
 ``` purescript
-newBatchCheckLayerAvailabilityResponse' :: ({ layers :: NullOrUndefined (LayerList), failures :: NullOrUndefined (LayerFailureList) } -> { layers :: NullOrUndefined (LayerList), failures :: NullOrUndefined (LayerFailureList) }) -> BatchCheckLayerAvailabilityResponse
+newBatchCheckLayerAvailabilityResponse' :: ({ layers :: Maybe (LayerList), failures :: Maybe (LayerFailureList) } -> { layers :: Maybe (LayerList), failures :: Maybe (LayerFailureList) }) -> BatchCheckLayerAvailabilityResponse
 ```
 
 Constructs BatchCheckLayerAvailabilityResponse's fields from required parameters
@@ -156,7 +156,7 @@ Constructs BatchCheckLayerAvailabilityResponse's fields from required parameters
 
 ``` purescript
 newtype BatchDeleteImageRequest
-  = BatchDeleteImageRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList }
+  = BatchDeleteImageRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList }
 ```
 
 <p>Deletes specified images within a specified repository. Images are specified with either the <code>imageTag</code> or <code>imageDigest</code>.</p>
@@ -181,7 +181,7 @@ Constructs BatchDeleteImageRequest from required parameters
 #### `newBatchDeleteImageRequest'`
 
 ``` purescript
-newBatchDeleteImageRequest' :: ImageIdentifierList -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList }) -> BatchDeleteImageRequest
+newBatchDeleteImageRequest' :: ImageIdentifierList -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList }) -> BatchDeleteImageRequest
 ```
 
 Constructs BatchDeleteImageRequest's fields from required parameters
@@ -190,7 +190,7 @@ Constructs BatchDeleteImageRequest's fields from required parameters
 
 ``` purescript
 newtype BatchDeleteImageResponse
-  = BatchDeleteImageResponse { imageIds :: NullOrUndefined (ImageIdentifierList), failures :: NullOrUndefined (ImageFailureList) }
+  = BatchDeleteImageResponse { imageIds :: Maybe (ImageIdentifierList), failures :: Maybe (ImageFailureList) }
 ```
 
 ##### Instances
@@ -213,7 +213,7 @@ Constructs BatchDeleteImageResponse from required parameters
 #### `newBatchDeleteImageResponse'`
 
 ``` purescript
-newBatchDeleteImageResponse' :: ({ imageIds :: NullOrUndefined (ImageIdentifierList), failures :: NullOrUndefined (ImageFailureList) } -> { imageIds :: NullOrUndefined (ImageIdentifierList), failures :: NullOrUndefined (ImageFailureList) }) -> BatchDeleteImageResponse
+newBatchDeleteImageResponse' :: ({ imageIds :: Maybe (ImageIdentifierList), failures :: Maybe (ImageFailureList) } -> { imageIds :: Maybe (ImageIdentifierList), failures :: Maybe (ImageFailureList) }) -> BatchDeleteImageResponse
 ```
 
 Constructs BatchDeleteImageResponse's fields from required parameters
@@ -222,7 +222,7 @@ Constructs BatchDeleteImageResponse's fields from required parameters
 
 ``` purescript
 newtype BatchGetImageRequest
-  = BatchGetImageRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: NullOrUndefined (MediaTypeList) }
+  = BatchGetImageRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: Maybe (MediaTypeList) }
 ```
 
 ##### Instances
@@ -245,7 +245,7 @@ Constructs BatchGetImageRequest from required parameters
 #### `newBatchGetImageRequest'`
 
 ``` purescript
-newBatchGetImageRequest' :: ImageIdentifierList -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: NullOrUndefined (MediaTypeList) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: NullOrUndefined (MediaTypeList) }) -> BatchGetImageRequest
+newBatchGetImageRequest' :: ImageIdentifierList -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: Maybe (MediaTypeList) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: ImageIdentifierList, acceptedMediaTypes :: Maybe (MediaTypeList) }) -> BatchGetImageRequest
 ```
 
 Constructs BatchGetImageRequest's fields from required parameters
@@ -254,7 +254,7 @@ Constructs BatchGetImageRequest's fields from required parameters
 
 ``` purescript
 newtype BatchGetImageResponse
-  = BatchGetImageResponse { images :: NullOrUndefined (ImageList), failures :: NullOrUndefined (ImageFailureList) }
+  = BatchGetImageResponse { images :: Maybe (ImageList), failures :: Maybe (ImageFailureList) }
 ```
 
 ##### Instances
@@ -277,7 +277,7 @@ Constructs BatchGetImageResponse from required parameters
 #### `newBatchGetImageResponse'`
 
 ``` purescript
-newBatchGetImageResponse' :: ({ images :: NullOrUndefined (ImageList), failures :: NullOrUndefined (ImageFailureList) } -> { images :: NullOrUndefined (ImageList), failures :: NullOrUndefined (ImageFailureList) }) -> BatchGetImageResponse
+newBatchGetImageResponse' :: ({ images :: Maybe (ImageList), failures :: Maybe (ImageFailureList) } -> { images :: Maybe (ImageList), failures :: Maybe (ImageFailureList) }) -> BatchGetImageResponse
 ```
 
 Constructs BatchGetImageResponse's fields from required parameters
@@ -318,7 +318,7 @@ Encode BatchedOperationLayerDigestList
 
 ``` purescript
 newtype CompleteLayerUploadRequest
-  = CompleteLayerUploadRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList }
+  = CompleteLayerUploadRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList }
 ```
 
 ##### Instances
@@ -341,7 +341,7 @@ Constructs CompleteLayerUploadRequest from required parameters
 #### `newCompleteLayerUploadRequest'`
 
 ``` purescript
-newCompleteLayerUploadRequest' :: LayerDigestList -> RepositoryName -> UploadId -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList }) -> CompleteLayerUploadRequest
+newCompleteLayerUploadRequest' :: LayerDigestList -> RepositoryName -> UploadId -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, layerDigests :: LayerDigestList }) -> CompleteLayerUploadRequest
 ```
 
 Constructs CompleteLayerUploadRequest's fields from required parameters
@@ -350,7 +350,7 @@ Constructs CompleteLayerUploadRequest's fields from required parameters
 
 ``` purescript
 newtype CompleteLayerUploadResponse
-  = CompleteLayerUploadResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), layerDigest :: NullOrUndefined (LayerDigest) }
+  = CompleteLayerUploadResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), layerDigest :: Maybe (LayerDigest) }
 ```
 
 ##### Instances
@@ -373,7 +373,7 @@ Constructs CompleteLayerUploadResponse from required parameters
 #### `newCompleteLayerUploadResponse'`
 
 ``` purescript
-newCompleteLayerUploadResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), layerDigest :: NullOrUndefined (LayerDigest) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), layerDigest :: NullOrUndefined (LayerDigest) }) -> CompleteLayerUploadResponse
+newCompleteLayerUploadResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), layerDigest :: Maybe (LayerDigest) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), layerDigest :: Maybe (LayerDigest) }) -> CompleteLayerUploadResponse
 ```
 
 Constructs CompleteLayerUploadResponse's fields from required parameters
@@ -414,7 +414,7 @@ Constructs CreateRepositoryRequest's fields from required parameters
 
 ``` purescript
 newtype CreateRepositoryResponse
-  = CreateRepositoryResponse { repository :: NullOrUndefined (Repository) }
+  = CreateRepositoryResponse { repository :: Maybe (Repository) }
 ```
 
 ##### Instances
@@ -437,7 +437,7 @@ Constructs CreateRepositoryResponse from required parameters
 #### `newCreateRepositoryResponse'`
 
 ``` purescript
-newCreateRepositoryResponse' :: ({ repository :: NullOrUndefined (Repository) } -> { repository :: NullOrUndefined (Repository) }) -> CreateRepositoryResponse
+newCreateRepositoryResponse' :: ({ repository :: Maybe (Repository) } -> { repository :: Maybe (Repository) }) -> CreateRepositoryResponse
 ```
 
 Constructs CreateRepositoryResponse's fields from required parameters
@@ -462,7 +462,7 @@ Encode CreationTimestamp
 
 ``` purescript
 newtype DeleteLifecyclePolicyRequest
-  = DeleteLifecyclePolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }
+  = DeleteLifecyclePolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }
 ```
 
 ##### Instances
@@ -485,7 +485,7 @@ Constructs DeleteLifecyclePolicyRequest from required parameters
 #### `newDeleteLifecyclePolicyRequest'`
 
 ``` purescript
-newDeleteLifecyclePolicyRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }) -> DeleteLifecyclePolicyRequest
+newDeleteLifecyclePolicyRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }) -> DeleteLifecyclePolicyRequest
 ```
 
 Constructs DeleteLifecyclePolicyRequest's fields from required parameters
@@ -494,7 +494,7 @@ Constructs DeleteLifecyclePolicyRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteLifecyclePolicyResponse
-  = DeleteLifecyclePolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) }
+  = DeleteLifecyclePolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) }
 ```
 
 ##### Instances
@@ -517,7 +517,7 @@ Constructs DeleteLifecyclePolicyResponse from required parameters
 #### `newDeleteLifecyclePolicyResponse'`
 
 ``` purescript
-newDeleteLifecyclePolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) }) -> DeleteLifecyclePolicyResponse
+newDeleteLifecyclePolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) }) -> DeleteLifecyclePolicyResponse
 ```
 
 Constructs DeleteLifecyclePolicyResponse's fields from required parameters
@@ -526,7 +526,7 @@ Constructs DeleteLifecyclePolicyResponse's fields from required parameters
 
 ``` purescript
 newtype DeleteRepositoryPolicyRequest
-  = DeleteRepositoryPolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }
+  = DeleteRepositoryPolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }
 ```
 
 ##### Instances
@@ -549,7 +549,7 @@ Constructs DeleteRepositoryPolicyRequest from required parameters
 #### `newDeleteRepositoryPolicyRequest'`
 
 ``` purescript
-newDeleteRepositoryPolicyRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }) -> DeleteRepositoryPolicyRequest
+newDeleteRepositoryPolicyRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }) -> DeleteRepositoryPolicyRequest
 ```
 
 Constructs DeleteRepositoryPolicyRequest's fields from required parameters
@@ -558,7 +558,7 @@ Constructs DeleteRepositoryPolicyRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteRepositoryPolicyResponse
-  = DeleteRepositoryPolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }
+  = DeleteRepositoryPolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }
 ```
 
 ##### Instances
@@ -581,7 +581,7 @@ Constructs DeleteRepositoryPolicyResponse from required parameters
 #### `newDeleteRepositoryPolicyResponse'`
 
 ``` purescript
-newDeleteRepositoryPolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }) -> DeleteRepositoryPolicyResponse
+newDeleteRepositoryPolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }) -> DeleteRepositoryPolicyResponse
 ```
 
 Constructs DeleteRepositoryPolicyResponse's fields from required parameters
@@ -590,7 +590,7 @@ Constructs DeleteRepositoryPolicyResponse's fields from required parameters
 
 ``` purescript
 newtype DeleteRepositoryRequest
-  = DeleteRepositoryRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, force :: NullOrUndefined (ForceFlag) }
+  = DeleteRepositoryRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, force :: Maybe (ForceFlag) }
 ```
 
 ##### Instances
@@ -613,7 +613,7 @@ Constructs DeleteRepositoryRequest from required parameters
 #### `newDeleteRepositoryRequest'`
 
 ``` purescript
-newDeleteRepositoryRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, force :: NullOrUndefined (ForceFlag) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, force :: NullOrUndefined (ForceFlag) }) -> DeleteRepositoryRequest
+newDeleteRepositoryRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, force :: Maybe (ForceFlag) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, force :: Maybe (ForceFlag) }) -> DeleteRepositoryRequest
 ```
 
 Constructs DeleteRepositoryRequest's fields from required parameters
@@ -622,7 +622,7 @@ Constructs DeleteRepositoryRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteRepositoryResponse
-  = DeleteRepositoryResponse { repository :: NullOrUndefined (Repository) }
+  = DeleteRepositoryResponse { repository :: Maybe (Repository) }
 ```
 
 ##### Instances
@@ -645,7 +645,7 @@ Constructs DeleteRepositoryResponse from required parameters
 #### `newDeleteRepositoryResponse'`
 
 ``` purescript
-newDeleteRepositoryResponse' :: ({ repository :: NullOrUndefined (Repository) } -> { repository :: NullOrUndefined (Repository) }) -> DeleteRepositoryResponse
+newDeleteRepositoryResponse' :: ({ repository :: Maybe (Repository) } -> { repository :: Maybe (Repository) }) -> DeleteRepositoryResponse
 ```
 
 Constructs DeleteRepositoryResponse's fields from required parameters
@@ -654,7 +654,7 @@ Constructs DeleteRepositoryResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeImagesFilter
-  = DescribeImagesFilter { tagStatus :: NullOrUndefined (TagStatus) }
+  = DescribeImagesFilter { tagStatus :: Maybe (TagStatus) }
 ```
 
 <p>An object representing a filter on a <a>DescribeImages</a> operation.</p>
@@ -679,7 +679,7 @@ Constructs DescribeImagesFilter from required parameters
 #### `newDescribeImagesFilter'`
 
 ``` purescript
-newDescribeImagesFilter' :: ({ tagStatus :: NullOrUndefined (TagStatus) } -> { tagStatus :: NullOrUndefined (TagStatus) }) -> DescribeImagesFilter
+newDescribeImagesFilter' :: ({ tagStatus :: Maybe (TagStatus) } -> { tagStatus :: Maybe (TagStatus) }) -> DescribeImagesFilter
 ```
 
 Constructs DescribeImagesFilter's fields from required parameters
@@ -688,7 +688,7 @@ Constructs DescribeImagesFilter's fields from required parameters
 
 ``` purescript
 newtype DescribeImagesRequest
-  = DescribeImagesRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (DescribeImagesFilter) }
+  = DescribeImagesRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (DescribeImagesFilter) }
 ```
 
 ##### Instances
@@ -711,7 +711,7 @@ Constructs DescribeImagesRequest from required parameters
 #### `newDescribeImagesRequest'`
 
 ``` purescript
-newDescribeImagesRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (DescribeImagesFilter) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (DescribeImagesFilter) }) -> DescribeImagesRequest
+newDescribeImagesRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (DescribeImagesFilter) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (DescribeImagesFilter) }) -> DescribeImagesRequest
 ```
 
 Constructs DescribeImagesRequest's fields from required parameters
@@ -720,7 +720,7 @@ Constructs DescribeImagesRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeImagesResponse
-  = DescribeImagesResponse { imageDetails :: NullOrUndefined (ImageDetailList), nextToken :: NullOrUndefined (NextToken) }
+  = DescribeImagesResponse { imageDetails :: Maybe (ImageDetailList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -743,7 +743,7 @@ Constructs DescribeImagesResponse from required parameters
 #### `newDescribeImagesResponse'`
 
 ``` purescript
-newDescribeImagesResponse' :: ({ imageDetails :: NullOrUndefined (ImageDetailList), nextToken :: NullOrUndefined (NextToken) } -> { imageDetails :: NullOrUndefined (ImageDetailList), nextToken :: NullOrUndefined (NextToken) }) -> DescribeImagesResponse
+newDescribeImagesResponse' :: ({ imageDetails :: Maybe (ImageDetailList), nextToken :: Maybe (NextToken) } -> { imageDetails :: Maybe (ImageDetailList), nextToken :: Maybe (NextToken) }) -> DescribeImagesResponse
 ```
 
 Constructs DescribeImagesResponse's fields from required parameters
@@ -752,7 +752,7 @@ Constructs DescribeImagesResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeRepositoriesRequest
-  = DescribeRepositoriesRequest { registryId :: NullOrUndefined (RegistryId), repositoryNames :: NullOrUndefined (RepositoryNameList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }
+  = DescribeRepositoriesRequest { registryId :: Maybe (RegistryId), repositoryNames :: Maybe (RepositoryNameList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -775,7 +775,7 @@ Constructs DescribeRepositoriesRequest from required parameters
 #### `newDescribeRepositoriesRequest'`
 
 ``` purescript
-newDescribeRepositoriesRequest' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryNames :: NullOrUndefined (RepositoryNameList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) } -> { registryId :: NullOrUndefined (RegistryId), repositoryNames :: NullOrUndefined (RepositoryNameList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }) -> DescribeRepositoriesRequest
+newDescribeRepositoriesRequest' :: ({ registryId :: Maybe (RegistryId), repositoryNames :: Maybe (RepositoryNameList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) } -> { registryId :: Maybe (RegistryId), repositoryNames :: Maybe (RepositoryNameList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }) -> DescribeRepositoriesRequest
 ```
 
 Constructs DescribeRepositoriesRequest's fields from required parameters
@@ -784,7 +784,7 @@ Constructs DescribeRepositoriesRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeRepositoriesResponse
-  = DescribeRepositoriesResponse { repositories :: NullOrUndefined (RepositoryList), nextToken :: NullOrUndefined (NextToken) }
+  = DescribeRepositoriesResponse { repositories :: Maybe (RepositoryList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -807,7 +807,7 @@ Constructs DescribeRepositoriesResponse from required parameters
 #### `newDescribeRepositoriesResponse'`
 
 ``` purescript
-newDescribeRepositoriesResponse' :: ({ repositories :: NullOrUndefined (RepositoryList), nextToken :: NullOrUndefined (NextToken) } -> { repositories :: NullOrUndefined (RepositoryList), nextToken :: NullOrUndefined (NextToken) }) -> DescribeRepositoriesResponse
+newDescribeRepositoriesResponse' :: ({ repositories :: Maybe (RepositoryList), nextToken :: Maybe (NextToken) } -> { repositories :: Maybe (RepositoryList), nextToken :: Maybe (NextToken) }) -> DescribeRepositoriesResponse
 ```
 
 Constructs DescribeRepositoriesResponse's fields from required parameters
@@ -816,7 +816,7 @@ Constructs DescribeRepositoriesResponse's fields from required parameters
 
 ``` purescript
 newtype EmptyUploadException
-  = EmptyUploadException { message :: NullOrUndefined (ExceptionMessage) }
+  = EmptyUploadException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified layer upload does not contain any layer parts.</p>
@@ -841,7 +841,7 @@ Constructs EmptyUploadException from required parameters
 #### `newEmptyUploadException'`
 
 ``` purescript
-newEmptyUploadException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> EmptyUploadException
+newEmptyUploadException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> EmptyUploadException
 ```
 
 Constructs EmptyUploadException's fields from required parameters
@@ -930,7 +930,7 @@ Encode GetAuthorizationTokenRegistryIdList
 
 ``` purescript
 newtype GetAuthorizationTokenRequest
-  = GetAuthorizationTokenRequest { registryIds :: NullOrUndefined (GetAuthorizationTokenRegistryIdList) }
+  = GetAuthorizationTokenRequest { registryIds :: Maybe (GetAuthorizationTokenRegistryIdList) }
 ```
 
 ##### Instances
@@ -953,7 +953,7 @@ Constructs GetAuthorizationTokenRequest from required parameters
 #### `newGetAuthorizationTokenRequest'`
 
 ``` purescript
-newGetAuthorizationTokenRequest' :: ({ registryIds :: NullOrUndefined (GetAuthorizationTokenRegistryIdList) } -> { registryIds :: NullOrUndefined (GetAuthorizationTokenRegistryIdList) }) -> GetAuthorizationTokenRequest
+newGetAuthorizationTokenRequest' :: ({ registryIds :: Maybe (GetAuthorizationTokenRegistryIdList) } -> { registryIds :: Maybe (GetAuthorizationTokenRegistryIdList) }) -> GetAuthorizationTokenRequest
 ```
 
 Constructs GetAuthorizationTokenRequest's fields from required parameters
@@ -962,7 +962,7 @@ Constructs GetAuthorizationTokenRequest's fields from required parameters
 
 ``` purescript
 newtype GetAuthorizationTokenResponse
-  = GetAuthorizationTokenResponse { authorizationData :: NullOrUndefined (AuthorizationDataList) }
+  = GetAuthorizationTokenResponse { authorizationData :: Maybe (AuthorizationDataList) }
 ```
 
 ##### Instances
@@ -985,7 +985,7 @@ Constructs GetAuthorizationTokenResponse from required parameters
 #### `newGetAuthorizationTokenResponse'`
 
 ``` purescript
-newGetAuthorizationTokenResponse' :: ({ authorizationData :: NullOrUndefined (AuthorizationDataList) } -> { authorizationData :: NullOrUndefined (AuthorizationDataList) }) -> GetAuthorizationTokenResponse
+newGetAuthorizationTokenResponse' :: ({ authorizationData :: Maybe (AuthorizationDataList) } -> { authorizationData :: Maybe (AuthorizationDataList) }) -> GetAuthorizationTokenResponse
 ```
 
 Constructs GetAuthorizationTokenResponse's fields from required parameters
@@ -994,7 +994,7 @@ Constructs GetAuthorizationTokenResponse's fields from required parameters
 
 ``` purescript
 newtype GetDownloadUrlForLayerRequest
-  = GetDownloadUrlForLayerRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest }
+  = GetDownloadUrlForLayerRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest }
 ```
 
 ##### Instances
@@ -1017,7 +1017,7 @@ Constructs GetDownloadUrlForLayerRequest from required parameters
 #### `newGetDownloadUrlForLayerRequest'`
 
 ``` purescript
-newGetDownloadUrlForLayerRequest' :: LayerDigest -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest }) -> GetDownloadUrlForLayerRequest
+newGetDownloadUrlForLayerRequest' :: LayerDigest -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, layerDigest :: LayerDigest }) -> GetDownloadUrlForLayerRequest
 ```
 
 Constructs GetDownloadUrlForLayerRequest's fields from required parameters
@@ -1026,7 +1026,7 @@ Constructs GetDownloadUrlForLayerRequest's fields from required parameters
 
 ``` purescript
 newtype GetDownloadUrlForLayerResponse
-  = GetDownloadUrlForLayerResponse { downloadUrl :: NullOrUndefined (Url), layerDigest :: NullOrUndefined (LayerDigest) }
+  = GetDownloadUrlForLayerResponse { downloadUrl :: Maybe (Url), layerDigest :: Maybe (LayerDigest) }
 ```
 
 ##### Instances
@@ -1049,7 +1049,7 @@ Constructs GetDownloadUrlForLayerResponse from required parameters
 #### `newGetDownloadUrlForLayerResponse'`
 
 ``` purescript
-newGetDownloadUrlForLayerResponse' :: ({ downloadUrl :: NullOrUndefined (Url), layerDigest :: NullOrUndefined (LayerDigest) } -> { downloadUrl :: NullOrUndefined (Url), layerDigest :: NullOrUndefined (LayerDigest) }) -> GetDownloadUrlForLayerResponse
+newGetDownloadUrlForLayerResponse' :: ({ downloadUrl :: Maybe (Url), layerDigest :: Maybe (LayerDigest) } -> { downloadUrl :: Maybe (Url), layerDigest :: Maybe (LayerDigest) }) -> GetDownloadUrlForLayerResponse
 ```
 
 Constructs GetDownloadUrlForLayerResponse's fields from required parameters
@@ -1058,7 +1058,7 @@ Constructs GetDownloadUrlForLayerResponse's fields from required parameters
 
 ``` purescript
 newtype GetLifecyclePolicyPreviewRequest
-  = GetLifecyclePolicyPreviewRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (LifecyclePolicyPreviewFilter) }
+  = GetLifecyclePolicyPreviewRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (LifecyclePolicyPreviewFilter) }
 ```
 
 ##### Instances
@@ -1081,7 +1081,7 @@ Constructs GetLifecyclePolicyPreviewRequest from required parameters
 #### `newGetLifecyclePolicyPreviewRequest'`
 
 ``` purescript
-newGetLifecyclePolicyPreviewRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (LifecyclePolicyPreviewFilter) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (LifecyclePolicyPreviewFilter) }) -> GetLifecyclePolicyPreviewRequest
+newGetLifecyclePolicyPreviewRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (LifecyclePolicyPreviewFilter) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (LifecyclePolicyPreviewFilter) }) -> GetLifecyclePolicyPreviewRequest
 ```
 
 Constructs GetLifecyclePolicyPreviewRequest's fields from required parameters
@@ -1090,7 +1090,7 @@ Constructs GetLifecyclePolicyPreviewRequest's fields from required parameters
 
 ``` purescript
 newtype GetLifecyclePolicyPreviewResponse
-  = GetLifecyclePolicyPreviewResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus), nextToken :: NullOrUndefined (NextToken), previewResults :: NullOrUndefined (LifecyclePolicyPreviewResultList), summary :: NullOrUndefined (LifecyclePolicyPreviewSummary) }
+  = GetLifecyclePolicyPreviewResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus), nextToken :: Maybe (NextToken), previewResults :: Maybe (LifecyclePolicyPreviewResultList), summary :: Maybe (LifecyclePolicyPreviewSummary) }
 ```
 
 ##### Instances
@@ -1113,7 +1113,7 @@ Constructs GetLifecyclePolicyPreviewResponse from required parameters
 #### `newGetLifecyclePolicyPreviewResponse'`
 
 ``` purescript
-newGetLifecyclePolicyPreviewResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus), nextToken :: NullOrUndefined (NextToken), previewResults :: NullOrUndefined (LifecyclePolicyPreviewResultList), summary :: NullOrUndefined (LifecyclePolicyPreviewSummary) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus), nextToken :: NullOrUndefined (NextToken), previewResults :: NullOrUndefined (LifecyclePolicyPreviewResultList), summary :: NullOrUndefined (LifecyclePolicyPreviewSummary) }) -> GetLifecyclePolicyPreviewResponse
+newGetLifecyclePolicyPreviewResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus), nextToken :: Maybe (NextToken), previewResults :: Maybe (LifecyclePolicyPreviewResultList), summary :: Maybe (LifecyclePolicyPreviewSummary) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus), nextToken :: Maybe (NextToken), previewResults :: Maybe (LifecyclePolicyPreviewResultList), summary :: Maybe (LifecyclePolicyPreviewSummary) }) -> GetLifecyclePolicyPreviewResponse
 ```
 
 Constructs GetLifecyclePolicyPreviewResponse's fields from required parameters
@@ -1122,7 +1122,7 @@ Constructs GetLifecyclePolicyPreviewResponse's fields from required parameters
 
 ``` purescript
 newtype GetLifecyclePolicyRequest
-  = GetLifecyclePolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }
+  = GetLifecyclePolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }
 ```
 
 ##### Instances
@@ -1145,7 +1145,7 @@ Constructs GetLifecyclePolicyRequest from required parameters
 #### `newGetLifecyclePolicyRequest'`
 
 ``` purescript
-newGetLifecyclePolicyRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }) -> GetLifecyclePolicyRequest
+newGetLifecyclePolicyRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }) -> GetLifecyclePolicyRequest
 ```
 
 Constructs GetLifecyclePolicyRequest's fields from required parameters
@@ -1154,7 +1154,7 @@ Constructs GetLifecyclePolicyRequest's fields from required parameters
 
 ``` purescript
 newtype GetLifecyclePolicyResponse
-  = GetLifecyclePolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) }
+  = GetLifecyclePolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) }
 ```
 
 ##### Instances
@@ -1177,7 +1177,7 @@ Constructs GetLifecyclePolicyResponse from required parameters
 #### `newGetLifecyclePolicyResponse'`
 
 ``` purescript
-newGetLifecyclePolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), lastEvaluatedAt :: NullOrUndefined (EvaluationTimestamp) }) -> GetLifecyclePolicyResponse
+newGetLifecyclePolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), lastEvaluatedAt :: Maybe (EvaluationTimestamp) }) -> GetLifecyclePolicyResponse
 ```
 
 Constructs GetLifecyclePolicyResponse's fields from required parameters
@@ -1186,7 +1186,7 @@ Constructs GetLifecyclePolicyResponse's fields from required parameters
 
 ``` purescript
 newtype GetRepositoryPolicyRequest
-  = GetRepositoryPolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }
+  = GetRepositoryPolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }
 ```
 
 ##### Instances
@@ -1209,7 +1209,7 @@ Constructs GetRepositoryPolicyRequest from required parameters
 #### `newGetRepositoryPolicyRequest'`
 
 ``` purescript
-newGetRepositoryPolicyRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }) -> GetRepositoryPolicyRequest
+newGetRepositoryPolicyRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }) -> GetRepositoryPolicyRequest
 ```
 
 Constructs GetRepositoryPolicyRequest's fields from required parameters
@@ -1218,7 +1218,7 @@ Constructs GetRepositoryPolicyRequest's fields from required parameters
 
 ``` purescript
 newtype GetRepositoryPolicyResponse
-  = GetRepositoryPolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }
+  = GetRepositoryPolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }
 ```
 
 ##### Instances
@@ -1241,7 +1241,7 @@ Constructs GetRepositoryPolicyResponse from required parameters
 #### `newGetRepositoryPolicyResponse'`
 
 ``` purescript
-newGetRepositoryPolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }) -> GetRepositoryPolicyResponse
+newGetRepositoryPolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }) -> GetRepositoryPolicyResponse
 ```
 
 Constructs GetRepositoryPolicyResponse's fields from required parameters
@@ -1250,7 +1250,7 @@ Constructs GetRepositoryPolicyResponse's fields from required parameters
 
 ``` purescript
 newtype Image
-  = Image { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageId :: NullOrUndefined (ImageIdentifier), imageManifest :: NullOrUndefined (ImageManifest) }
+  = Image { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageId :: Maybe (ImageIdentifier), imageManifest :: Maybe (ImageManifest) }
 ```
 
 <p>An object representing an Amazon ECR image.</p>
@@ -1275,7 +1275,7 @@ Constructs Image from required parameters
 #### `newImage'`
 
 ``` purescript
-newImage' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageId :: NullOrUndefined (ImageIdentifier), imageManifest :: NullOrUndefined (ImageManifest) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageId :: NullOrUndefined (ImageIdentifier), imageManifest :: NullOrUndefined (ImageManifest) }) -> Image
+newImage' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageId :: Maybe (ImageIdentifier), imageManifest :: Maybe (ImageManifest) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageId :: Maybe (ImageIdentifier), imageManifest :: Maybe (ImageManifest) }) -> Image
 ```
 
 Constructs Image's fields from required parameters
@@ -1300,7 +1300,7 @@ Encode ImageActionType
 
 ``` purescript
 newtype ImageAlreadyExistsException
-  = ImageAlreadyExistsException { message :: NullOrUndefined (ExceptionMessage) }
+  = ImageAlreadyExistsException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified image has already been pushed, and there were no changes to the manifest or image tag after the last push.</p>
@@ -1325,7 +1325,7 @@ Constructs ImageAlreadyExistsException from required parameters
 #### `newImageAlreadyExistsException'`
 
 ``` purescript
-newImageAlreadyExistsException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> ImageAlreadyExistsException
+newImageAlreadyExistsException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> ImageAlreadyExistsException
 ```
 
 Constructs ImageAlreadyExistsException's fields from required parameters
@@ -1350,7 +1350,7 @@ Encode ImageCount
 
 ``` purescript
 newtype ImageDetail
-  = ImageDetail { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageDigest :: NullOrUndefined (ImageDigest), imageTags :: NullOrUndefined (ImageTagList), imageSizeInBytes :: NullOrUndefined (ImageSizeInBytes), imagePushedAt :: NullOrUndefined (PushTimestamp) }
+  = ImageDetail { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageDigest :: Maybe (ImageDigest), imageTags :: Maybe (ImageTagList), imageSizeInBytes :: Maybe (ImageSizeInBytes), imagePushedAt :: Maybe (PushTimestamp) }
 ```
 
 <p>An object that describes an image returned by a <a>DescribeImages</a> operation.</p>
@@ -1375,7 +1375,7 @@ Constructs ImageDetail from required parameters
 #### `newImageDetail'`
 
 ``` purescript
-newImageDetail' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageDigest :: NullOrUndefined (ImageDigest), imageTags :: NullOrUndefined (ImageTagList), imageSizeInBytes :: NullOrUndefined (ImageSizeInBytes), imagePushedAt :: NullOrUndefined (PushTimestamp) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), imageDigest :: NullOrUndefined (ImageDigest), imageTags :: NullOrUndefined (ImageTagList), imageSizeInBytes :: NullOrUndefined (ImageSizeInBytes), imagePushedAt :: NullOrUndefined (PushTimestamp) }) -> ImageDetail
+newImageDetail' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageDigest :: Maybe (ImageDigest), imageTags :: Maybe (ImageTagList), imageSizeInBytes :: Maybe (ImageSizeInBytes), imagePushedAt :: Maybe (PushTimestamp) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), imageDigest :: Maybe (ImageDigest), imageTags :: Maybe (ImageTagList), imageSizeInBytes :: Maybe (ImageSizeInBytes), imagePushedAt :: Maybe (PushTimestamp) }) -> ImageDetail
 ```
 
 Constructs ImageDetail's fields from required parameters
@@ -1416,7 +1416,7 @@ Encode ImageDigest
 
 ``` purescript
 newtype ImageFailure
-  = ImageFailure { imageId :: NullOrUndefined (ImageIdentifier), failureCode :: NullOrUndefined (ImageFailureCode), failureReason :: NullOrUndefined (ImageFailureReason) }
+  = ImageFailure { imageId :: Maybe (ImageIdentifier), failureCode :: Maybe (ImageFailureCode), failureReason :: Maybe (ImageFailureReason) }
 ```
 
 <p>An object representing an Amazon ECR image failure.</p>
@@ -1441,7 +1441,7 @@ Constructs ImageFailure from required parameters
 #### `newImageFailure'`
 
 ``` purescript
-newImageFailure' :: ({ imageId :: NullOrUndefined (ImageIdentifier), failureCode :: NullOrUndefined (ImageFailureCode), failureReason :: NullOrUndefined (ImageFailureReason) } -> { imageId :: NullOrUndefined (ImageIdentifier), failureCode :: NullOrUndefined (ImageFailureCode), failureReason :: NullOrUndefined (ImageFailureReason) }) -> ImageFailure
+newImageFailure' :: ({ imageId :: Maybe (ImageIdentifier), failureCode :: Maybe (ImageFailureCode), failureReason :: Maybe (ImageFailureReason) } -> { imageId :: Maybe (ImageIdentifier), failureCode :: Maybe (ImageFailureCode), failureReason :: Maybe (ImageFailureReason) }) -> ImageFailure
 ```
 
 Constructs ImageFailure's fields from required parameters
@@ -1498,7 +1498,7 @@ Encode ImageFailureReason
 
 ``` purescript
 newtype ImageIdentifier
-  = ImageIdentifier { imageDigest :: NullOrUndefined (ImageDigest), imageTag :: NullOrUndefined (ImageTag) }
+  = ImageIdentifier { imageDigest :: Maybe (ImageDigest), imageTag :: Maybe (ImageTag) }
 ```
 
 <p>An object with identifying information for an Amazon ECR image.</p>
@@ -1523,7 +1523,7 @@ Constructs ImageIdentifier from required parameters
 #### `newImageIdentifier'`
 
 ``` purescript
-newImageIdentifier' :: ({ imageDigest :: NullOrUndefined (ImageDigest), imageTag :: NullOrUndefined (ImageTag) } -> { imageDigest :: NullOrUndefined (ImageDigest), imageTag :: NullOrUndefined (ImageTag) }) -> ImageIdentifier
+newImageIdentifier' :: ({ imageDigest :: Maybe (ImageDigest), imageTag :: Maybe (ImageTag) } -> { imageDigest :: Maybe (ImageDigest), imageTag :: Maybe (ImageTag) }) -> ImageIdentifier
 ```
 
 Constructs ImageIdentifier's fields from required parameters
@@ -1580,7 +1580,7 @@ Encode ImageManifest
 
 ``` purescript
 newtype ImageNotFoundException
-  = ImageNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = ImageNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The image requested does not exist in the specified repository.</p>
@@ -1605,7 +1605,7 @@ Constructs ImageNotFoundException from required parameters
 #### `newImageNotFoundException'`
 
 ``` purescript
-newImageNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> ImageNotFoundException
+newImageNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> ImageNotFoundException
 ```
 
 Constructs ImageNotFoundException's fields from required parameters
@@ -1662,7 +1662,7 @@ Encode ImageTagList
 
 ``` purescript
 newtype InitiateLayerUploadRequest
-  = InitiateLayerUploadRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }
+  = InitiateLayerUploadRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }
 ```
 
 ##### Instances
@@ -1685,7 +1685,7 @@ Constructs InitiateLayerUploadRequest from required parameters
 #### `newInitiateLayerUploadRequest'`
 
 ``` purescript
-newInitiateLayerUploadRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName }) -> InitiateLayerUploadRequest
+newInitiateLayerUploadRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName }) -> InitiateLayerUploadRequest
 ```
 
 Constructs InitiateLayerUploadRequest's fields from required parameters
@@ -1694,7 +1694,7 @@ Constructs InitiateLayerUploadRequest's fields from required parameters
 
 ``` purescript
 newtype InitiateLayerUploadResponse
-  = InitiateLayerUploadResponse { uploadId :: NullOrUndefined (UploadId), partSize :: NullOrUndefined (PartSize) }
+  = InitiateLayerUploadResponse { uploadId :: Maybe (UploadId), partSize :: Maybe (PartSize) }
 ```
 
 ##### Instances
@@ -1717,7 +1717,7 @@ Constructs InitiateLayerUploadResponse from required parameters
 #### `newInitiateLayerUploadResponse'`
 
 ``` purescript
-newInitiateLayerUploadResponse' :: ({ uploadId :: NullOrUndefined (UploadId), partSize :: NullOrUndefined (PartSize) } -> { uploadId :: NullOrUndefined (UploadId), partSize :: NullOrUndefined (PartSize) }) -> InitiateLayerUploadResponse
+newInitiateLayerUploadResponse' :: ({ uploadId :: Maybe (UploadId), partSize :: Maybe (PartSize) } -> { uploadId :: Maybe (UploadId), partSize :: Maybe (PartSize) }) -> InitiateLayerUploadResponse
 ```
 
 Constructs InitiateLayerUploadResponse's fields from required parameters
@@ -1726,7 +1726,7 @@ Constructs InitiateLayerUploadResponse's fields from required parameters
 
 ``` purescript
 newtype InvalidLayerException
-  = InvalidLayerException { message :: NullOrUndefined (ExceptionMessage) }
+  = InvalidLayerException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.</p>
@@ -1751,7 +1751,7 @@ Constructs InvalidLayerException from required parameters
 #### `newInvalidLayerException'`
 
 ``` purescript
-newInvalidLayerException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> InvalidLayerException
+newInvalidLayerException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> InvalidLayerException
 ```
 
 Constructs InvalidLayerException's fields from required parameters
@@ -1760,7 +1760,7 @@ Constructs InvalidLayerException's fields from required parameters
 
 ``` purescript
 newtype InvalidLayerPartException
-  = InvalidLayerPartException { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastValidByteReceived :: NullOrUndefined (PartSize), message :: NullOrUndefined (ExceptionMessage) }
+  = InvalidLayerPartException { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastValidByteReceived :: Maybe (PartSize), message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The layer part size is not valid, or the first byte specified is not consecutive to the last byte of a previous layer part upload.</p>
@@ -1785,7 +1785,7 @@ Constructs InvalidLayerPartException from required parameters
 #### `newInvalidLayerPartException'`
 
 ``` purescript
-newInvalidLayerPartException' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastValidByteReceived :: NullOrUndefined (PartSize), message :: NullOrUndefined (ExceptionMessage) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastValidByteReceived :: NullOrUndefined (PartSize), message :: NullOrUndefined (ExceptionMessage) }) -> InvalidLayerPartException
+newInvalidLayerPartException' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastValidByteReceived :: Maybe (PartSize), message :: Maybe (ExceptionMessage) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastValidByteReceived :: Maybe (PartSize), message :: Maybe (ExceptionMessage) }) -> InvalidLayerPartException
 ```
 
 Constructs InvalidLayerPartException's fields from required parameters
@@ -1794,7 +1794,7 @@ Constructs InvalidLayerPartException's fields from required parameters
 
 ``` purescript
 newtype InvalidParameterException
-  = InvalidParameterException { message :: NullOrUndefined (ExceptionMessage) }
+  = InvalidParameterException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
@@ -1819,7 +1819,7 @@ Constructs InvalidParameterException from required parameters
 #### `newInvalidParameterException'`
 
 ``` purescript
-newInvalidParameterException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> InvalidParameterException
+newInvalidParameterException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> InvalidParameterException
 ```
 
 Constructs InvalidParameterException's fields from required parameters
@@ -1828,7 +1828,7 @@ Constructs InvalidParameterException's fields from required parameters
 
 ``` purescript
 newtype Layer
-  = Layer { layerDigest :: NullOrUndefined (LayerDigest), layerAvailability :: NullOrUndefined (LayerAvailability), layerSize :: NullOrUndefined (LayerSizeInBytes), mediaType :: NullOrUndefined (MediaType) }
+  = Layer { layerDigest :: Maybe (LayerDigest), layerAvailability :: Maybe (LayerAvailability), layerSize :: Maybe (LayerSizeInBytes), mediaType :: Maybe (MediaType) }
 ```
 
 <p>An object representing an Amazon ECR image layer.</p>
@@ -1853,7 +1853,7 @@ Constructs Layer from required parameters
 #### `newLayer'`
 
 ``` purescript
-newLayer' :: ({ layerDigest :: NullOrUndefined (LayerDigest), layerAvailability :: NullOrUndefined (LayerAvailability), layerSize :: NullOrUndefined (LayerSizeInBytes), mediaType :: NullOrUndefined (MediaType) } -> { layerDigest :: NullOrUndefined (LayerDigest), layerAvailability :: NullOrUndefined (LayerAvailability), layerSize :: NullOrUndefined (LayerSizeInBytes), mediaType :: NullOrUndefined (MediaType) }) -> Layer
+newLayer' :: ({ layerDigest :: Maybe (LayerDigest), layerAvailability :: Maybe (LayerAvailability), layerSize :: Maybe (LayerSizeInBytes), mediaType :: Maybe (MediaType) } -> { layerDigest :: Maybe (LayerDigest), layerAvailability :: Maybe (LayerAvailability), layerSize :: Maybe (LayerSizeInBytes), mediaType :: Maybe (MediaType) }) -> Layer
 ```
 
 Constructs Layer's fields from required parameters
@@ -1862,7 +1862,7 @@ Constructs Layer's fields from required parameters
 
 ``` purescript
 newtype LayerAlreadyExistsException
-  = LayerAlreadyExistsException { message :: NullOrUndefined (ExceptionMessage) }
+  = LayerAlreadyExistsException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The image layer already exists in the associated repository.</p>
@@ -1887,7 +1887,7 @@ Constructs LayerAlreadyExistsException from required parameters
 #### `newLayerAlreadyExistsException'`
 
 ``` purescript
-newLayerAlreadyExistsException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LayerAlreadyExistsException
+newLayerAlreadyExistsException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LayerAlreadyExistsException
 ```
 
 Constructs LayerAlreadyExistsException's fields from required parameters
@@ -1944,7 +1944,7 @@ Encode LayerDigestList
 
 ``` purescript
 newtype LayerFailure
-  = LayerFailure { layerDigest :: NullOrUndefined (BatchedOperationLayerDigest), failureCode :: NullOrUndefined (LayerFailureCode), failureReason :: NullOrUndefined (LayerFailureReason) }
+  = LayerFailure { layerDigest :: Maybe (BatchedOperationLayerDigest), failureCode :: Maybe (LayerFailureCode), failureReason :: Maybe (LayerFailureReason) }
 ```
 
 <p>An object representing an Amazon ECR image layer failure.</p>
@@ -1969,7 +1969,7 @@ Constructs LayerFailure from required parameters
 #### `newLayerFailure'`
 
 ``` purescript
-newLayerFailure' :: ({ layerDigest :: NullOrUndefined (BatchedOperationLayerDigest), failureCode :: NullOrUndefined (LayerFailureCode), failureReason :: NullOrUndefined (LayerFailureReason) } -> { layerDigest :: NullOrUndefined (BatchedOperationLayerDigest), failureCode :: NullOrUndefined (LayerFailureCode), failureReason :: NullOrUndefined (LayerFailureReason) }) -> LayerFailure
+newLayerFailure' :: ({ layerDigest :: Maybe (BatchedOperationLayerDigest), failureCode :: Maybe (LayerFailureCode), failureReason :: Maybe (LayerFailureReason) } -> { layerDigest :: Maybe (BatchedOperationLayerDigest), failureCode :: Maybe (LayerFailureCode), failureReason :: Maybe (LayerFailureReason) }) -> LayerFailure
 ```
 
 Constructs LayerFailure's fields from required parameters
@@ -2026,7 +2026,7 @@ Encode LayerFailureReason
 
 ``` purescript
 newtype LayerInaccessibleException
-  = LayerInaccessibleException { message :: NullOrUndefined (ExceptionMessage) }
+  = LayerInaccessibleException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.</p>
@@ -2051,7 +2051,7 @@ Constructs LayerInaccessibleException from required parameters
 #### `newLayerInaccessibleException'`
 
 ``` purescript
-newLayerInaccessibleException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LayerInaccessibleException
+newLayerInaccessibleException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LayerInaccessibleException
 ```
 
 Constructs LayerInaccessibleException's fields from required parameters
@@ -2092,7 +2092,7 @@ Encode LayerPartBlob
 
 ``` purescript
 newtype LayerPartTooSmallException
-  = LayerPartTooSmallException { message :: NullOrUndefined (ExceptionMessage) }
+  = LayerPartTooSmallException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>Layer parts must be at least 5 MiB in size.</p>
@@ -2117,7 +2117,7 @@ Constructs LayerPartTooSmallException from required parameters
 #### `newLayerPartTooSmallException'`
 
 ``` purescript
-newLayerPartTooSmallException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LayerPartTooSmallException
+newLayerPartTooSmallException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LayerPartTooSmallException
 ```
 
 Constructs LayerPartTooSmallException's fields from required parameters
@@ -2142,7 +2142,7 @@ Encode LayerSizeInBytes
 
 ``` purescript
 newtype LayersNotFoundException
-  = LayersNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = LayersNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified layers could not be found, or the specified layer is not valid for this repository.</p>
@@ -2167,7 +2167,7 @@ Constructs LayersNotFoundException from required parameters
 #### `newLayersNotFoundException'`
 
 ``` purescript
-newLayersNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LayersNotFoundException
+newLayersNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LayersNotFoundException
 ```
 
 Constructs LayersNotFoundException's fields from required parameters
@@ -2176,7 +2176,7 @@ Constructs LayersNotFoundException's fields from required parameters
 
 ``` purescript
 newtype LifecyclePolicyNotFoundException
-  = LifecyclePolicyNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = LifecyclePolicyNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The lifecycle policy could not be found, and no policy is set to the repository.</p>
@@ -2201,7 +2201,7 @@ Constructs LifecyclePolicyNotFoundException from required parameters
 #### `newLifecyclePolicyNotFoundException'`
 
 ``` purescript
-newLifecyclePolicyNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LifecyclePolicyNotFoundException
+newLifecyclePolicyNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LifecyclePolicyNotFoundException
 ```
 
 Constructs LifecyclePolicyNotFoundException's fields from required parameters
@@ -2210,7 +2210,7 @@ Constructs LifecyclePolicyNotFoundException's fields from required parameters
 
 ``` purescript
 newtype LifecyclePolicyPreviewFilter
-  = LifecyclePolicyPreviewFilter { tagStatus :: NullOrUndefined (TagStatus) }
+  = LifecyclePolicyPreviewFilter { tagStatus :: Maybe (TagStatus) }
 ```
 
 <p>The filter for the lifecycle policy preview.</p>
@@ -2235,7 +2235,7 @@ Constructs LifecyclePolicyPreviewFilter from required parameters
 #### `newLifecyclePolicyPreviewFilter'`
 
 ``` purescript
-newLifecyclePolicyPreviewFilter' :: ({ tagStatus :: NullOrUndefined (TagStatus) } -> { tagStatus :: NullOrUndefined (TagStatus) }) -> LifecyclePolicyPreviewFilter
+newLifecyclePolicyPreviewFilter' :: ({ tagStatus :: Maybe (TagStatus) } -> { tagStatus :: Maybe (TagStatus) }) -> LifecyclePolicyPreviewFilter
 ```
 
 Constructs LifecyclePolicyPreviewFilter's fields from required parameters
@@ -2244,7 +2244,7 @@ Constructs LifecyclePolicyPreviewFilter's fields from required parameters
 
 ``` purescript
 newtype LifecyclePolicyPreviewInProgressException
-  = LifecyclePolicyPreviewInProgressException { message :: NullOrUndefined (ExceptionMessage) }
+  = LifecyclePolicyPreviewInProgressException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The previous lifecycle policy preview request has not completed. Please try again later.</p>
@@ -2269,7 +2269,7 @@ Constructs LifecyclePolicyPreviewInProgressException from required parameters
 #### `newLifecyclePolicyPreviewInProgressException'`
 
 ``` purescript
-newLifecyclePolicyPreviewInProgressException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LifecyclePolicyPreviewInProgressException
+newLifecyclePolicyPreviewInProgressException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LifecyclePolicyPreviewInProgressException
 ```
 
 Constructs LifecyclePolicyPreviewInProgressException's fields from required parameters
@@ -2278,7 +2278,7 @@ Constructs LifecyclePolicyPreviewInProgressException's fields from required para
 
 ``` purescript
 newtype LifecyclePolicyPreviewNotFoundException
-  = LifecyclePolicyPreviewNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = LifecyclePolicyPreviewNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>There is no dry run for this repository.</p>
@@ -2303,7 +2303,7 @@ Constructs LifecyclePolicyPreviewNotFoundException from required parameters
 #### `newLifecyclePolicyPreviewNotFoundException'`
 
 ``` purescript
-newLifecyclePolicyPreviewNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LifecyclePolicyPreviewNotFoundException
+newLifecyclePolicyPreviewNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LifecyclePolicyPreviewNotFoundException
 ```
 
 Constructs LifecyclePolicyPreviewNotFoundException's fields from required parameters
@@ -2312,7 +2312,7 @@ Constructs LifecyclePolicyPreviewNotFoundException's fields from required parame
 
 ``` purescript
 newtype LifecyclePolicyPreviewResult
-  = LifecyclePolicyPreviewResult { imageTags :: NullOrUndefined (ImageTagList), imageDigest :: NullOrUndefined (ImageDigest), imagePushedAt :: NullOrUndefined (PushTimestamp), action :: NullOrUndefined (LifecyclePolicyRuleAction), appliedRulePriority :: NullOrUndefined (LifecyclePolicyRulePriority) }
+  = LifecyclePolicyPreviewResult { imageTags :: Maybe (ImageTagList), imageDigest :: Maybe (ImageDigest), imagePushedAt :: Maybe (PushTimestamp), action :: Maybe (LifecyclePolicyRuleAction), appliedRulePriority :: Maybe (LifecyclePolicyRulePriority) }
 ```
 
 <p>The result of the lifecycle policy preview.</p>
@@ -2337,7 +2337,7 @@ Constructs LifecyclePolicyPreviewResult from required parameters
 #### `newLifecyclePolicyPreviewResult'`
 
 ``` purescript
-newLifecyclePolicyPreviewResult' :: ({ imageTags :: NullOrUndefined (ImageTagList), imageDigest :: NullOrUndefined (ImageDigest), imagePushedAt :: NullOrUndefined (PushTimestamp), action :: NullOrUndefined (LifecyclePolicyRuleAction), appliedRulePriority :: NullOrUndefined (LifecyclePolicyRulePriority) } -> { imageTags :: NullOrUndefined (ImageTagList), imageDigest :: NullOrUndefined (ImageDigest), imagePushedAt :: NullOrUndefined (PushTimestamp), action :: NullOrUndefined (LifecyclePolicyRuleAction), appliedRulePriority :: NullOrUndefined (LifecyclePolicyRulePriority) }) -> LifecyclePolicyPreviewResult
+newLifecyclePolicyPreviewResult' :: ({ imageTags :: Maybe (ImageTagList), imageDigest :: Maybe (ImageDigest), imagePushedAt :: Maybe (PushTimestamp), action :: Maybe (LifecyclePolicyRuleAction), appliedRulePriority :: Maybe (LifecyclePolicyRulePriority) } -> { imageTags :: Maybe (ImageTagList), imageDigest :: Maybe (ImageDigest), imagePushedAt :: Maybe (PushTimestamp), action :: Maybe (LifecyclePolicyRuleAction), appliedRulePriority :: Maybe (LifecyclePolicyRulePriority) }) -> LifecyclePolicyPreviewResult
 ```
 
 Constructs LifecyclePolicyPreviewResult's fields from required parameters
@@ -2378,7 +2378,7 @@ Encode LifecyclePolicyPreviewStatus
 
 ``` purescript
 newtype LifecyclePolicyPreviewSummary
-  = LifecyclePolicyPreviewSummary { expiringImageTotalCount :: NullOrUndefined (ImageCount) }
+  = LifecyclePolicyPreviewSummary { expiringImageTotalCount :: Maybe (ImageCount) }
 ```
 
 <p>The summary of the lifecycle policy preview request.</p>
@@ -2403,7 +2403,7 @@ Constructs LifecyclePolicyPreviewSummary from required parameters
 #### `newLifecyclePolicyPreviewSummary'`
 
 ``` purescript
-newLifecyclePolicyPreviewSummary' :: ({ expiringImageTotalCount :: NullOrUndefined (ImageCount) } -> { expiringImageTotalCount :: NullOrUndefined (ImageCount) }) -> LifecyclePolicyPreviewSummary
+newLifecyclePolicyPreviewSummary' :: ({ expiringImageTotalCount :: Maybe (ImageCount) } -> { expiringImageTotalCount :: Maybe (ImageCount) }) -> LifecyclePolicyPreviewSummary
 ```
 
 Constructs LifecyclePolicyPreviewSummary's fields from required parameters
@@ -2412,7 +2412,7 @@ Constructs LifecyclePolicyPreviewSummary's fields from required parameters
 
 ``` purescript
 newtype LifecyclePolicyRuleAction
-  = LifecyclePolicyRuleAction { "type" :: NullOrUndefined (ImageActionType) }
+  = LifecyclePolicyRuleAction { "type" :: Maybe (ImageActionType) }
 ```
 
 <p>The type of action to be taken.</p>
@@ -2437,7 +2437,7 @@ Constructs LifecyclePolicyRuleAction from required parameters
 #### `newLifecyclePolicyRuleAction'`
 
 ``` purescript
-newLifecyclePolicyRuleAction' :: ({ "type" :: NullOrUndefined (ImageActionType) } -> { "type" :: NullOrUndefined (ImageActionType) }) -> LifecyclePolicyRuleAction
+newLifecyclePolicyRuleAction' :: ({ "type" :: Maybe (ImageActionType) } -> { "type" :: Maybe (ImageActionType) }) -> LifecyclePolicyRuleAction
 ```
 
 Constructs LifecyclePolicyRuleAction's fields from required parameters
@@ -2478,7 +2478,7 @@ Encode LifecyclePolicyText
 
 ``` purescript
 newtype LimitExceededException
-  = LimitExceededException { message :: NullOrUndefined (ExceptionMessage) }
+  = LimitExceededException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon Elastic Container Registry User Guide.</p>
@@ -2503,7 +2503,7 @@ Constructs LimitExceededException from required parameters
 #### `newLimitExceededException'`
 
 ``` purescript
-newLimitExceededException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> LimitExceededException
+newLimitExceededException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> LimitExceededException
 ```
 
 Constructs LimitExceededException's fields from required parameters
@@ -2512,7 +2512,7 @@ Constructs LimitExceededException's fields from required parameters
 
 ``` purescript
 newtype ListImagesFilter
-  = ListImagesFilter { tagStatus :: NullOrUndefined (TagStatus) }
+  = ListImagesFilter { tagStatus :: Maybe (TagStatus) }
 ```
 
 <p>An object representing a filter on a <a>ListImages</a> operation.</p>
@@ -2537,7 +2537,7 @@ Constructs ListImagesFilter from required parameters
 #### `newListImagesFilter'`
 
 ``` purescript
-newListImagesFilter' :: ({ tagStatus :: NullOrUndefined (TagStatus) } -> { tagStatus :: NullOrUndefined (TagStatus) }) -> ListImagesFilter
+newListImagesFilter' :: ({ tagStatus :: Maybe (TagStatus) } -> { tagStatus :: Maybe (TagStatus) }) -> ListImagesFilter
 ```
 
 Constructs ListImagesFilter's fields from required parameters
@@ -2546,7 +2546,7 @@ Constructs ListImagesFilter's fields from required parameters
 
 ``` purescript
 newtype ListImagesRequest
-  = ListImagesRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (ListImagesFilter) }
+  = ListImagesRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (ListImagesFilter) }
 ```
 
 ##### Instances
@@ -2569,7 +2569,7 @@ Constructs ListImagesRequest from required parameters
 #### `newListImagesRequest'`
 
 ``` purescript
-newListImagesRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (ListImagesFilter) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults), filter :: NullOrUndefined (ListImagesFilter) }) -> ListImagesRequest
+newListImagesRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (ListImagesFilter) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults), filter :: Maybe (ListImagesFilter) }) -> ListImagesRequest
 ```
 
 Constructs ListImagesRequest's fields from required parameters
@@ -2578,7 +2578,7 @@ Constructs ListImagesRequest's fields from required parameters
 
 ``` purescript
 newtype ListImagesResponse
-  = ListImagesResponse { imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken) }
+  = ListImagesResponse { imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2601,7 +2601,7 @@ Constructs ListImagesResponse from required parameters
 #### `newListImagesResponse'`
 
 ``` purescript
-newListImagesResponse' :: ({ imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken) } -> { imageIds :: NullOrUndefined (ImageIdentifierList), nextToken :: NullOrUndefined (NextToken) }) -> ListImagesResponse
+newListImagesResponse' :: ({ imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken) } -> { imageIds :: Maybe (ImageIdentifierList), nextToken :: Maybe (NextToken) }) -> ListImagesResponse
 ```
 
 Constructs ListImagesResponse's fields from required parameters
@@ -2722,7 +2722,7 @@ Encode PushTimestamp
 
 ``` purescript
 newtype PutImageRequest
-  = PutImageRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: NullOrUndefined (ImageTag) }
+  = PutImageRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: Maybe (ImageTag) }
 ```
 
 ##### Instances
@@ -2745,7 +2745,7 @@ Constructs PutImageRequest from required parameters
 #### `newPutImageRequest'`
 
 ``` purescript
-newPutImageRequest' :: ImageManifest -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: NullOrUndefined (ImageTag) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: NullOrUndefined (ImageTag) }) -> PutImageRequest
+newPutImageRequest' :: ImageManifest -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: Maybe (ImageTag) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, imageManifest :: ImageManifest, imageTag :: Maybe (ImageTag) }) -> PutImageRequest
 ```
 
 Constructs PutImageRequest's fields from required parameters
@@ -2754,7 +2754,7 @@ Constructs PutImageRequest's fields from required parameters
 
 ``` purescript
 newtype PutImageResponse
-  = PutImageResponse { image :: NullOrUndefined (Image) }
+  = PutImageResponse { image :: Maybe (Image) }
 ```
 
 ##### Instances
@@ -2777,7 +2777,7 @@ Constructs PutImageResponse from required parameters
 #### `newPutImageResponse'`
 
 ``` purescript
-newPutImageResponse' :: ({ image :: NullOrUndefined (Image) } -> { image :: NullOrUndefined (Image) }) -> PutImageResponse
+newPutImageResponse' :: ({ image :: Maybe (Image) } -> { image :: Maybe (Image) }) -> PutImageResponse
 ```
 
 Constructs PutImageResponse's fields from required parameters
@@ -2786,7 +2786,7 @@ Constructs PutImageResponse's fields from required parameters
 
 ``` purescript
 newtype PutLifecyclePolicyRequest
-  = PutLifecyclePolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText }
+  = PutLifecyclePolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText }
 ```
 
 ##### Instances
@@ -2809,7 +2809,7 @@ Constructs PutLifecyclePolicyRequest from required parameters
 #### `newPutLifecyclePolicyRequest'`
 
 ``` purescript
-newPutLifecyclePolicyRequest' :: LifecyclePolicyText -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText }) -> PutLifecyclePolicyRequest
+newPutLifecyclePolicyRequest' :: LifecyclePolicyText -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: LifecyclePolicyText }) -> PutLifecyclePolicyRequest
 ```
 
 Constructs PutLifecyclePolicyRequest's fields from required parameters
@@ -2818,7 +2818,7 @@ Constructs PutLifecyclePolicyRequest's fields from required parameters
 
 ``` purescript
 newtype PutLifecyclePolicyResponse
-  = PutLifecyclePolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) }
+  = PutLifecyclePolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText) }
 ```
 
 ##### Instances
@@ -2841,7 +2841,7 @@ Constructs PutLifecyclePolicyResponse from required parameters
 #### `newPutLifecyclePolicyResponse'`
 
 ``` purescript
-newPutLifecyclePolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) }) -> PutLifecyclePolicyResponse
+newPutLifecyclePolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText) }) -> PutLifecyclePolicyResponse
 ```
 
 Constructs PutLifecyclePolicyResponse's fields from required parameters
@@ -2866,7 +2866,7 @@ Encode RegistryId
 
 ``` purescript
 newtype Repository
-  = Repository { repositoryArn :: NullOrUndefined (Arn), registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), repositoryUri :: NullOrUndefined (Url), createdAt :: NullOrUndefined (CreationTimestamp) }
+  = Repository { repositoryArn :: Maybe (Arn), registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), repositoryUri :: Maybe (Url), createdAt :: Maybe (CreationTimestamp) }
 ```
 
 <p>An object representing a repository.</p>
@@ -2891,7 +2891,7 @@ Constructs Repository from required parameters
 #### `newRepository'`
 
 ``` purescript
-newRepository' :: ({ repositoryArn :: NullOrUndefined (Arn), registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), repositoryUri :: NullOrUndefined (Url), createdAt :: NullOrUndefined (CreationTimestamp) } -> { repositoryArn :: NullOrUndefined (Arn), registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), repositoryUri :: NullOrUndefined (Url), createdAt :: NullOrUndefined (CreationTimestamp) }) -> Repository
+newRepository' :: ({ repositoryArn :: Maybe (Arn), registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), repositoryUri :: Maybe (Url), createdAt :: Maybe (CreationTimestamp) } -> { repositoryArn :: Maybe (Arn), registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), repositoryUri :: Maybe (Url), createdAt :: Maybe (CreationTimestamp) }) -> Repository
 ```
 
 Constructs Repository's fields from required parameters
@@ -2900,7 +2900,7 @@ Constructs Repository's fields from required parameters
 
 ``` purescript
 newtype RepositoryAlreadyExistsException
-  = RepositoryAlreadyExistsException { message :: NullOrUndefined (ExceptionMessage) }
+  = RepositoryAlreadyExistsException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified repository already exists in the specified registry.</p>
@@ -2925,7 +2925,7 @@ Constructs RepositoryAlreadyExistsException from required parameters
 #### `newRepositoryAlreadyExistsException'`
 
 ``` purescript
-newRepositoryAlreadyExistsException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> RepositoryAlreadyExistsException
+newRepositoryAlreadyExistsException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> RepositoryAlreadyExistsException
 ```
 
 Constructs RepositoryAlreadyExistsException's fields from required parameters
@@ -2982,7 +2982,7 @@ Encode RepositoryNameList
 
 ``` purescript
 newtype RepositoryNotEmptyException
-  = RepositoryNotEmptyException { message :: NullOrUndefined (ExceptionMessage) }
+  = RepositoryNotEmptyException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified repository contains images. To delete a repository that contains images, you must force the deletion with the <code>force</code> parameter.</p>
@@ -3007,7 +3007,7 @@ Constructs RepositoryNotEmptyException from required parameters
 #### `newRepositoryNotEmptyException'`
 
 ``` purescript
-newRepositoryNotEmptyException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> RepositoryNotEmptyException
+newRepositoryNotEmptyException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> RepositoryNotEmptyException
 ```
 
 Constructs RepositoryNotEmptyException's fields from required parameters
@@ -3016,7 +3016,7 @@ Constructs RepositoryNotEmptyException's fields from required parameters
 
 ``` purescript
 newtype RepositoryNotFoundException
-  = RepositoryNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = RepositoryNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified repository could not be found. Check the spelling of the specified repository and ensure that you are performing operations on the correct registry.</p>
@@ -3041,7 +3041,7 @@ Constructs RepositoryNotFoundException from required parameters
 #### `newRepositoryNotFoundException'`
 
 ``` purescript
-newRepositoryNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> RepositoryNotFoundException
+newRepositoryNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> RepositoryNotFoundException
 ```
 
 Constructs RepositoryNotFoundException's fields from required parameters
@@ -3050,7 +3050,7 @@ Constructs RepositoryNotFoundException's fields from required parameters
 
 ``` purescript
 newtype RepositoryPolicyNotFoundException
-  = RepositoryPolicyNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = RepositoryPolicyNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The specified repository and registry combination does not have an associated repository policy.</p>
@@ -3075,7 +3075,7 @@ Constructs RepositoryPolicyNotFoundException from required parameters
 #### `newRepositoryPolicyNotFoundException'`
 
 ``` purescript
-newRepositoryPolicyNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> RepositoryPolicyNotFoundException
+newRepositoryPolicyNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> RepositoryPolicyNotFoundException
 ```
 
 Constructs RepositoryPolicyNotFoundException's fields from required parameters
@@ -3100,7 +3100,7 @@ Encode RepositoryPolicyText
 
 ``` purescript
 newtype ServerException
-  = ServerException { message :: NullOrUndefined (ExceptionMessage) }
+  = ServerException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>These errors are usually caused by a server-side issue.</p>
@@ -3125,7 +3125,7 @@ Constructs ServerException from required parameters
 #### `newServerException'`
 
 ``` purescript
-newServerException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> ServerException
+newServerException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> ServerException
 ```
 
 Constructs ServerException's fields from required parameters
@@ -3134,7 +3134,7 @@ Constructs ServerException's fields from required parameters
 
 ``` purescript
 newtype SetRepositoryPolicyRequest
-  = SetRepositoryPolicyRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: NullOrUndefined (ForceFlag) }
+  = SetRepositoryPolicyRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: Maybe (ForceFlag) }
 ```
 
 ##### Instances
@@ -3157,7 +3157,7 @@ Constructs SetRepositoryPolicyRequest from required parameters
 #### `newSetRepositoryPolicyRequest'`
 
 ``` purescript
-newSetRepositoryPolicyRequest' :: RepositoryPolicyText -> RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: NullOrUndefined (ForceFlag) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: NullOrUndefined (ForceFlag) }) -> SetRepositoryPolicyRequest
+newSetRepositoryPolicyRequest' :: RepositoryPolicyText -> RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: Maybe (ForceFlag) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, policyText :: RepositoryPolicyText, force :: Maybe (ForceFlag) }) -> SetRepositoryPolicyRequest
 ```
 
 Constructs SetRepositoryPolicyRequest's fields from required parameters
@@ -3166,7 +3166,7 @@ Constructs SetRepositoryPolicyRequest's fields from required parameters
 
 ``` purescript
 newtype SetRepositoryPolicyResponse
-  = SetRepositoryPolicyResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }
+  = SetRepositoryPolicyResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }
 ```
 
 ##### Instances
@@ -3189,7 +3189,7 @@ Constructs SetRepositoryPolicyResponse from required parameters
 #### `newSetRepositoryPolicyResponse'`
 
 ``` purescript
-newSetRepositoryPolicyResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), policyText :: NullOrUndefined (RepositoryPolicyText) }) -> SetRepositoryPolicyResponse
+newSetRepositoryPolicyResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), policyText :: Maybe (RepositoryPolicyText) }) -> SetRepositoryPolicyResponse
 ```
 
 Constructs SetRepositoryPolicyResponse's fields from required parameters
@@ -3198,7 +3198,7 @@ Constructs SetRepositoryPolicyResponse's fields from required parameters
 
 ``` purescript
 newtype StartLifecyclePolicyPreviewRequest
-  = StartLifecyclePolicyPreviewRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) }
+  = StartLifecyclePolicyPreviewRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: Maybe (LifecyclePolicyText) }
 ```
 
 ##### Instances
@@ -3221,7 +3221,7 @@ Constructs StartLifecyclePolicyPreviewRequest from required parameters
 #### `newStartLifecyclePolicyPreviewRequest'`
 
 ``` purescript
-newStartLifecyclePolicyPreviewRequest' :: RepositoryName -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText) }) -> StartLifecyclePolicyPreviewRequest
+newStartLifecyclePolicyPreviewRequest' :: RepositoryName -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: Maybe (LifecyclePolicyText) } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, lifecyclePolicyText :: Maybe (LifecyclePolicyText) }) -> StartLifecyclePolicyPreviewRequest
 ```
 
 Constructs StartLifecyclePolicyPreviewRequest's fields from required parameters
@@ -3230,7 +3230,7 @@ Constructs StartLifecyclePolicyPreviewRequest's fields from required parameters
 
 ``` purescript
 newtype StartLifecyclePolicyPreviewResponse
-  = StartLifecyclePolicyPreviewResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus) }
+  = StartLifecyclePolicyPreviewResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus) }
 ```
 
 ##### Instances
@@ -3253,7 +3253,7 @@ Constructs StartLifecyclePolicyPreviewResponse from required parameters
 #### `newStartLifecyclePolicyPreviewResponse'`
 
 ``` purescript
-newStartLifecyclePolicyPreviewResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), lifecyclePolicyText :: NullOrUndefined (LifecyclePolicyText), status :: NullOrUndefined (LifecyclePolicyPreviewStatus) }) -> StartLifecyclePolicyPreviewResponse
+newStartLifecyclePolicyPreviewResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), lifecyclePolicyText :: Maybe (LifecyclePolicyText), status :: Maybe (LifecyclePolicyPreviewStatus) }) -> StartLifecyclePolicyPreviewResponse
 ```
 
 Constructs StartLifecyclePolicyPreviewResponse's fields from required parameters
@@ -3294,7 +3294,7 @@ Encode UploadId
 
 ``` purescript
 newtype UploadLayerPartRequest
-  = UploadLayerPartRequest { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob }
+  = UploadLayerPartRequest { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob }
 ```
 
 ##### Instances
@@ -3317,7 +3317,7 @@ Constructs UploadLayerPartRequest from required parameters
 #### `newUploadLayerPartRequest'`
 
 ``` purescript
-newUploadLayerPartRequest' :: LayerPartBlob -> PartSize -> PartSize -> RepositoryName -> UploadId -> ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob }) -> UploadLayerPartRequest
+newUploadLayerPartRequest' :: LayerPartBlob -> PartSize -> PartSize -> RepositoryName -> UploadId -> ({ registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob } -> { registryId :: Maybe (RegistryId), repositoryName :: RepositoryName, uploadId :: UploadId, partFirstByte :: PartSize, partLastByte :: PartSize, layerPartBlob :: LayerPartBlob }) -> UploadLayerPartRequest
 ```
 
 Constructs UploadLayerPartRequest's fields from required parameters
@@ -3326,7 +3326,7 @@ Constructs UploadLayerPartRequest's fields from required parameters
 
 ``` purescript
 newtype UploadLayerPartResponse
-  = UploadLayerPartResponse { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastByteReceived :: NullOrUndefined (PartSize) }
+  = UploadLayerPartResponse { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastByteReceived :: Maybe (PartSize) }
 ```
 
 ##### Instances
@@ -3349,7 +3349,7 @@ Constructs UploadLayerPartResponse from required parameters
 #### `newUploadLayerPartResponse'`
 
 ``` purescript
-newUploadLayerPartResponse' :: ({ registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastByteReceived :: NullOrUndefined (PartSize) } -> { registryId :: NullOrUndefined (RegistryId), repositoryName :: NullOrUndefined (RepositoryName), uploadId :: NullOrUndefined (UploadId), lastByteReceived :: NullOrUndefined (PartSize) }) -> UploadLayerPartResponse
+newUploadLayerPartResponse' :: ({ registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastByteReceived :: Maybe (PartSize) } -> { registryId :: Maybe (RegistryId), repositoryName :: Maybe (RepositoryName), uploadId :: Maybe (UploadId), lastByteReceived :: Maybe (PartSize) }) -> UploadLayerPartResponse
 ```
 
 Constructs UploadLayerPartResponse's fields from required parameters
@@ -3358,7 +3358,7 @@ Constructs UploadLayerPartResponse's fields from required parameters
 
 ``` purescript
 newtype UploadNotFoundException
-  = UploadNotFoundException { message :: NullOrUndefined (ExceptionMessage) }
+  = UploadNotFoundException { message :: Maybe (ExceptionMessage) }
 ```
 
 <p>The upload could not be found, or the specified upload id is not valid for this repository.</p>
@@ -3383,7 +3383,7 @@ Constructs UploadNotFoundException from required parameters
 #### `newUploadNotFoundException'`
 
 ``` purescript
-newUploadNotFoundException' :: ({ message :: NullOrUndefined (ExceptionMessage) } -> { message :: NullOrUndefined (ExceptionMessage) }) -> UploadNotFoundException
+newUploadNotFoundException' :: ({ message :: Maybe (ExceptionMessage) } -> { message :: Maybe (ExceptionMessage) }) -> UploadNotFoundException
 ```
 
 Constructs UploadNotFoundException's fields from required parameters

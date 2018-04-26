@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -29,9 +28,9 @@ instance encodeArn :: Encode Arn where encode = genericEncode options
 
 -- | <p>An object representing authorization data for an Amazon ECR registry.</p>
 newtype AuthorizationData = AuthorizationData 
-  { "authorizationToken" :: NullOrUndefined (Base64)
-  , "expiresAt" :: NullOrUndefined (ExpirationTimestamp)
-  , "proxyEndpoint" :: NullOrUndefined (ProxyEndpoint)
+  { "authorizationToken" :: Maybe (Base64)
+  , "expiresAt" :: Maybe (ExpirationTimestamp)
+  , "proxyEndpoint" :: Maybe (ProxyEndpoint)
   }
 derive instance newtypeAuthorizationData :: Newtype AuthorizationData _
 derive instance repGenericAuthorizationData :: Generic AuthorizationData _
@@ -41,12 +40,12 @@ instance encodeAuthorizationData :: Encode AuthorizationData where encode = gene
 
 -- | Constructs AuthorizationData from required parameters
 newAuthorizationData :: AuthorizationData
-newAuthorizationData  = AuthorizationData { "authorizationToken": (NullOrUndefined Nothing), "expiresAt": (NullOrUndefined Nothing), "proxyEndpoint": (NullOrUndefined Nothing) }
+newAuthorizationData  = AuthorizationData { "authorizationToken": Nothing, "expiresAt": Nothing, "proxyEndpoint": Nothing }
 
 -- | Constructs AuthorizationData's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAuthorizationData' :: ( { "authorizationToken" :: NullOrUndefined (Base64) , "expiresAt" :: NullOrUndefined (ExpirationTimestamp) , "proxyEndpoint" :: NullOrUndefined (ProxyEndpoint) } -> {"authorizationToken" :: NullOrUndefined (Base64) , "expiresAt" :: NullOrUndefined (ExpirationTimestamp) , "proxyEndpoint" :: NullOrUndefined (ProxyEndpoint) } ) -> AuthorizationData
-newAuthorizationData'  customize = (AuthorizationData <<< customize) { "authorizationToken": (NullOrUndefined Nothing), "expiresAt": (NullOrUndefined Nothing), "proxyEndpoint": (NullOrUndefined Nothing) }
+newAuthorizationData' :: ( { "authorizationToken" :: Maybe (Base64) , "expiresAt" :: Maybe (ExpirationTimestamp) , "proxyEndpoint" :: Maybe (ProxyEndpoint) } -> {"authorizationToken" :: Maybe (Base64) , "expiresAt" :: Maybe (ExpirationTimestamp) , "proxyEndpoint" :: Maybe (ProxyEndpoint) } ) -> AuthorizationData
+newAuthorizationData'  customize = (AuthorizationData <<< customize) { "authorizationToken": Nothing, "expiresAt": Nothing, "proxyEndpoint": Nothing }
 
 
 
@@ -69,7 +68,7 @@ instance encodeBase64 :: Encode Base64 where encode = genericEncode options
 
 
 newtype BatchCheckLayerAvailabilityRequest = BatchCheckLayerAvailabilityRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "layerDigests" :: (BatchedOperationLayerDigestList)
   }
@@ -81,18 +80,18 @@ instance encodeBatchCheckLayerAvailabilityRequest :: Encode BatchCheckLayerAvail
 
 -- | Constructs BatchCheckLayerAvailabilityRequest from required parameters
 newBatchCheckLayerAvailabilityRequest :: BatchedOperationLayerDigestList -> RepositoryName -> BatchCheckLayerAvailabilityRequest
-newBatchCheckLayerAvailabilityRequest _layerDigests _repositoryName = BatchCheckLayerAvailabilityRequest { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newBatchCheckLayerAvailabilityRequest _layerDigests _repositoryName = BatchCheckLayerAvailabilityRequest { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs BatchCheckLayerAvailabilityRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchCheckLayerAvailabilityRequest' :: BatchedOperationLayerDigestList -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigests" :: (BatchedOperationLayerDigestList) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigests" :: (BatchedOperationLayerDigestList) } ) -> BatchCheckLayerAvailabilityRequest
-newBatchCheckLayerAvailabilityRequest' _layerDigests _repositoryName customize = (BatchCheckLayerAvailabilityRequest <<< customize) { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newBatchCheckLayerAvailabilityRequest' :: BatchedOperationLayerDigestList -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigests" :: (BatchedOperationLayerDigestList) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigests" :: (BatchedOperationLayerDigestList) } ) -> BatchCheckLayerAvailabilityRequest
+newBatchCheckLayerAvailabilityRequest' _layerDigests _repositoryName customize = (BatchCheckLayerAvailabilityRequest <<< customize) { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype BatchCheckLayerAvailabilityResponse = BatchCheckLayerAvailabilityResponse 
-  { "layers" :: NullOrUndefined (LayerList)
-  , "failures" :: NullOrUndefined (LayerFailureList)
+  { "layers" :: Maybe (LayerList)
+  , "failures" :: Maybe (LayerFailureList)
   }
 derive instance newtypeBatchCheckLayerAvailabilityResponse :: Newtype BatchCheckLayerAvailabilityResponse _
 derive instance repGenericBatchCheckLayerAvailabilityResponse :: Generic BatchCheckLayerAvailabilityResponse _
@@ -102,18 +101,18 @@ instance encodeBatchCheckLayerAvailabilityResponse :: Encode BatchCheckLayerAvai
 
 -- | Constructs BatchCheckLayerAvailabilityResponse from required parameters
 newBatchCheckLayerAvailabilityResponse :: BatchCheckLayerAvailabilityResponse
-newBatchCheckLayerAvailabilityResponse  = BatchCheckLayerAvailabilityResponse { "failures": (NullOrUndefined Nothing), "layers": (NullOrUndefined Nothing) }
+newBatchCheckLayerAvailabilityResponse  = BatchCheckLayerAvailabilityResponse { "failures": Nothing, "layers": Nothing }
 
 -- | Constructs BatchCheckLayerAvailabilityResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchCheckLayerAvailabilityResponse' :: ( { "layers" :: NullOrUndefined (LayerList) , "failures" :: NullOrUndefined (LayerFailureList) } -> {"layers" :: NullOrUndefined (LayerList) , "failures" :: NullOrUndefined (LayerFailureList) } ) -> BatchCheckLayerAvailabilityResponse
-newBatchCheckLayerAvailabilityResponse'  customize = (BatchCheckLayerAvailabilityResponse <<< customize) { "failures": (NullOrUndefined Nothing), "layers": (NullOrUndefined Nothing) }
+newBatchCheckLayerAvailabilityResponse' :: ( { "layers" :: Maybe (LayerList) , "failures" :: Maybe (LayerFailureList) } -> {"layers" :: Maybe (LayerList) , "failures" :: Maybe (LayerFailureList) } ) -> BatchCheckLayerAvailabilityResponse
+newBatchCheckLayerAvailabilityResponse'  customize = (BatchCheckLayerAvailabilityResponse <<< customize) { "failures": Nothing, "layers": Nothing }
 
 
 
 -- | <p>Deletes specified images within a specified repository. Images are specified with either the <code>imageTag</code> or <code>imageDigest</code>.</p>
 newtype BatchDeleteImageRequest = BatchDeleteImageRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "imageIds" :: (ImageIdentifierList)
   }
@@ -125,18 +124,18 @@ instance encodeBatchDeleteImageRequest :: Encode BatchDeleteImageRequest where e
 
 -- | Constructs BatchDeleteImageRequest from required parameters
 newBatchDeleteImageRequest :: ImageIdentifierList -> RepositoryName -> BatchDeleteImageRequest
-newBatchDeleteImageRequest _imageIds _repositoryName = BatchDeleteImageRequest { "imageIds": _imageIds, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newBatchDeleteImageRequest _imageIds _repositoryName = BatchDeleteImageRequest { "imageIds": _imageIds, "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs BatchDeleteImageRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchDeleteImageRequest' :: ImageIdentifierList -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) } ) -> BatchDeleteImageRequest
-newBatchDeleteImageRequest' _imageIds _repositoryName customize = (BatchDeleteImageRequest <<< customize) { "imageIds": _imageIds, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newBatchDeleteImageRequest' :: ImageIdentifierList -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) } ) -> BatchDeleteImageRequest
+newBatchDeleteImageRequest' _imageIds _repositoryName customize = (BatchDeleteImageRequest <<< customize) { "imageIds": _imageIds, "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype BatchDeleteImageResponse = BatchDeleteImageResponse 
-  { "imageIds" :: NullOrUndefined (ImageIdentifierList)
-  , "failures" :: NullOrUndefined (ImageFailureList)
+  { "imageIds" :: Maybe (ImageIdentifierList)
+  , "failures" :: Maybe (ImageFailureList)
   }
 derive instance newtypeBatchDeleteImageResponse :: Newtype BatchDeleteImageResponse _
 derive instance repGenericBatchDeleteImageResponse :: Generic BatchDeleteImageResponse _
@@ -146,20 +145,20 @@ instance encodeBatchDeleteImageResponse :: Encode BatchDeleteImageResponse where
 
 -- | Constructs BatchDeleteImageResponse from required parameters
 newBatchDeleteImageResponse :: BatchDeleteImageResponse
-newBatchDeleteImageResponse  = BatchDeleteImageResponse { "failures": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing) }
+newBatchDeleteImageResponse  = BatchDeleteImageResponse { "failures": Nothing, "imageIds": Nothing }
 
 -- | Constructs BatchDeleteImageResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchDeleteImageResponse' :: ( { "imageIds" :: NullOrUndefined (ImageIdentifierList) , "failures" :: NullOrUndefined (ImageFailureList) } -> {"imageIds" :: NullOrUndefined (ImageIdentifierList) , "failures" :: NullOrUndefined (ImageFailureList) } ) -> BatchDeleteImageResponse
-newBatchDeleteImageResponse'  customize = (BatchDeleteImageResponse <<< customize) { "failures": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing) }
+newBatchDeleteImageResponse' :: ( { "imageIds" :: Maybe (ImageIdentifierList) , "failures" :: Maybe (ImageFailureList) } -> {"imageIds" :: Maybe (ImageIdentifierList) , "failures" :: Maybe (ImageFailureList) } ) -> BatchDeleteImageResponse
+newBatchDeleteImageResponse'  customize = (BatchDeleteImageResponse <<< customize) { "failures": Nothing, "imageIds": Nothing }
 
 
 
 newtype BatchGetImageRequest = BatchGetImageRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "imageIds" :: (ImageIdentifierList)
-  , "acceptedMediaTypes" :: NullOrUndefined (MediaTypeList)
+  , "acceptedMediaTypes" :: Maybe (MediaTypeList)
   }
 derive instance newtypeBatchGetImageRequest :: Newtype BatchGetImageRequest _
 derive instance repGenericBatchGetImageRequest :: Generic BatchGetImageRequest _
@@ -169,18 +168,18 @@ instance encodeBatchGetImageRequest :: Encode BatchGetImageRequest where encode 
 
 -- | Constructs BatchGetImageRequest from required parameters
 newBatchGetImageRequest :: ImageIdentifierList -> RepositoryName -> BatchGetImageRequest
-newBatchGetImageRequest _imageIds _repositoryName = BatchGetImageRequest { "imageIds": _imageIds, "repositoryName": _repositoryName, "acceptedMediaTypes": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newBatchGetImageRequest _imageIds _repositoryName = BatchGetImageRequest { "imageIds": _imageIds, "repositoryName": _repositoryName, "acceptedMediaTypes": Nothing, "registryId": Nothing }
 
 -- | Constructs BatchGetImageRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchGetImageRequest' :: ImageIdentifierList -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) , "acceptedMediaTypes" :: NullOrUndefined (MediaTypeList) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) , "acceptedMediaTypes" :: NullOrUndefined (MediaTypeList) } ) -> BatchGetImageRequest
-newBatchGetImageRequest' _imageIds _repositoryName customize = (BatchGetImageRequest <<< customize) { "imageIds": _imageIds, "repositoryName": _repositoryName, "acceptedMediaTypes": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newBatchGetImageRequest' :: ImageIdentifierList -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) , "acceptedMediaTypes" :: Maybe (MediaTypeList) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: (ImageIdentifierList) , "acceptedMediaTypes" :: Maybe (MediaTypeList) } ) -> BatchGetImageRequest
+newBatchGetImageRequest' _imageIds _repositoryName customize = (BatchGetImageRequest <<< customize) { "imageIds": _imageIds, "repositoryName": _repositoryName, "acceptedMediaTypes": Nothing, "registryId": Nothing }
 
 
 
 newtype BatchGetImageResponse = BatchGetImageResponse 
-  { "images" :: NullOrUndefined (ImageList)
-  , "failures" :: NullOrUndefined (ImageFailureList)
+  { "images" :: Maybe (ImageList)
+  , "failures" :: Maybe (ImageFailureList)
   }
 derive instance newtypeBatchGetImageResponse :: Newtype BatchGetImageResponse _
 derive instance repGenericBatchGetImageResponse :: Generic BatchGetImageResponse _
@@ -190,12 +189,12 @@ instance encodeBatchGetImageResponse :: Encode BatchGetImageResponse where encod
 
 -- | Constructs BatchGetImageResponse from required parameters
 newBatchGetImageResponse :: BatchGetImageResponse
-newBatchGetImageResponse  = BatchGetImageResponse { "failures": (NullOrUndefined Nothing), "images": (NullOrUndefined Nothing) }
+newBatchGetImageResponse  = BatchGetImageResponse { "failures": Nothing, "images": Nothing }
 
 -- | Constructs BatchGetImageResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchGetImageResponse' :: ( { "images" :: NullOrUndefined (ImageList) , "failures" :: NullOrUndefined (ImageFailureList) } -> {"images" :: NullOrUndefined (ImageList) , "failures" :: NullOrUndefined (ImageFailureList) } ) -> BatchGetImageResponse
-newBatchGetImageResponse'  customize = (BatchGetImageResponse <<< customize) { "failures": (NullOrUndefined Nothing), "images": (NullOrUndefined Nothing) }
+newBatchGetImageResponse' :: ( { "images" :: Maybe (ImageList) , "failures" :: Maybe (ImageFailureList) } -> {"images" :: Maybe (ImageList) , "failures" :: Maybe (ImageFailureList) } ) -> BatchGetImageResponse
+newBatchGetImageResponse'  customize = (BatchGetImageResponse <<< customize) { "failures": Nothing, "images": Nothing }
 
 
 
@@ -218,7 +217,7 @@ instance encodeBatchedOperationLayerDigestList :: Encode BatchedOperationLayerDi
 
 
 newtype CompleteLayerUploadRequest = CompleteLayerUploadRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "uploadId" :: (UploadId)
   , "layerDigests" :: (LayerDigestList)
@@ -231,20 +230,20 @@ instance encodeCompleteLayerUploadRequest :: Encode CompleteLayerUploadRequest w
 
 -- | Constructs CompleteLayerUploadRequest from required parameters
 newCompleteLayerUploadRequest :: LayerDigestList -> RepositoryName -> UploadId -> CompleteLayerUploadRequest
-newCompleteLayerUploadRequest _layerDigests _repositoryName _uploadId = CompleteLayerUploadRequest { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": (NullOrUndefined Nothing) }
+newCompleteLayerUploadRequest _layerDigests _repositoryName _uploadId = CompleteLayerUploadRequest { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": Nothing }
 
 -- | Constructs CompleteLayerUploadRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompleteLayerUploadRequest' :: LayerDigestList -> RepositoryName -> UploadId -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "layerDigests" :: (LayerDigestList) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "layerDigests" :: (LayerDigestList) } ) -> CompleteLayerUploadRequest
-newCompleteLayerUploadRequest' _layerDigests _repositoryName _uploadId customize = (CompleteLayerUploadRequest <<< customize) { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": (NullOrUndefined Nothing) }
+newCompleteLayerUploadRequest' :: LayerDigestList -> RepositoryName -> UploadId -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "layerDigests" :: (LayerDigestList) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "layerDigests" :: (LayerDigestList) } ) -> CompleteLayerUploadRequest
+newCompleteLayerUploadRequest' _layerDigests _repositoryName _uploadId customize = (CompleteLayerUploadRequest <<< customize) { "layerDigests": _layerDigests, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": Nothing }
 
 
 
 newtype CompleteLayerUploadResponse = CompleteLayerUploadResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "uploadId" :: NullOrUndefined (UploadId)
-  , "layerDigest" :: NullOrUndefined (LayerDigest)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "uploadId" :: Maybe (UploadId)
+  , "layerDigest" :: Maybe (LayerDigest)
   }
 derive instance newtypeCompleteLayerUploadResponse :: Newtype CompleteLayerUploadResponse _
 derive instance repGenericCompleteLayerUploadResponse :: Generic CompleteLayerUploadResponse _
@@ -254,12 +253,12 @@ instance encodeCompleteLayerUploadResponse :: Encode CompleteLayerUploadResponse
 
 -- | Constructs CompleteLayerUploadResponse from required parameters
 newCompleteLayerUploadResponse :: CompleteLayerUploadResponse
-newCompleteLayerUploadResponse  = CompleteLayerUploadResponse { "layerDigest": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newCompleteLayerUploadResponse  = CompleteLayerUploadResponse { "layerDigest": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 -- | Constructs CompleteLayerUploadResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompleteLayerUploadResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "layerDigest" :: NullOrUndefined (LayerDigest) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "layerDigest" :: NullOrUndefined (LayerDigest) } ) -> CompleteLayerUploadResponse
-newCompleteLayerUploadResponse'  customize = (CompleteLayerUploadResponse <<< customize) { "layerDigest": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newCompleteLayerUploadResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "layerDigest" :: Maybe (LayerDigest) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "layerDigest" :: Maybe (LayerDigest) } ) -> CompleteLayerUploadResponse
+newCompleteLayerUploadResponse'  customize = (CompleteLayerUploadResponse <<< customize) { "layerDigest": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 
 
@@ -284,7 +283,7 @@ newCreateRepositoryRequest' _repositoryName customize = (CreateRepositoryRequest
 
 
 newtype CreateRepositoryResponse = CreateRepositoryResponse 
-  { "repository" :: NullOrUndefined (Repository)
+  { "repository" :: Maybe (Repository)
   }
 derive instance newtypeCreateRepositoryResponse :: Newtype CreateRepositoryResponse _
 derive instance repGenericCreateRepositoryResponse :: Generic CreateRepositoryResponse _
@@ -294,12 +293,12 @@ instance encodeCreateRepositoryResponse :: Encode CreateRepositoryResponse where
 
 -- | Constructs CreateRepositoryResponse from required parameters
 newCreateRepositoryResponse :: CreateRepositoryResponse
-newCreateRepositoryResponse  = CreateRepositoryResponse { "repository": (NullOrUndefined Nothing) }
+newCreateRepositoryResponse  = CreateRepositoryResponse { "repository": Nothing }
 
 -- | Constructs CreateRepositoryResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateRepositoryResponse' :: ( { "repository" :: NullOrUndefined (Repository) } -> {"repository" :: NullOrUndefined (Repository) } ) -> CreateRepositoryResponse
-newCreateRepositoryResponse'  customize = (CreateRepositoryResponse <<< customize) { "repository": (NullOrUndefined Nothing) }
+newCreateRepositoryResponse' :: ( { "repository" :: Maybe (Repository) } -> {"repository" :: Maybe (Repository) } ) -> CreateRepositoryResponse
+newCreateRepositoryResponse'  customize = (CreateRepositoryResponse <<< customize) { "repository": Nothing }
 
 
 
@@ -313,7 +312,7 @@ instance encodeCreationTimestamp :: Encode CreationTimestamp where encode = gene
 
 
 newtype DeleteLifecyclePolicyRequest = DeleteLifecyclePolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   }
 derive instance newtypeDeleteLifecyclePolicyRequest :: Newtype DeleteLifecyclePolicyRequest _
@@ -324,20 +323,20 @@ instance encodeDeleteLifecyclePolicyRequest :: Encode DeleteLifecyclePolicyReque
 
 -- | Constructs DeleteLifecyclePolicyRequest from required parameters
 newDeleteLifecyclePolicyRequest :: RepositoryName -> DeleteLifecyclePolicyRequest
-newDeleteLifecyclePolicyRequest _repositoryName = DeleteLifecyclePolicyRequest { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newDeleteLifecyclePolicyRequest _repositoryName = DeleteLifecyclePolicyRequest { "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs DeleteLifecyclePolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteLifecyclePolicyRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> DeleteLifecyclePolicyRequest
-newDeleteLifecyclePolicyRequest' _repositoryName customize = (DeleteLifecyclePolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newDeleteLifecyclePolicyRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> DeleteLifecyclePolicyRequest
+newDeleteLifecyclePolicyRequest' _repositoryName customize = (DeleteLifecyclePolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype DeleteLifecyclePolicyResponse = DeleteLifecyclePolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
-  , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
+  , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp)
   }
 derive instance newtypeDeleteLifecyclePolicyResponse :: Newtype DeleteLifecyclePolicyResponse _
 derive instance repGenericDeleteLifecyclePolicyResponse :: Generic DeleteLifecyclePolicyResponse _
@@ -347,17 +346,17 @@ instance encodeDeleteLifecyclePolicyResponse :: Encode DeleteLifecyclePolicyResp
 
 -- | Constructs DeleteLifecyclePolicyResponse from required parameters
 newDeleteLifecyclePolicyResponse :: DeleteLifecyclePolicyResponse
-newDeleteLifecyclePolicyResponse  = DeleteLifecyclePolicyResponse { "lastEvaluatedAt": (NullOrUndefined Nothing), "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newDeleteLifecyclePolicyResponse  = DeleteLifecyclePolicyResponse { "lastEvaluatedAt": Nothing, "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs DeleteLifecyclePolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteLifecyclePolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp) } ) -> DeleteLifecyclePolicyResponse
-newDeleteLifecyclePolicyResponse'  customize = (DeleteLifecyclePolicyResponse <<< customize) { "lastEvaluatedAt": (NullOrUndefined Nothing), "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newDeleteLifecyclePolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp) } ) -> DeleteLifecyclePolicyResponse
+newDeleteLifecyclePolicyResponse'  customize = (DeleteLifecyclePolicyResponse <<< customize) { "lastEvaluatedAt": Nothing, "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
 newtype DeleteRepositoryPolicyRequest = DeleteRepositoryPolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   }
 derive instance newtypeDeleteRepositoryPolicyRequest :: Newtype DeleteRepositoryPolicyRequest _
@@ -368,19 +367,19 @@ instance encodeDeleteRepositoryPolicyRequest :: Encode DeleteRepositoryPolicyReq
 
 -- | Constructs DeleteRepositoryPolicyRequest from required parameters
 newDeleteRepositoryPolicyRequest :: RepositoryName -> DeleteRepositoryPolicyRequest
-newDeleteRepositoryPolicyRequest _repositoryName = DeleteRepositoryPolicyRequest { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newDeleteRepositoryPolicyRequest _repositoryName = DeleteRepositoryPolicyRequest { "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs DeleteRepositoryPolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteRepositoryPolicyRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> DeleteRepositoryPolicyRequest
-newDeleteRepositoryPolicyRequest' _repositoryName customize = (DeleteRepositoryPolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newDeleteRepositoryPolicyRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> DeleteRepositoryPolicyRequest
+newDeleteRepositoryPolicyRequest' _repositoryName customize = (DeleteRepositoryPolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype DeleteRepositoryPolicyResponse = DeleteRepositoryPolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "policyText" :: NullOrUndefined (RepositoryPolicyText)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "policyText" :: Maybe (RepositoryPolicyText)
   }
 derive instance newtypeDeleteRepositoryPolicyResponse :: Newtype DeleteRepositoryPolicyResponse _
 derive instance repGenericDeleteRepositoryPolicyResponse :: Generic DeleteRepositoryPolicyResponse _
@@ -390,19 +389,19 @@ instance encodeDeleteRepositoryPolicyResponse :: Encode DeleteRepositoryPolicyRe
 
 -- | Constructs DeleteRepositoryPolicyResponse from required parameters
 newDeleteRepositoryPolicyResponse :: DeleteRepositoryPolicyResponse
-newDeleteRepositoryPolicyResponse  = DeleteRepositoryPolicyResponse { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newDeleteRepositoryPolicyResponse  = DeleteRepositoryPolicyResponse { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs DeleteRepositoryPolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteRepositoryPolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } ) -> DeleteRepositoryPolicyResponse
-newDeleteRepositoryPolicyResponse'  customize = (DeleteRepositoryPolicyResponse <<< customize) { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newDeleteRepositoryPolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } ) -> DeleteRepositoryPolicyResponse
+newDeleteRepositoryPolicyResponse'  customize = (DeleteRepositoryPolicyResponse <<< customize) { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
 newtype DeleteRepositoryRequest = DeleteRepositoryRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
-  , "force" :: NullOrUndefined (ForceFlag)
+  , "force" :: Maybe (ForceFlag)
   }
 derive instance newtypeDeleteRepositoryRequest :: Newtype DeleteRepositoryRequest _
 derive instance repGenericDeleteRepositoryRequest :: Generic DeleteRepositoryRequest _
@@ -412,17 +411,17 @@ instance encodeDeleteRepositoryRequest :: Encode DeleteRepositoryRequest where e
 
 -- | Constructs DeleteRepositoryRequest from required parameters
 newDeleteRepositoryRequest :: RepositoryName -> DeleteRepositoryRequest
-newDeleteRepositoryRequest _repositoryName = DeleteRepositoryRequest { "repositoryName": _repositoryName, "force": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newDeleteRepositoryRequest _repositoryName = DeleteRepositoryRequest { "repositoryName": _repositoryName, "force": Nothing, "registryId": Nothing }
 
 -- | Constructs DeleteRepositoryRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteRepositoryRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "force" :: NullOrUndefined (ForceFlag) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "force" :: NullOrUndefined (ForceFlag) } ) -> DeleteRepositoryRequest
-newDeleteRepositoryRequest' _repositoryName customize = (DeleteRepositoryRequest <<< customize) { "repositoryName": _repositoryName, "force": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newDeleteRepositoryRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "force" :: Maybe (ForceFlag) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "force" :: Maybe (ForceFlag) } ) -> DeleteRepositoryRequest
+newDeleteRepositoryRequest' _repositoryName customize = (DeleteRepositoryRequest <<< customize) { "repositoryName": _repositoryName, "force": Nothing, "registryId": Nothing }
 
 
 
 newtype DeleteRepositoryResponse = DeleteRepositoryResponse 
-  { "repository" :: NullOrUndefined (Repository)
+  { "repository" :: Maybe (Repository)
   }
 derive instance newtypeDeleteRepositoryResponse :: Newtype DeleteRepositoryResponse _
 derive instance repGenericDeleteRepositoryResponse :: Generic DeleteRepositoryResponse _
@@ -432,18 +431,18 @@ instance encodeDeleteRepositoryResponse :: Encode DeleteRepositoryResponse where
 
 -- | Constructs DeleteRepositoryResponse from required parameters
 newDeleteRepositoryResponse :: DeleteRepositoryResponse
-newDeleteRepositoryResponse  = DeleteRepositoryResponse { "repository": (NullOrUndefined Nothing) }
+newDeleteRepositoryResponse  = DeleteRepositoryResponse { "repository": Nothing }
 
 -- | Constructs DeleteRepositoryResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteRepositoryResponse' :: ( { "repository" :: NullOrUndefined (Repository) } -> {"repository" :: NullOrUndefined (Repository) } ) -> DeleteRepositoryResponse
-newDeleteRepositoryResponse'  customize = (DeleteRepositoryResponse <<< customize) { "repository": (NullOrUndefined Nothing) }
+newDeleteRepositoryResponse' :: ( { "repository" :: Maybe (Repository) } -> {"repository" :: Maybe (Repository) } ) -> DeleteRepositoryResponse
+newDeleteRepositoryResponse'  customize = (DeleteRepositoryResponse <<< customize) { "repository": Nothing }
 
 
 
 -- | <p>An object representing a filter on a <a>DescribeImages</a> operation.</p>
 newtype DescribeImagesFilter = DescribeImagesFilter 
-  { "tagStatus" :: NullOrUndefined (TagStatus)
+  { "tagStatus" :: Maybe (TagStatus)
   }
 derive instance newtypeDescribeImagesFilter :: Newtype DescribeImagesFilter _
 derive instance repGenericDescribeImagesFilter :: Generic DescribeImagesFilter _
@@ -453,22 +452,22 @@ instance encodeDescribeImagesFilter :: Encode DescribeImagesFilter where encode 
 
 -- | Constructs DescribeImagesFilter from required parameters
 newDescribeImagesFilter :: DescribeImagesFilter
-newDescribeImagesFilter  = DescribeImagesFilter { "tagStatus": (NullOrUndefined Nothing) }
+newDescribeImagesFilter  = DescribeImagesFilter { "tagStatus": Nothing }
 
 -- | Constructs DescribeImagesFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeImagesFilter' :: ( { "tagStatus" :: NullOrUndefined (TagStatus) } -> {"tagStatus" :: NullOrUndefined (TagStatus) } ) -> DescribeImagesFilter
-newDescribeImagesFilter'  customize = (DescribeImagesFilter <<< customize) { "tagStatus": (NullOrUndefined Nothing) }
+newDescribeImagesFilter' :: ( { "tagStatus" :: Maybe (TagStatus) } -> {"tagStatus" :: Maybe (TagStatus) } ) -> DescribeImagesFilter
+newDescribeImagesFilter'  customize = (DescribeImagesFilter <<< customize) { "tagStatus": Nothing }
 
 
 
 newtype DescribeImagesRequest = DescribeImagesRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
-  , "imageIds" :: NullOrUndefined (ImageIdentifierList)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
-  , "filter" :: NullOrUndefined (DescribeImagesFilter)
+  , "imageIds" :: Maybe (ImageIdentifierList)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
+  , "filter" :: Maybe (DescribeImagesFilter)
   }
 derive instance newtypeDescribeImagesRequest :: Newtype DescribeImagesRequest _
 derive instance repGenericDescribeImagesRequest :: Generic DescribeImagesRequest _
@@ -478,18 +477,18 @@ instance encodeDescribeImagesRequest :: Encode DescribeImagesRequest where encod
 
 -- | Constructs DescribeImagesRequest from required parameters
 newDescribeImagesRequest :: RepositoryName -> DescribeImagesRequest
-newDescribeImagesRequest _repositoryName = DescribeImagesRequest { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newDescribeImagesRequest _repositoryName = DescribeImagesRequest { "repositoryName": _repositoryName, "filter": Nothing, "imageIds": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 -- | Constructs DescribeImagesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeImagesRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (DescribeImagesFilter) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (DescribeImagesFilter) } ) -> DescribeImagesRequest
-newDescribeImagesRequest' _repositoryName customize = (DescribeImagesRequest <<< customize) { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newDescribeImagesRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (DescribeImagesFilter) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (DescribeImagesFilter) } ) -> DescribeImagesRequest
+newDescribeImagesRequest' _repositoryName customize = (DescribeImagesRequest <<< customize) { "repositoryName": _repositoryName, "filter": Nothing, "imageIds": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 
 
 newtype DescribeImagesResponse = DescribeImagesResponse 
-  { "imageDetails" :: NullOrUndefined (ImageDetailList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "imageDetails" :: Maybe (ImageDetailList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeImagesResponse :: Newtype DescribeImagesResponse _
 derive instance repGenericDescribeImagesResponse :: Generic DescribeImagesResponse _
@@ -499,20 +498,20 @@ instance encodeDescribeImagesResponse :: Encode DescribeImagesResponse where enc
 
 -- | Constructs DescribeImagesResponse from required parameters
 newDescribeImagesResponse :: DescribeImagesResponse
-newDescribeImagesResponse  = DescribeImagesResponse { "imageDetails": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newDescribeImagesResponse  = DescribeImagesResponse { "imageDetails": Nothing, "nextToken": Nothing }
 
 -- | Constructs DescribeImagesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeImagesResponse' :: ( { "imageDetails" :: NullOrUndefined (ImageDetailList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"imageDetails" :: NullOrUndefined (ImageDetailList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> DescribeImagesResponse
-newDescribeImagesResponse'  customize = (DescribeImagesResponse <<< customize) { "imageDetails": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newDescribeImagesResponse' :: ( { "imageDetails" :: Maybe (ImageDetailList) , "nextToken" :: Maybe (NextToken) } -> {"imageDetails" :: Maybe (ImageDetailList) , "nextToken" :: Maybe (NextToken) } ) -> DescribeImagesResponse
+newDescribeImagesResponse'  customize = (DescribeImagesResponse <<< customize) { "imageDetails": Nothing, "nextToken": Nothing }
 
 
 
 newtype DescribeRepositoriesRequest = DescribeRepositoriesRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryNames" :: NullOrUndefined (RepositoryNameList)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryNames" :: Maybe (RepositoryNameList)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeDescribeRepositoriesRequest :: Newtype DescribeRepositoriesRequest _
 derive instance repGenericDescribeRepositoriesRequest :: Generic DescribeRepositoriesRequest _
@@ -522,18 +521,18 @@ instance encodeDescribeRepositoriesRequest :: Encode DescribeRepositoriesRequest
 
 -- | Constructs DescribeRepositoriesRequest from required parameters
 newDescribeRepositoriesRequest :: DescribeRepositoriesRequest
-newDescribeRepositoriesRequest  = DescribeRepositoriesRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryNames": (NullOrUndefined Nothing) }
+newDescribeRepositoriesRequest  = DescribeRepositoriesRequest { "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing, "repositoryNames": Nothing }
 
 -- | Constructs DescribeRepositoriesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeRepositoriesRequest' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryNames" :: NullOrUndefined (RepositoryNameList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryNames" :: NullOrUndefined (RepositoryNameList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } ) -> DescribeRepositoriesRequest
-newDescribeRepositoriesRequest'  customize = (DescribeRepositoriesRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryNames": (NullOrUndefined Nothing) }
+newDescribeRepositoriesRequest' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryNames" :: Maybe (RepositoryNameList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } -> {"registryId" :: Maybe (RegistryId) , "repositoryNames" :: Maybe (RepositoryNameList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } ) -> DescribeRepositoriesRequest
+newDescribeRepositoriesRequest'  customize = (DescribeRepositoriesRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing, "repositoryNames": Nothing }
 
 
 
 newtype DescribeRepositoriesResponse = DescribeRepositoriesResponse 
-  { "repositories" :: NullOrUndefined (RepositoryList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "repositories" :: Maybe (RepositoryList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeRepositoriesResponse :: Newtype DescribeRepositoriesResponse _
 derive instance repGenericDescribeRepositoriesResponse :: Generic DescribeRepositoriesResponse _
@@ -543,18 +542,18 @@ instance encodeDescribeRepositoriesResponse :: Encode DescribeRepositoriesRespon
 
 -- | Constructs DescribeRepositoriesResponse from required parameters
 newDescribeRepositoriesResponse :: DescribeRepositoriesResponse
-newDescribeRepositoriesResponse  = DescribeRepositoriesResponse { "nextToken": (NullOrUndefined Nothing), "repositories": (NullOrUndefined Nothing) }
+newDescribeRepositoriesResponse  = DescribeRepositoriesResponse { "nextToken": Nothing, "repositories": Nothing }
 
 -- | Constructs DescribeRepositoriesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeRepositoriesResponse' :: ( { "repositories" :: NullOrUndefined (RepositoryList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"repositories" :: NullOrUndefined (RepositoryList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> DescribeRepositoriesResponse
-newDescribeRepositoriesResponse'  customize = (DescribeRepositoriesResponse <<< customize) { "nextToken": (NullOrUndefined Nothing), "repositories": (NullOrUndefined Nothing) }
+newDescribeRepositoriesResponse' :: ( { "repositories" :: Maybe (RepositoryList) , "nextToken" :: Maybe (NextToken) } -> {"repositories" :: Maybe (RepositoryList) , "nextToken" :: Maybe (NextToken) } ) -> DescribeRepositoriesResponse
+newDescribeRepositoriesResponse'  customize = (DescribeRepositoriesResponse <<< customize) { "nextToken": Nothing, "repositories": Nothing }
 
 
 
 -- | <p>The specified layer upload does not contain any layer parts.</p>
 newtype EmptyUploadException = EmptyUploadException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeEmptyUploadException :: Newtype EmptyUploadException _
 derive instance repGenericEmptyUploadException :: Generic EmptyUploadException _
@@ -564,12 +563,12 @@ instance encodeEmptyUploadException :: Encode EmptyUploadException where encode 
 
 -- | Constructs EmptyUploadException from required parameters
 newEmptyUploadException :: EmptyUploadException
-newEmptyUploadException  = EmptyUploadException { "message": (NullOrUndefined Nothing) }
+newEmptyUploadException  = EmptyUploadException { "message": Nothing }
 
 -- | Constructs EmptyUploadException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEmptyUploadException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> EmptyUploadException
-newEmptyUploadException'  customize = (EmptyUploadException <<< customize) { "message": (NullOrUndefined Nothing) }
+newEmptyUploadException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> EmptyUploadException
+newEmptyUploadException'  customize = (EmptyUploadException <<< customize) { "message": Nothing }
 
 
 
@@ -619,7 +618,7 @@ instance encodeGetAuthorizationTokenRegistryIdList :: Encode GetAuthorizationTok
 
 
 newtype GetAuthorizationTokenRequest = GetAuthorizationTokenRequest 
-  { "registryIds" :: NullOrUndefined (GetAuthorizationTokenRegistryIdList)
+  { "registryIds" :: Maybe (GetAuthorizationTokenRegistryIdList)
   }
 derive instance newtypeGetAuthorizationTokenRequest :: Newtype GetAuthorizationTokenRequest _
 derive instance repGenericGetAuthorizationTokenRequest :: Generic GetAuthorizationTokenRequest _
@@ -629,17 +628,17 @@ instance encodeGetAuthorizationTokenRequest :: Encode GetAuthorizationTokenReque
 
 -- | Constructs GetAuthorizationTokenRequest from required parameters
 newGetAuthorizationTokenRequest :: GetAuthorizationTokenRequest
-newGetAuthorizationTokenRequest  = GetAuthorizationTokenRequest { "registryIds": (NullOrUndefined Nothing) }
+newGetAuthorizationTokenRequest  = GetAuthorizationTokenRequest { "registryIds": Nothing }
 
 -- | Constructs GetAuthorizationTokenRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAuthorizationTokenRequest' :: ( { "registryIds" :: NullOrUndefined (GetAuthorizationTokenRegistryIdList) } -> {"registryIds" :: NullOrUndefined (GetAuthorizationTokenRegistryIdList) } ) -> GetAuthorizationTokenRequest
-newGetAuthorizationTokenRequest'  customize = (GetAuthorizationTokenRequest <<< customize) { "registryIds": (NullOrUndefined Nothing) }
+newGetAuthorizationTokenRequest' :: ( { "registryIds" :: Maybe (GetAuthorizationTokenRegistryIdList) } -> {"registryIds" :: Maybe (GetAuthorizationTokenRegistryIdList) } ) -> GetAuthorizationTokenRequest
+newGetAuthorizationTokenRequest'  customize = (GetAuthorizationTokenRequest <<< customize) { "registryIds": Nothing }
 
 
 
 newtype GetAuthorizationTokenResponse = GetAuthorizationTokenResponse 
-  { "authorizationData" :: NullOrUndefined (AuthorizationDataList)
+  { "authorizationData" :: Maybe (AuthorizationDataList)
   }
 derive instance newtypeGetAuthorizationTokenResponse :: Newtype GetAuthorizationTokenResponse _
 derive instance repGenericGetAuthorizationTokenResponse :: Generic GetAuthorizationTokenResponse _
@@ -649,17 +648,17 @@ instance encodeGetAuthorizationTokenResponse :: Encode GetAuthorizationTokenResp
 
 -- | Constructs GetAuthorizationTokenResponse from required parameters
 newGetAuthorizationTokenResponse :: GetAuthorizationTokenResponse
-newGetAuthorizationTokenResponse  = GetAuthorizationTokenResponse { "authorizationData": (NullOrUndefined Nothing) }
+newGetAuthorizationTokenResponse  = GetAuthorizationTokenResponse { "authorizationData": Nothing }
 
 -- | Constructs GetAuthorizationTokenResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAuthorizationTokenResponse' :: ( { "authorizationData" :: NullOrUndefined (AuthorizationDataList) } -> {"authorizationData" :: NullOrUndefined (AuthorizationDataList) } ) -> GetAuthorizationTokenResponse
-newGetAuthorizationTokenResponse'  customize = (GetAuthorizationTokenResponse <<< customize) { "authorizationData": (NullOrUndefined Nothing) }
+newGetAuthorizationTokenResponse' :: ( { "authorizationData" :: Maybe (AuthorizationDataList) } -> {"authorizationData" :: Maybe (AuthorizationDataList) } ) -> GetAuthorizationTokenResponse
+newGetAuthorizationTokenResponse'  customize = (GetAuthorizationTokenResponse <<< customize) { "authorizationData": Nothing }
 
 
 
 newtype GetDownloadUrlForLayerRequest = GetDownloadUrlForLayerRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "layerDigest" :: (LayerDigest)
   }
@@ -671,18 +670,18 @@ instance encodeGetDownloadUrlForLayerRequest :: Encode GetDownloadUrlForLayerReq
 
 -- | Constructs GetDownloadUrlForLayerRequest from required parameters
 newGetDownloadUrlForLayerRequest :: LayerDigest -> RepositoryName -> GetDownloadUrlForLayerRequest
-newGetDownloadUrlForLayerRequest _layerDigest _repositoryName = GetDownloadUrlForLayerRequest { "layerDigest": _layerDigest, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetDownloadUrlForLayerRequest _layerDigest _repositoryName = GetDownloadUrlForLayerRequest { "layerDigest": _layerDigest, "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs GetDownloadUrlForLayerRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetDownloadUrlForLayerRequest' :: LayerDigest -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigest" :: (LayerDigest) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigest" :: (LayerDigest) } ) -> GetDownloadUrlForLayerRequest
-newGetDownloadUrlForLayerRequest' _layerDigest _repositoryName customize = (GetDownloadUrlForLayerRequest <<< customize) { "layerDigest": _layerDigest, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetDownloadUrlForLayerRequest' :: LayerDigest -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigest" :: (LayerDigest) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "layerDigest" :: (LayerDigest) } ) -> GetDownloadUrlForLayerRequest
+newGetDownloadUrlForLayerRequest' _layerDigest _repositoryName customize = (GetDownloadUrlForLayerRequest <<< customize) { "layerDigest": _layerDigest, "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype GetDownloadUrlForLayerResponse = GetDownloadUrlForLayerResponse 
-  { "downloadUrl" :: NullOrUndefined (Url)
-  , "layerDigest" :: NullOrUndefined (LayerDigest)
+  { "downloadUrl" :: Maybe (Url)
+  , "layerDigest" :: Maybe (LayerDigest)
   }
 derive instance newtypeGetDownloadUrlForLayerResponse :: Newtype GetDownloadUrlForLayerResponse _
 derive instance repGenericGetDownloadUrlForLayerResponse :: Generic GetDownloadUrlForLayerResponse _
@@ -692,22 +691,22 @@ instance encodeGetDownloadUrlForLayerResponse :: Encode GetDownloadUrlForLayerRe
 
 -- | Constructs GetDownloadUrlForLayerResponse from required parameters
 newGetDownloadUrlForLayerResponse :: GetDownloadUrlForLayerResponse
-newGetDownloadUrlForLayerResponse  = GetDownloadUrlForLayerResponse { "downloadUrl": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing) }
+newGetDownloadUrlForLayerResponse  = GetDownloadUrlForLayerResponse { "downloadUrl": Nothing, "layerDigest": Nothing }
 
 -- | Constructs GetDownloadUrlForLayerResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetDownloadUrlForLayerResponse' :: ( { "downloadUrl" :: NullOrUndefined (Url) , "layerDigest" :: NullOrUndefined (LayerDigest) } -> {"downloadUrl" :: NullOrUndefined (Url) , "layerDigest" :: NullOrUndefined (LayerDigest) } ) -> GetDownloadUrlForLayerResponse
-newGetDownloadUrlForLayerResponse'  customize = (GetDownloadUrlForLayerResponse <<< customize) { "downloadUrl": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing) }
+newGetDownloadUrlForLayerResponse' :: ( { "downloadUrl" :: Maybe (Url) , "layerDigest" :: Maybe (LayerDigest) } -> {"downloadUrl" :: Maybe (Url) , "layerDigest" :: Maybe (LayerDigest) } ) -> GetDownloadUrlForLayerResponse
+newGetDownloadUrlForLayerResponse'  customize = (GetDownloadUrlForLayerResponse <<< customize) { "downloadUrl": Nothing, "layerDigest": Nothing }
 
 
 
 newtype GetLifecyclePolicyPreviewRequest = GetLifecyclePolicyPreviewRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
-  , "imageIds" :: NullOrUndefined (ImageIdentifierList)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
-  , "filter" :: NullOrUndefined (LifecyclePolicyPreviewFilter)
+  , "imageIds" :: Maybe (ImageIdentifierList)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
+  , "filter" :: Maybe (LifecyclePolicyPreviewFilter)
   }
 derive instance newtypeGetLifecyclePolicyPreviewRequest :: Newtype GetLifecyclePolicyPreviewRequest _
 derive instance repGenericGetLifecyclePolicyPreviewRequest :: Generic GetLifecyclePolicyPreviewRequest _
@@ -717,23 +716,23 @@ instance encodeGetLifecyclePolicyPreviewRequest :: Encode GetLifecyclePolicyPrev
 
 -- | Constructs GetLifecyclePolicyPreviewRequest from required parameters
 newGetLifecyclePolicyPreviewRequest :: RepositoryName -> GetLifecyclePolicyPreviewRequest
-newGetLifecyclePolicyPreviewRequest _repositoryName = GetLifecyclePolicyPreviewRequest { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyPreviewRequest _repositoryName = GetLifecyclePolicyPreviewRequest { "repositoryName": _repositoryName, "filter": Nothing, "imageIds": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 -- | Constructs GetLifecyclePolicyPreviewRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLifecyclePolicyPreviewRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (LifecyclePolicyPreviewFilter) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (LifecyclePolicyPreviewFilter) } ) -> GetLifecyclePolicyPreviewRequest
-newGetLifecyclePolicyPreviewRequest' _repositoryName customize = (GetLifecyclePolicyPreviewRequest <<< customize) { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "imageIds": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyPreviewRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (LifecyclePolicyPreviewFilter) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (LifecyclePolicyPreviewFilter) } ) -> GetLifecyclePolicyPreviewRequest
+newGetLifecyclePolicyPreviewRequest' _repositoryName customize = (GetLifecyclePolicyPreviewRequest <<< customize) { "repositoryName": _repositoryName, "filter": Nothing, "imageIds": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 
 
 newtype GetLifecyclePolicyPreviewResponse = GetLifecyclePolicyPreviewResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
-  , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "previewResults" :: NullOrUndefined (LifecyclePolicyPreviewResultList)
-  , "summary" :: NullOrUndefined (LifecyclePolicyPreviewSummary)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
+  , "status" :: Maybe (LifecyclePolicyPreviewStatus)
+  , "nextToken" :: Maybe (NextToken)
+  , "previewResults" :: Maybe (LifecyclePolicyPreviewResultList)
+  , "summary" :: Maybe (LifecyclePolicyPreviewSummary)
   }
 derive instance newtypeGetLifecyclePolicyPreviewResponse :: Newtype GetLifecyclePolicyPreviewResponse _
 derive instance repGenericGetLifecyclePolicyPreviewResponse :: Generic GetLifecyclePolicyPreviewResponse _
@@ -743,17 +742,17 @@ instance encodeGetLifecyclePolicyPreviewResponse :: Encode GetLifecyclePolicyPre
 
 -- | Constructs GetLifecyclePolicyPreviewResponse from required parameters
 newGetLifecyclePolicyPreviewResponse :: GetLifecyclePolicyPreviewResponse
-newGetLifecyclePolicyPreviewResponse  = GetLifecyclePolicyPreviewResponse { "lifecyclePolicyText": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "previewResults": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "summary": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyPreviewResponse  = GetLifecyclePolicyPreviewResponse { "lifecyclePolicyText": Nothing, "nextToken": Nothing, "previewResults": Nothing, "registryId": Nothing, "repositoryName": Nothing, "status": Nothing, "summary": Nothing }
 
 -- | Constructs GetLifecyclePolicyPreviewResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLifecyclePolicyPreviewResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus) , "nextToken" :: NullOrUndefined (NextToken) , "previewResults" :: NullOrUndefined (LifecyclePolicyPreviewResultList) , "summary" :: NullOrUndefined (LifecyclePolicyPreviewSummary) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus) , "nextToken" :: NullOrUndefined (NextToken) , "previewResults" :: NullOrUndefined (LifecyclePolicyPreviewResultList) , "summary" :: NullOrUndefined (LifecyclePolicyPreviewSummary) } ) -> GetLifecyclePolicyPreviewResponse
-newGetLifecyclePolicyPreviewResponse'  customize = (GetLifecyclePolicyPreviewResponse <<< customize) { "lifecyclePolicyText": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "previewResults": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "summary": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyPreviewResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "status" :: Maybe (LifecyclePolicyPreviewStatus) , "nextToken" :: Maybe (NextToken) , "previewResults" :: Maybe (LifecyclePolicyPreviewResultList) , "summary" :: Maybe (LifecyclePolicyPreviewSummary) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "status" :: Maybe (LifecyclePolicyPreviewStatus) , "nextToken" :: Maybe (NextToken) , "previewResults" :: Maybe (LifecyclePolicyPreviewResultList) , "summary" :: Maybe (LifecyclePolicyPreviewSummary) } ) -> GetLifecyclePolicyPreviewResponse
+newGetLifecyclePolicyPreviewResponse'  customize = (GetLifecyclePolicyPreviewResponse <<< customize) { "lifecyclePolicyText": Nothing, "nextToken": Nothing, "previewResults": Nothing, "registryId": Nothing, "repositoryName": Nothing, "status": Nothing, "summary": Nothing }
 
 
 
 newtype GetLifecyclePolicyRequest = GetLifecyclePolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   }
 derive instance newtypeGetLifecyclePolicyRequest :: Newtype GetLifecyclePolicyRequest _
@@ -764,20 +763,20 @@ instance encodeGetLifecyclePolicyRequest :: Encode GetLifecyclePolicyRequest whe
 
 -- | Constructs GetLifecyclePolicyRequest from required parameters
 newGetLifecyclePolicyRequest :: RepositoryName -> GetLifecyclePolicyRequest
-newGetLifecyclePolicyRequest _repositoryName = GetLifecyclePolicyRequest { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyRequest _repositoryName = GetLifecyclePolicyRequest { "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs GetLifecyclePolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLifecyclePolicyRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> GetLifecyclePolicyRequest
-newGetLifecyclePolicyRequest' _repositoryName customize = (GetLifecyclePolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> GetLifecyclePolicyRequest
+newGetLifecyclePolicyRequest' _repositoryName customize = (GetLifecyclePolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype GetLifecyclePolicyResponse = GetLifecyclePolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
-  , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
+  , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp)
   }
 derive instance newtypeGetLifecyclePolicyResponse :: Newtype GetLifecyclePolicyResponse _
 derive instance repGenericGetLifecyclePolicyResponse :: Generic GetLifecyclePolicyResponse _
@@ -787,17 +786,17 @@ instance encodeGetLifecyclePolicyResponse :: Encode GetLifecyclePolicyResponse w
 
 -- | Constructs GetLifecyclePolicyResponse from required parameters
 newGetLifecyclePolicyResponse :: GetLifecyclePolicyResponse
-newGetLifecyclePolicyResponse  = GetLifecyclePolicyResponse { "lastEvaluatedAt": (NullOrUndefined Nothing), "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyResponse  = GetLifecyclePolicyResponse { "lastEvaluatedAt": Nothing, "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs GetLifecyclePolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLifecyclePolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "lastEvaluatedAt" :: NullOrUndefined (EvaluationTimestamp) } ) -> GetLifecyclePolicyResponse
-newGetLifecyclePolicyResponse'  customize = (GetLifecyclePolicyResponse <<< customize) { "lastEvaluatedAt": (NullOrUndefined Nothing), "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newGetLifecyclePolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "lastEvaluatedAt" :: Maybe (EvaluationTimestamp) } ) -> GetLifecyclePolicyResponse
+newGetLifecyclePolicyResponse'  customize = (GetLifecyclePolicyResponse <<< customize) { "lastEvaluatedAt": Nothing, "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
 newtype GetRepositoryPolicyRequest = GetRepositoryPolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   }
 derive instance newtypeGetRepositoryPolicyRequest :: Newtype GetRepositoryPolicyRequest _
@@ -808,19 +807,19 @@ instance encodeGetRepositoryPolicyRequest :: Encode GetRepositoryPolicyRequest w
 
 -- | Constructs GetRepositoryPolicyRequest from required parameters
 newGetRepositoryPolicyRequest :: RepositoryName -> GetRepositoryPolicyRequest
-newGetRepositoryPolicyRequest _repositoryName = GetRepositoryPolicyRequest { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetRepositoryPolicyRequest _repositoryName = GetRepositoryPolicyRequest { "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs GetRepositoryPolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetRepositoryPolicyRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> GetRepositoryPolicyRequest
-newGetRepositoryPolicyRequest' _repositoryName customize = (GetRepositoryPolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newGetRepositoryPolicyRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> GetRepositoryPolicyRequest
+newGetRepositoryPolicyRequest' _repositoryName customize = (GetRepositoryPolicyRequest <<< customize) { "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype GetRepositoryPolicyResponse = GetRepositoryPolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "policyText" :: NullOrUndefined (RepositoryPolicyText)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "policyText" :: Maybe (RepositoryPolicyText)
   }
 derive instance newtypeGetRepositoryPolicyResponse :: Newtype GetRepositoryPolicyResponse _
 derive instance repGenericGetRepositoryPolicyResponse :: Generic GetRepositoryPolicyResponse _
@@ -830,21 +829,21 @@ instance encodeGetRepositoryPolicyResponse :: Encode GetRepositoryPolicyResponse
 
 -- | Constructs GetRepositoryPolicyResponse from required parameters
 newGetRepositoryPolicyResponse :: GetRepositoryPolicyResponse
-newGetRepositoryPolicyResponse  = GetRepositoryPolicyResponse { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newGetRepositoryPolicyResponse  = GetRepositoryPolicyResponse { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs GetRepositoryPolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetRepositoryPolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } ) -> GetRepositoryPolicyResponse
-newGetRepositoryPolicyResponse'  customize = (GetRepositoryPolicyResponse <<< customize) { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newGetRepositoryPolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } ) -> GetRepositoryPolicyResponse
+newGetRepositoryPolicyResponse'  customize = (GetRepositoryPolicyResponse <<< customize) { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
 -- | <p>An object representing an Amazon ECR image.</p>
 newtype Image = Image 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "imageId" :: NullOrUndefined (ImageIdentifier)
-  , "imageManifest" :: NullOrUndefined (ImageManifest)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "imageId" :: Maybe (ImageIdentifier)
+  , "imageManifest" :: Maybe (ImageManifest)
   }
 derive instance newtypeImage :: Newtype Image _
 derive instance repGenericImage :: Generic Image _
@@ -854,12 +853,12 @@ instance encodeImage :: Encode Image where encode = genericEncode options
 
 -- | Constructs Image from required parameters
 newImage :: Image
-newImage  = Image { "imageId": (NullOrUndefined Nothing), "imageManifest": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newImage  = Image { "imageId": Nothing, "imageManifest": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs Image's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImage' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "imageId" :: NullOrUndefined (ImageIdentifier) , "imageManifest" :: NullOrUndefined (ImageManifest) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "imageId" :: NullOrUndefined (ImageIdentifier) , "imageManifest" :: NullOrUndefined (ImageManifest) } ) -> Image
-newImage'  customize = (Image <<< customize) { "imageId": (NullOrUndefined Nothing), "imageManifest": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newImage' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "imageId" :: Maybe (ImageIdentifier) , "imageManifest" :: Maybe (ImageManifest) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "imageId" :: Maybe (ImageIdentifier) , "imageManifest" :: Maybe (ImageManifest) } ) -> Image
+newImage'  customize = (Image <<< customize) { "imageId": Nothing, "imageManifest": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
@@ -874,7 +873,7 @@ instance encodeImageActionType :: Encode ImageActionType where encode = genericE
 
 -- | <p>The specified image has already been pushed, and there were no changes to the manifest or image tag after the last push.</p>
 newtype ImageAlreadyExistsException = ImageAlreadyExistsException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeImageAlreadyExistsException :: Newtype ImageAlreadyExistsException _
 derive instance repGenericImageAlreadyExistsException :: Generic ImageAlreadyExistsException _
@@ -884,12 +883,12 @@ instance encodeImageAlreadyExistsException :: Encode ImageAlreadyExistsException
 
 -- | Constructs ImageAlreadyExistsException from required parameters
 newImageAlreadyExistsException :: ImageAlreadyExistsException
-newImageAlreadyExistsException  = ImageAlreadyExistsException { "message": (NullOrUndefined Nothing) }
+newImageAlreadyExistsException  = ImageAlreadyExistsException { "message": Nothing }
 
 -- | Constructs ImageAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageAlreadyExistsException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> ImageAlreadyExistsException
-newImageAlreadyExistsException'  customize = (ImageAlreadyExistsException <<< customize) { "message": (NullOrUndefined Nothing) }
+newImageAlreadyExistsException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> ImageAlreadyExistsException
+newImageAlreadyExistsException'  customize = (ImageAlreadyExistsException <<< customize) { "message": Nothing }
 
 
 
@@ -904,12 +903,12 @@ instance encodeImageCount :: Encode ImageCount where encode = genericEncode opti
 
 -- | <p>An object that describes an image returned by a <a>DescribeImages</a> operation.</p>
 newtype ImageDetail = ImageDetail 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "imageDigest" :: NullOrUndefined (ImageDigest)
-  , "imageTags" :: NullOrUndefined (ImageTagList)
-  , "imageSizeInBytes" :: NullOrUndefined (ImageSizeInBytes)
-  , "imagePushedAt" :: NullOrUndefined (PushTimestamp)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "imageDigest" :: Maybe (ImageDigest)
+  , "imageTags" :: Maybe (ImageTagList)
+  , "imageSizeInBytes" :: Maybe (ImageSizeInBytes)
+  , "imagePushedAt" :: Maybe (PushTimestamp)
   }
 derive instance newtypeImageDetail :: Newtype ImageDetail _
 derive instance repGenericImageDetail :: Generic ImageDetail _
@@ -919,12 +918,12 @@ instance encodeImageDetail :: Encode ImageDetail where encode = genericEncode op
 
 -- | Constructs ImageDetail from required parameters
 newImageDetail :: ImageDetail
-newImageDetail  = ImageDetail { "imageDigest": (NullOrUndefined Nothing), "imagePushedAt": (NullOrUndefined Nothing), "imageSizeInBytes": (NullOrUndefined Nothing), "imageTags": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newImageDetail  = ImageDetail { "imageDigest": Nothing, "imagePushedAt": Nothing, "imageSizeInBytes": Nothing, "imageTags": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs ImageDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageDetail' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "imageDigest" :: NullOrUndefined (ImageDigest) , "imageTags" :: NullOrUndefined (ImageTagList) , "imageSizeInBytes" :: NullOrUndefined (ImageSizeInBytes) , "imagePushedAt" :: NullOrUndefined (PushTimestamp) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "imageDigest" :: NullOrUndefined (ImageDigest) , "imageTags" :: NullOrUndefined (ImageTagList) , "imageSizeInBytes" :: NullOrUndefined (ImageSizeInBytes) , "imagePushedAt" :: NullOrUndefined (PushTimestamp) } ) -> ImageDetail
-newImageDetail'  customize = (ImageDetail <<< customize) { "imageDigest": (NullOrUndefined Nothing), "imagePushedAt": (NullOrUndefined Nothing), "imageSizeInBytes": (NullOrUndefined Nothing), "imageTags": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newImageDetail' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "imageDigest" :: Maybe (ImageDigest) , "imageTags" :: Maybe (ImageTagList) , "imageSizeInBytes" :: Maybe (ImageSizeInBytes) , "imagePushedAt" :: Maybe (PushTimestamp) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "imageDigest" :: Maybe (ImageDigest) , "imageTags" :: Maybe (ImageTagList) , "imageSizeInBytes" :: Maybe (ImageSizeInBytes) , "imagePushedAt" :: Maybe (PushTimestamp) } ) -> ImageDetail
+newImageDetail'  customize = (ImageDetail <<< customize) { "imageDigest": Nothing, "imagePushedAt": Nothing, "imageSizeInBytes": Nothing, "imageTags": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
@@ -948,9 +947,9 @@ instance encodeImageDigest :: Encode ImageDigest where encode = genericEncode op
 
 -- | <p>An object representing an Amazon ECR image failure.</p>
 newtype ImageFailure = ImageFailure 
-  { "imageId" :: NullOrUndefined (ImageIdentifier)
-  , "failureCode" :: NullOrUndefined (ImageFailureCode)
-  , "failureReason" :: NullOrUndefined (ImageFailureReason)
+  { "imageId" :: Maybe (ImageIdentifier)
+  , "failureCode" :: Maybe (ImageFailureCode)
+  , "failureReason" :: Maybe (ImageFailureReason)
   }
 derive instance newtypeImageFailure :: Newtype ImageFailure _
 derive instance repGenericImageFailure :: Generic ImageFailure _
@@ -960,12 +959,12 @@ instance encodeImageFailure :: Encode ImageFailure where encode = genericEncode 
 
 -- | Constructs ImageFailure from required parameters
 newImageFailure :: ImageFailure
-newImageFailure  = ImageFailure { "failureCode": (NullOrUndefined Nothing), "failureReason": (NullOrUndefined Nothing), "imageId": (NullOrUndefined Nothing) }
+newImageFailure  = ImageFailure { "failureCode": Nothing, "failureReason": Nothing, "imageId": Nothing }
 
 -- | Constructs ImageFailure's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageFailure' :: ( { "imageId" :: NullOrUndefined (ImageIdentifier) , "failureCode" :: NullOrUndefined (ImageFailureCode) , "failureReason" :: NullOrUndefined (ImageFailureReason) } -> {"imageId" :: NullOrUndefined (ImageIdentifier) , "failureCode" :: NullOrUndefined (ImageFailureCode) , "failureReason" :: NullOrUndefined (ImageFailureReason) } ) -> ImageFailure
-newImageFailure'  customize = (ImageFailure <<< customize) { "failureCode": (NullOrUndefined Nothing), "failureReason": (NullOrUndefined Nothing), "imageId": (NullOrUndefined Nothing) }
+newImageFailure' :: ( { "imageId" :: Maybe (ImageIdentifier) , "failureCode" :: Maybe (ImageFailureCode) , "failureReason" :: Maybe (ImageFailureReason) } -> {"imageId" :: Maybe (ImageIdentifier) , "failureCode" :: Maybe (ImageFailureCode) , "failureReason" :: Maybe (ImageFailureReason) } ) -> ImageFailure
+newImageFailure'  customize = (ImageFailure <<< customize) { "failureCode": Nothing, "failureReason": Nothing, "imageId": Nothing }
 
 
 
@@ -998,8 +997,8 @@ instance encodeImageFailureReason :: Encode ImageFailureReason where encode = ge
 
 -- | <p>An object with identifying information for an Amazon ECR image.</p>
 newtype ImageIdentifier = ImageIdentifier 
-  { "imageDigest" :: NullOrUndefined (ImageDigest)
-  , "imageTag" :: NullOrUndefined (ImageTag)
+  { "imageDigest" :: Maybe (ImageDigest)
+  , "imageTag" :: Maybe (ImageTag)
   }
 derive instance newtypeImageIdentifier :: Newtype ImageIdentifier _
 derive instance repGenericImageIdentifier :: Generic ImageIdentifier _
@@ -1009,12 +1008,12 @@ instance encodeImageIdentifier :: Encode ImageIdentifier where encode = genericE
 
 -- | Constructs ImageIdentifier from required parameters
 newImageIdentifier :: ImageIdentifier
-newImageIdentifier  = ImageIdentifier { "imageDigest": (NullOrUndefined Nothing), "imageTag": (NullOrUndefined Nothing) }
+newImageIdentifier  = ImageIdentifier { "imageDigest": Nothing, "imageTag": Nothing }
 
 -- | Constructs ImageIdentifier's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageIdentifier' :: ( { "imageDigest" :: NullOrUndefined (ImageDigest) , "imageTag" :: NullOrUndefined (ImageTag) } -> {"imageDigest" :: NullOrUndefined (ImageDigest) , "imageTag" :: NullOrUndefined (ImageTag) } ) -> ImageIdentifier
-newImageIdentifier'  customize = (ImageIdentifier <<< customize) { "imageDigest": (NullOrUndefined Nothing), "imageTag": (NullOrUndefined Nothing) }
+newImageIdentifier' :: ( { "imageDigest" :: Maybe (ImageDigest) , "imageTag" :: Maybe (ImageTag) } -> {"imageDigest" :: Maybe (ImageDigest) , "imageTag" :: Maybe (ImageTag) } ) -> ImageIdentifier
+newImageIdentifier'  customize = (ImageIdentifier <<< customize) { "imageDigest": Nothing, "imageTag": Nothing }
 
 
 
@@ -1047,7 +1046,7 @@ instance encodeImageManifest :: Encode ImageManifest where encode = genericEncod
 
 -- | <p>The image requested does not exist in the specified repository.</p>
 newtype ImageNotFoundException = ImageNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeImageNotFoundException :: Newtype ImageNotFoundException _
 derive instance repGenericImageNotFoundException :: Generic ImageNotFoundException _
@@ -1057,12 +1056,12 @@ instance encodeImageNotFoundException :: Encode ImageNotFoundException where enc
 
 -- | Constructs ImageNotFoundException from required parameters
 newImageNotFoundException :: ImageNotFoundException
-newImageNotFoundException  = ImageNotFoundException { "message": (NullOrUndefined Nothing) }
+newImageNotFoundException  = ImageNotFoundException { "message": Nothing }
 
 -- | Constructs ImageNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> ImageNotFoundException
-newImageNotFoundException'  customize = (ImageNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newImageNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> ImageNotFoundException
+newImageNotFoundException'  customize = (ImageNotFoundException <<< customize) { "message": Nothing }
 
 
 
@@ -1094,7 +1093,7 @@ instance encodeImageTagList :: Encode ImageTagList where encode = genericEncode 
 
 
 newtype InitiateLayerUploadRequest = InitiateLayerUploadRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   }
 derive instance newtypeInitiateLayerUploadRequest :: Newtype InitiateLayerUploadRequest _
@@ -1105,18 +1104,18 @@ instance encodeInitiateLayerUploadRequest :: Encode InitiateLayerUploadRequest w
 
 -- | Constructs InitiateLayerUploadRequest from required parameters
 newInitiateLayerUploadRequest :: RepositoryName -> InitiateLayerUploadRequest
-newInitiateLayerUploadRequest _repositoryName = InitiateLayerUploadRequest { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newInitiateLayerUploadRequest _repositoryName = InitiateLayerUploadRequest { "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs InitiateLayerUploadRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInitiateLayerUploadRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> InitiateLayerUploadRequest
-newInitiateLayerUploadRequest' _repositoryName customize = (InitiateLayerUploadRequest <<< customize) { "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newInitiateLayerUploadRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) } ) -> InitiateLayerUploadRequest
+newInitiateLayerUploadRequest' _repositoryName customize = (InitiateLayerUploadRequest <<< customize) { "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype InitiateLayerUploadResponse = InitiateLayerUploadResponse 
-  { "uploadId" :: NullOrUndefined (UploadId)
-  , "partSize" :: NullOrUndefined (PartSize)
+  { "uploadId" :: Maybe (UploadId)
+  , "partSize" :: Maybe (PartSize)
   }
 derive instance newtypeInitiateLayerUploadResponse :: Newtype InitiateLayerUploadResponse _
 derive instance repGenericInitiateLayerUploadResponse :: Generic InitiateLayerUploadResponse _
@@ -1126,18 +1125,18 @@ instance encodeInitiateLayerUploadResponse :: Encode InitiateLayerUploadResponse
 
 -- | Constructs InitiateLayerUploadResponse from required parameters
 newInitiateLayerUploadResponse :: InitiateLayerUploadResponse
-newInitiateLayerUploadResponse  = InitiateLayerUploadResponse { "partSize": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newInitiateLayerUploadResponse  = InitiateLayerUploadResponse { "partSize": Nothing, "uploadId": Nothing }
 
 -- | Constructs InitiateLayerUploadResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInitiateLayerUploadResponse' :: ( { "uploadId" :: NullOrUndefined (UploadId) , "partSize" :: NullOrUndefined (PartSize) } -> {"uploadId" :: NullOrUndefined (UploadId) , "partSize" :: NullOrUndefined (PartSize) } ) -> InitiateLayerUploadResponse
-newInitiateLayerUploadResponse'  customize = (InitiateLayerUploadResponse <<< customize) { "partSize": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newInitiateLayerUploadResponse' :: ( { "uploadId" :: Maybe (UploadId) , "partSize" :: Maybe (PartSize) } -> {"uploadId" :: Maybe (UploadId) , "partSize" :: Maybe (PartSize) } ) -> InitiateLayerUploadResponse
+newInitiateLayerUploadResponse'  customize = (InitiateLayerUploadResponse <<< customize) { "partSize": Nothing, "uploadId": Nothing }
 
 
 
 -- | <p>The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.</p>
 newtype InvalidLayerException = InvalidLayerException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeInvalidLayerException :: Newtype InvalidLayerException _
 derive instance repGenericInvalidLayerException :: Generic InvalidLayerException _
@@ -1147,22 +1146,22 @@ instance encodeInvalidLayerException :: Encode InvalidLayerException where encod
 
 -- | Constructs InvalidLayerException from required parameters
 newInvalidLayerException :: InvalidLayerException
-newInvalidLayerException  = InvalidLayerException { "message": (NullOrUndefined Nothing) }
+newInvalidLayerException  = InvalidLayerException { "message": Nothing }
 
 -- | Constructs InvalidLayerException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidLayerException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> InvalidLayerException
-newInvalidLayerException'  customize = (InvalidLayerException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidLayerException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> InvalidLayerException
+newInvalidLayerException'  customize = (InvalidLayerException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The layer part size is not valid, or the first byte specified is not consecutive to the last byte of a previous layer part upload.</p>
 newtype InvalidLayerPartException = InvalidLayerPartException 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "uploadId" :: NullOrUndefined (UploadId)
-  , "lastValidByteReceived" :: NullOrUndefined (PartSize)
-  , "message" :: NullOrUndefined (ExceptionMessage)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "uploadId" :: Maybe (UploadId)
+  , "lastValidByteReceived" :: Maybe (PartSize)
+  , "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeInvalidLayerPartException :: Newtype InvalidLayerPartException _
 derive instance repGenericInvalidLayerPartException :: Generic InvalidLayerPartException _
@@ -1172,18 +1171,18 @@ instance encodeInvalidLayerPartException :: Encode InvalidLayerPartException whe
 
 -- | Constructs InvalidLayerPartException from required parameters
 newInvalidLayerPartException :: InvalidLayerPartException
-newInvalidLayerPartException  = InvalidLayerPartException { "lastValidByteReceived": (NullOrUndefined Nothing), "message": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newInvalidLayerPartException  = InvalidLayerPartException { "lastValidByteReceived": Nothing, "message": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 -- | Constructs InvalidLayerPartException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidLayerPartException' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "lastValidByteReceived" :: NullOrUndefined (PartSize) , "message" :: NullOrUndefined (ExceptionMessage) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "lastValidByteReceived" :: NullOrUndefined (PartSize) , "message" :: NullOrUndefined (ExceptionMessage) } ) -> InvalidLayerPartException
-newInvalidLayerPartException'  customize = (InvalidLayerPartException <<< customize) { "lastValidByteReceived": (NullOrUndefined Nothing), "message": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newInvalidLayerPartException' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "lastValidByteReceived" :: Maybe (PartSize) , "message" :: Maybe (ExceptionMessage) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "lastValidByteReceived" :: Maybe (PartSize) , "message" :: Maybe (ExceptionMessage) } ) -> InvalidLayerPartException
+newInvalidLayerPartException'  customize = (InvalidLayerPartException <<< customize) { "lastValidByteReceived": Nothing, "message": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 
 
 -- | <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
 newtype InvalidParameterException = InvalidParameterException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 derive instance repGenericInvalidParameterException :: Generic InvalidParameterException _
@@ -1193,21 +1192,21 @@ instance encodeInvalidParameterException :: Encode InvalidParameterException whe
 
 -- | Constructs InvalidParameterException from required parameters
 newInvalidParameterException :: InvalidParameterException
-newInvalidParameterException  = InvalidParameterException { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException  = InvalidParameterException { "message": Nothing }
 
 -- | Constructs InvalidParameterException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidParameterException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> InvalidParameterException
-newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> InvalidParameterException
+newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>An object representing an Amazon ECR image layer.</p>
 newtype Layer = Layer 
-  { "layerDigest" :: NullOrUndefined (LayerDigest)
-  , "layerAvailability" :: NullOrUndefined (LayerAvailability)
-  , "layerSize" :: NullOrUndefined (LayerSizeInBytes)
-  , "mediaType" :: NullOrUndefined (MediaType)
+  { "layerDigest" :: Maybe (LayerDigest)
+  , "layerAvailability" :: Maybe (LayerAvailability)
+  , "layerSize" :: Maybe (LayerSizeInBytes)
+  , "mediaType" :: Maybe (MediaType)
   }
 derive instance newtypeLayer :: Newtype Layer _
 derive instance repGenericLayer :: Generic Layer _
@@ -1217,18 +1216,18 @@ instance encodeLayer :: Encode Layer where encode = genericEncode options
 
 -- | Constructs Layer from required parameters
 newLayer :: Layer
-newLayer  = Layer { "layerAvailability": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing), "layerSize": (NullOrUndefined Nothing), "mediaType": (NullOrUndefined Nothing) }
+newLayer  = Layer { "layerAvailability": Nothing, "layerDigest": Nothing, "layerSize": Nothing, "mediaType": Nothing }
 
 -- | Constructs Layer's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayer' :: ( { "layerDigest" :: NullOrUndefined (LayerDigest) , "layerAvailability" :: NullOrUndefined (LayerAvailability) , "layerSize" :: NullOrUndefined (LayerSizeInBytes) , "mediaType" :: NullOrUndefined (MediaType) } -> {"layerDigest" :: NullOrUndefined (LayerDigest) , "layerAvailability" :: NullOrUndefined (LayerAvailability) , "layerSize" :: NullOrUndefined (LayerSizeInBytes) , "mediaType" :: NullOrUndefined (MediaType) } ) -> Layer
-newLayer'  customize = (Layer <<< customize) { "layerAvailability": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing), "layerSize": (NullOrUndefined Nothing), "mediaType": (NullOrUndefined Nothing) }
+newLayer' :: ( { "layerDigest" :: Maybe (LayerDigest) , "layerAvailability" :: Maybe (LayerAvailability) , "layerSize" :: Maybe (LayerSizeInBytes) , "mediaType" :: Maybe (MediaType) } -> {"layerDigest" :: Maybe (LayerDigest) , "layerAvailability" :: Maybe (LayerAvailability) , "layerSize" :: Maybe (LayerSizeInBytes) , "mediaType" :: Maybe (MediaType) } ) -> Layer
+newLayer'  customize = (Layer <<< customize) { "layerAvailability": Nothing, "layerDigest": Nothing, "layerSize": Nothing, "mediaType": Nothing }
 
 
 
 -- | <p>The image layer already exists in the associated repository.</p>
 newtype LayerAlreadyExistsException = LayerAlreadyExistsException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLayerAlreadyExistsException :: Newtype LayerAlreadyExistsException _
 derive instance repGenericLayerAlreadyExistsException :: Generic LayerAlreadyExistsException _
@@ -1238,12 +1237,12 @@ instance encodeLayerAlreadyExistsException :: Encode LayerAlreadyExistsException
 
 -- | Constructs LayerAlreadyExistsException from required parameters
 newLayerAlreadyExistsException :: LayerAlreadyExistsException
-newLayerAlreadyExistsException  = LayerAlreadyExistsException { "message": (NullOrUndefined Nothing) }
+newLayerAlreadyExistsException  = LayerAlreadyExistsException { "message": Nothing }
 
 -- | Constructs LayerAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayerAlreadyExistsException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LayerAlreadyExistsException
-newLayerAlreadyExistsException'  customize = (LayerAlreadyExistsException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLayerAlreadyExistsException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LayerAlreadyExistsException
+newLayerAlreadyExistsException'  customize = (LayerAlreadyExistsException <<< customize) { "message": Nothing }
 
 
 
@@ -1276,9 +1275,9 @@ instance encodeLayerDigestList :: Encode LayerDigestList where encode = genericE
 
 -- | <p>An object representing an Amazon ECR image layer failure.</p>
 newtype LayerFailure = LayerFailure 
-  { "layerDigest" :: NullOrUndefined (BatchedOperationLayerDigest)
-  , "failureCode" :: NullOrUndefined (LayerFailureCode)
-  , "failureReason" :: NullOrUndefined (LayerFailureReason)
+  { "layerDigest" :: Maybe (BatchedOperationLayerDigest)
+  , "failureCode" :: Maybe (LayerFailureCode)
+  , "failureReason" :: Maybe (LayerFailureReason)
   }
 derive instance newtypeLayerFailure :: Newtype LayerFailure _
 derive instance repGenericLayerFailure :: Generic LayerFailure _
@@ -1288,12 +1287,12 @@ instance encodeLayerFailure :: Encode LayerFailure where encode = genericEncode 
 
 -- | Constructs LayerFailure from required parameters
 newLayerFailure :: LayerFailure
-newLayerFailure  = LayerFailure { "failureCode": (NullOrUndefined Nothing), "failureReason": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing) }
+newLayerFailure  = LayerFailure { "failureCode": Nothing, "failureReason": Nothing, "layerDigest": Nothing }
 
 -- | Constructs LayerFailure's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayerFailure' :: ( { "layerDigest" :: NullOrUndefined (BatchedOperationLayerDigest) , "failureCode" :: NullOrUndefined (LayerFailureCode) , "failureReason" :: NullOrUndefined (LayerFailureReason) } -> {"layerDigest" :: NullOrUndefined (BatchedOperationLayerDigest) , "failureCode" :: NullOrUndefined (LayerFailureCode) , "failureReason" :: NullOrUndefined (LayerFailureReason) } ) -> LayerFailure
-newLayerFailure'  customize = (LayerFailure <<< customize) { "failureCode": (NullOrUndefined Nothing), "failureReason": (NullOrUndefined Nothing), "layerDigest": (NullOrUndefined Nothing) }
+newLayerFailure' :: ( { "layerDigest" :: Maybe (BatchedOperationLayerDigest) , "failureCode" :: Maybe (LayerFailureCode) , "failureReason" :: Maybe (LayerFailureReason) } -> {"layerDigest" :: Maybe (BatchedOperationLayerDigest) , "failureCode" :: Maybe (LayerFailureCode) , "failureReason" :: Maybe (LayerFailureReason) } ) -> LayerFailure
+newLayerFailure'  customize = (LayerFailure <<< customize) { "failureCode": Nothing, "failureReason": Nothing, "layerDigest": Nothing }
 
 
 
@@ -1326,7 +1325,7 @@ instance encodeLayerFailureReason :: Encode LayerFailureReason where encode = ge
 
 -- | <p>The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.</p>
 newtype LayerInaccessibleException = LayerInaccessibleException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLayerInaccessibleException :: Newtype LayerInaccessibleException _
 derive instance repGenericLayerInaccessibleException :: Generic LayerInaccessibleException _
@@ -1336,12 +1335,12 @@ instance encodeLayerInaccessibleException :: Encode LayerInaccessibleException w
 
 -- | Constructs LayerInaccessibleException from required parameters
 newLayerInaccessibleException :: LayerInaccessibleException
-newLayerInaccessibleException  = LayerInaccessibleException { "message": (NullOrUndefined Nothing) }
+newLayerInaccessibleException  = LayerInaccessibleException { "message": Nothing }
 
 -- | Constructs LayerInaccessibleException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayerInaccessibleException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LayerInaccessibleException
-newLayerInaccessibleException'  customize = (LayerInaccessibleException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLayerInaccessibleException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LayerInaccessibleException
+newLayerInaccessibleException'  customize = (LayerInaccessibleException <<< customize) { "message": Nothing }
 
 
 
@@ -1365,7 +1364,7 @@ instance encodeLayerPartBlob :: Encode LayerPartBlob where encode = genericEncod
 
 -- | <p>Layer parts must be at least 5 MiB in size.</p>
 newtype LayerPartTooSmallException = LayerPartTooSmallException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLayerPartTooSmallException :: Newtype LayerPartTooSmallException _
 derive instance repGenericLayerPartTooSmallException :: Generic LayerPartTooSmallException _
@@ -1375,12 +1374,12 @@ instance encodeLayerPartTooSmallException :: Encode LayerPartTooSmallException w
 
 -- | Constructs LayerPartTooSmallException from required parameters
 newLayerPartTooSmallException :: LayerPartTooSmallException
-newLayerPartTooSmallException  = LayerPartTooSmallException { "message": (NullOrUndefined Nothing) }
+newLayerPartTooSmallException  = LayerPartTooSmallException { "message": Nothing }
 
 -- | Constructs LayerPartTooSmallException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayerPartTooSmallException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LayerPartTooSmallException
-newLayerPartTooSmallException'  customize = (LayerPartTooSmallException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLayerPartTooSmallException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LayerPartTooSmallException
+newLayerPartTooSmallException'  customize = (LayerPartTooSmallException <<< customize) { "message": Nothing }
 
 
 
@@ -1395,7 +1394,7 @@ instance encodeLayerSizeInBytes :: Encode LayerSizeInBytes where encode = generi
 
 -- | <p>The specified layers could not be found, or the specified layer is not valid for this repository.</p>
 newtype LayersNotFoundException = LayersNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLayersNotFoundException :: Newtype LayersNotFoundException _
 derive instance repGenericLayersNotFoundException :: Generic LayersNotFoundException _
@@ -1405,18 +1404,18 @@ instance encodeLayersNotFoundException :: Encode LayersNotFoundException where e
 
 -- | Constructs LayersNotFoundException from required parameters
 newLayersNotFoundException :: LayersNotFoundException
-newLayersNotFoundException  = LayersNotFoundException { "message": (NullOrUndefined Nothing) }
+newLayersNotFoundException  = LayersNotFoundException { "message": Nothing }
 
 -- | Constructs LayersNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLayersNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LayersNotFoundException
-newLayersNotFoundException'  customize = (LayersNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLayersNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LayersNotFoundException
+newLayersNotFoundException'  customize = (LayersNotFoundException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The lifecycle policy could not be found, and no policy is set to the repository.</p>
 newtype LifecyclePolicyNotFoundException = LifecyclePolicyNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLifecyclePolicyNotFoundException :: Newtype LifecyclePolicyNotFoundException _
 derive instance repGenericLifecyclePolicyNotFoundException :: Generic LifecyclePolicyNotFoundException _
@@ -1426,18 +1425,18 @@ instance encodeLifecyclePolicyNotFoundException :: Encode LifecyclePolicyNotFoun
 
 -- | Constructs LifecyclePolicyNotFoundException from required parameters
 newLifecyclePolicyNotFoundException :: LifecyclePolicyNotFoundException
-newLifecyclePolicyNotFoundException  = LifecyclePolicyNotFoundException { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyNotFoundException  = LifecyclePolicyNotFoundException { "message": Nothing }
 
 -- | Constructs LifecyclePolicyNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LifecyclePolicyNotFoundException
-newLifecyclePolicyNotFoundException'  customize = (LifecyclePolicyNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LifecyclePolicyNotFoundException
+newLifecyclePolicyNotFoundException'  customize = (LifecyclePolicyNotFoundException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The filter for the lifecycle policy preview.</p>
 newtype LifecyclePolicyPreviewFilter = LifecyclePolicyPreviewFilter 
-  { "tagStatus" :: NullOrUndefined (TagStatus)
+  { "tagStatus" :: Maybe (TagStatus)
   }
 derive instance newtypeLifecyclePolicyPreviewFilter :: Newtype LifecyclePolicyPreviewFilter _
 derive instance repGenericLifecyclePolicyPreviewFilter :: Generic LifecyclePolicyPreviewFilter _
@@ -1447,18 +1446,18 @@ instance encodeLifecyclePolicyPreviewFilter :: Encode LifecyclePolicyPreviewFilt
 
 -- | Constructs LifecyclePolicyPreviewFilter from required parameters
 newLifecyclePolicyPreviewFilter :: LifecyclePolicyPreviewFilter
-newLifecyclePolicyPreviewFilter  = LifecyclePolicyPreviewFilter { "tagStatus": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewFilter  = LifecyclePolicyPreviewFilter { "tagStatus": Nothing }
 
 -- | Constructs LifecyclePolicyPreviewFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyPreviewFilter' :: ( { "tagStatus" :: NullOrUndefined (TagStatus) } -> {"tagStatus" :: NullOrUndefined (TagStatus) } ) -> LifecyclePolicyPreviewFilter
-newLifecyclePolicyPreviewFilter'  customize = (LifecyclePolicyPreviewFilter <<< customize) { "tagStatus": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewFilter' :: ( { "tagStatus" :: Maybe (TagStatus) } -> {"tagStatus" :: Maybe (TagStatus) } ) -> LifecyclePolicyPreviewFilter
+newLifecyclePolicyPreviewFilter'  customize = (LifecyclePolicyPreviewFilter <<< customize) { "tagStatus": Nothing }
 
 
 
 -- | <p>The previous lifecycle policy preview request has not completed. Please try again later.</p>
 newtype LifecyclePolicyPreviewInProgressException = LifecyclePolicyPreviewInProgressException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLifecyclePolicyPreviewInProgressException :: Newtype LifecyclePolicyPreviewInProgressException _
 derive instance repGenericLifecyclePolicyPreviewInProgressException :: Generic LifecyclePolicyPreviewInProgressException _
@@ -1468,18 +1467,18 @@ instance encodeLifecyclePolicyPreviewInProgressException :: Encode LifecyclePoli
 
 -- | Constructs LifecyclePolicyPreviewInProgressException from required parameters
 newLifecyclePolicyPreviewInProgressException :: LifecyclePolicyPreviewInProgressException
-newLifecyclePolicyPreviewInProgressException  = LifecyclePolicyPreviewInProgressException { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewInProgressException  = LifecyclePolicyPreviewInProgressException { "message": Nothing }
 
 -- | Constructs LifecyclePolicyPreviewInProgressException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyPreviewInProgressException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LifecyclePolicyPreviewInProgressException
-newLifecyclePolicyPreviewInProgressException'  customize = (LifecyclePolicyPreviewInProgressException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewInProgressException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LifecyclePolicyPreviewInProgressException
+newLifecyclePolicyPreviewInProgressException'  customize = (LifecyclePolicyPreviewInProgressException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>There is no dry run for this repository.</p>
 newtype LifecyclePolicyPreviewNotFoundException = LifecyclePolicyPreviewNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLifecyclePolicyPreviewNotFoundException :: Newtype LifecyclePolicyPreviewNotFoundException _
 derive instance repGenericLifecyclePolicyPreviewNotFoundException :: Generic LifecyclePolicyPreviewNotFoundException _
@@ -1489,22 +1488,22 @@ instance encodeLifecyclePolicyPreviewNotFoundException :: Encode LifecyclePolicy
 
 -- | Constructs LifecyclePolicyPreviewNotFoundException from required parameters
 newLifecyclePolicyPreviewNotFoundException :: LifecyclePolicyPreviewNotFoundException
-newLifecyclePolicyPreviewNotFoundException  = LifecyclePolicyPreviewNotFoundException { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewNotFoundException  = LifecyclePolicyPreviewNotFoundException { "message": Nothing }
 
 -- | Constructs LifecyclePolicyPreviewNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyPreviewNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LifecyclePolicyPreviewNotFoundException
-newLifecyclePolicyPreviewNotFoundException'  customize = (LifecyclePolicyPreviewNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LifecyclePolicyPreviewNotFoundException
+newLifecyclePolicyPreviewNotFoundException'  customize = (LifecyclePolicyPreviewNotFoundException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The result of the lifecycle policy preview.</p>
 newtype LifecyclePolicyPreviewResult = LifecyclePolicyPreviewResult 
-  { "imageTags" :: NullOrUndefined (ImageTagList)
-  , "imageDigest" :: NullOrUndefined (ImageDigest)
-  , "imagePushedAt" :: NullOrUndefined (PushTimestamp)
-  , "action" :: NullOrUndefined (LifecyclePolicyRuleAction)
-  , "appliedRulePriority" :: NullOrUndefined (LifecyclePolicyRulePriority)
+  { "imageTags" :: Maybe (ImageTagList)
+  , "imageDigest" :: Maybe (ImageDigest)
+  , "imagePushedAt" :: Maybe (PushTimestamp)
+  , "action" :: Maybe (LifecyclePolicyRuleAction)
+  , "appliedRulePriority" :: Maybe (LifecyclePolicyRulePriority)
   }
 derive instance newtypeLifecyclePolicyPreviewResult :: Newtype LifecyclePolicyPreviewResult _
 derive instance repGenericLifecyclePolicyPreviewResult :: Generic LifecyclePolicyPreviewResult _
@@ -1514,12 +1513,12 @@ instance encodeLifecyclePolicyPreviewResult :: Encode LifecyclePolicyPreviewResu
 
 -- | Constructs LifecyclePolicyPreviewResult from required parameters
 newLifecyclePolicyPreviewResult :: LifecyclePolicyPreviewResult
-newLifecyclePolicyPreviewResult  = LifecyclePolicyPreviewResult { "action": (NullOrUndefined Nothing), "appliedRulePriority": (NullOrUndefined Nothing), "imageDigest": (NullOrUndefined Nothing), "imagePushedAt": (NullOrUndefined Nothing), "imageTags": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewResult  = LifecyclePolicyPreviewResult { "action": Nothing, "appliedRulePriority": Nothing, "imageDigest": Nothing, "imagePushedAt": Nothing, "imageTags": Nothing }
 
 -- | Constructs LifecyclePolicyPreviewResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyPreviewResult' :: ( { "imageTags" :: NullOrUndefined (ImageTagList) , "imageDigest" :: NullOrUndefined (ImageDigest) , "imagePushedAt" :: NullOrUndefined (PushTimestamp) , "action" :: NullOrUndefined (LifecyclePolicyRuleAction) , "appliedRulePriority" :: NullOrUndefined (LifecyclePolicyRulePriority) } -> {"imageTags" :: NullOrUndefined (ImageTagList) , "imageDigest" :: NullOrUndefined (ImageDigest) , "imagePushedAt" :: NullOrUndefined (PushTimestamp) , "action" :: NullOrUndefined (LifecyclePolicyRuleAction) , "appliedRulePriority" :: NullOrUndefined (LifecyclePolicyRulePriority) } ) -> LifecyclePolicyPreviewResult
-newLifecyclePolicyPreviewResult'  customize = (LifecyclePolicyPreviewResult <<< customize) { "action": (NullOrUndefined Nothing), "appliedRulePriority": (NullOrUndefined Nothing), "imageDigest": (NullOrUndefined Nothing), "imagePushedAt": (NullOrUndefined Nothing), "imageTags": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewResult' :: ( { "imageTags" :: Maybe (ImageTagList) , "imageDigest" :: Maybe (ImageDigest) , "imagePushedAt" :: Maybe (PushTimestamp) , "action" :: Maybe (LifecyclePolicyRuleAction) , "appliedRulePriority" :: Maybe (LifecyclePolicyRulePriority) } -> {"imageTags" :: Maybe (ImageTagList) , "imageDigest" :: Maybe (ImageDigest) , "imagePushedAt" :: Maybe (PushTimestamp) , "action" :: Maybe (LifecyclePolicyRuleAction) , "appliedRulePriority" :: Maybe (LifecyclePolicyRulePriority) } ) -> LifecyclePolicyPreviewResult
+newLifecyclePolicyPreviewResult'  customize = (LifecyclePolicyPreviewResult <<< customize) { "action": Nothing, "appliedRulePriority": Nothing, "imageDigest": Nothing, "imagePushedAt": Nothing, "imageTags": Nothing }
 
 
 
@@ -1543,7 +1542,7 @@ instance encodeLifecyclePolicyPreviewStatus :: Encode LifecyclePolicyPreviewStat
 
 -- | <p>The summary of the lifecycle policy preview request.</p>
 newtype LifecyclePolicyPreviewSummary = LifecyclePolicyPreviewSummary 
-  { "expiringImageTotalCount" :: NullOrUndefined (ImageCount)
+  { "expiringImageTotalCount" :: Maybe (ImageCount)
   }
 derive instance newtypeLifecyclePolicyPreviewSummary :: Newtype LifecyclePolicyPreviewSummary _
 derive instance repGenericLifecyclePolicyPreviewSummary :: Generic LifecyclePolicyPreviewSummary _
@@ -1553,18 +1552,18 @@ instance encodeLifecyclePolicyPreviewSummary :: Encode LifecyclePolicyPreviewSum
 
 -- | Constructs LifecyclePolicyPreviewSummary from required parameters
 newLifecyclePolicyPreviewSummary :: LifecyclePolicyPreviewSummary
-newLifecyclePolicyPreviewSummary  = LifecyclePolicyPreviewSummary { "expiringImageTotalCount": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewSummary  = LifecyclePolicyPreviewSummary { "expiringImageTotalCount": Nothing }
 
 -- | Constructs LifecyclePolicyPreviewSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyPreviewSummary' :: ( { "expiringImageTotalCount" :: NullOrUndefined (ImageCount) } -> {"expiringImageTotalCount" :: NullOrUndefined (ImageCount) } ) -> LifecyclePolicyPreviewSummary
-newLifecyclePolicyPreviewSummary'  customize = (LifecyclePolicyPreviewSummary <<< customize) { "expiringImageTotalCount": (NullOrUndefined Nothing) }
+newLifecyclePolicyPreviewSummary' :: ( { "expiringImageTotalCount" :: Maybe (ImageCount) } -> {"expiringImageTotalCount" :: Maybe (ImageCount) } ) -> LifecyclePolicyPreviewSummary
+newLifecyclePolicyPreviewSummary'  customize = (LifecyclePolicyPreviewSummary <<< customize) { "expiringImageTotalCount": Nothing }
 
 
 
 -- | <p>The type of action to be taken.</p>
 newtype LifecyclePolicyRuleAction = LifecyclePolicyRuleAction 
-  { "type" :: NullOrUndefined (ImageActionType)
+  { "type" :: Maybe (ImageActionType)
   }
 derive instance newtypeLifecyclePolicyRuleAction :: Newtype LifecyclePolicyRuleAction _
 derive instance repGenericLifecyclePolicyRuleAction :: Generic LifecyclePolicyRuleAction _
@@ -1574,12 +1573,12 @@ instance encodeLifecyclePolicyRuleAction :: Encode LifecyclePolicyRuleAction whe
 
 -- | Constructs LifecyclePolicyRuleAction from required parameters
 newLifecyclePolicyRuleAction :: LifecyclePolicyRuleAction
-newLifecyclePolicyRuleAction  = LifecyclePolicyRuleAction { "type": (NullOrUndefined Nothing) }
+newLifecyclePolicyRuleAction  = LifecyclePolicyRuleAction { "type": Nothing }
 
 -- | Constructs LifecyclePolicyRuleAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLifecyclePolicyRuleAction' :: ( { "type" :: NullOrUndefined (ImageActionType) } -> {"type" :: NullOrUndefined (ImageActionType) } ) -> LifecyclePolicyRuleAction
-newLifecyclePolicyRuleAction'  customize = (LifecyclePolicyRuleAction <<< customize) { "type": (NullOrUndefined Nothing) }
+newLifecyclePolicyRuleAction' :: ( { "type" :: Maybe (ImageActionType) } -> {"type" :: Maybe (ImageActionType) } ) -> LifecyclePolicyRuleAction
+newLifecyclePolicyRuleAction'  customize = (LifecyclePolicyRuleAction <<< customize) { "type": Nothing }
 
 
 
@@ -1603,7 +1602,7 @@ instance encodeLifecyclePolicyText :: Encode LifecyclePolicyText where encode = 
 
 -- | <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon Elastic Container Registry User Guide.</p>
 newtype LimitExceededException = LimitExceededException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 derive instance repGenericLimitExceededException :: Generic LimitExceededException _
@@ -1613,18 +1612,18 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | Constructs LimitExceededException from required parameters
 newLimitExceededException :: LimitExceededException
-newLimitExceededException  = LimitExceededException { "message": (NullOrUndefined Nothing) }
+newLimitExceededException  = LimitExceededException { "message": Nothing }
 
 -- | Constructs LimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLimitExceededException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> LimitExceededException
-newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLimitExceededException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> LimitExceededException
+newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>An object representing a filter on a <a>ListImages</a> operation.</p>
 newtype ListImagesFilter = ListImagesFilter 
-  { "tagStatus" :: NullOrUndefined (TagStatus)
+  { "tagStatus" :: Maybe (TagStatus)
   }
 derive instance newtypeListImagesFilter :: Newtype ListImagesFilter _
 derive instance repGenericListImagesFilter :: Generic ListImagesFilter _
@@ -1634,21 +1633,21 @@ instance encodeListImagesFilter :: Encode ListImagesFilter where encode = generi
 
 -- | Constructs ListImagesFilter from required parameters
 newListImagesFilter :: ListImagesFilter
-newListImagesFilter  = ListImagesFilter { "tagStatus": (NullOrUndefined Nothing) }
+newListImagesFilter  = ListImagesFilter { "tagStatus": Nothing }
 
 -- | Constructs ListImagesFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListImagesFilter' :: ( { "tagStatus" :: NullOrUndefined (TagStatus) } -> {"tagStatus" :: NullOrUndefined (TagStatus) } ) -> ListImagesFilter
-newListImagesFilter'  customize = (ListImagesFilter <<< customize) { "tagStatus": (NullOrUndefined Nothing) }
+newListImagesFilter' :: ( { "tagStatus" :: Maybe (TagStatus) } -> {"tagStatus" :: Maybe (TagStatus) } ) -> ListImagesFilter
+newListImagesFilter'  customize = (ListImagesFilter <<< customize) { "tagStatus": Nothing }
 
 
 
 newtype ListImagesRequest = ListImagesRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
-  , "filter" :: NullOrUndefined (ListImagesFilter)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
+  , "filter" :: Maybe (ListImagesFilter)
   }
 derive instance newtypeListImagesRequest :: Newtype ListImagesRequest _
 derive instance repGenericListImagesRequest :: Generic ListImagesRequest _
@@ -1658,18 +1657,18 @@ instance encodeListImagesRequest :: Encode ListImagesRequest where encode = gene
 
 -- | Constructs ListImagesRequest from required parameters
 newListImagesRequest :: RepositoryName -> ListImagesRequest
-newListImagesRequest _repositoryName = ListImagesRequest { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newListImagesRequest _repositoryName = ListImagesRequest { "repositoryName": _repositoryName, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 -- | Constructs ListImagesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListImagesRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (ListImagesFilter) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) , "filter" :: NullOrUndefined (ListImagesFilter) } ) -> ListImagesRequest
-newListImagesRequest' _repositoryName customize = (ListImagesRequest <<< customize) { "repositoryName": _repositoryName, "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newListImagesRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (ListImagesFilter) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) , "filter" :: Maybe (ListImagesFilter) } ) -> ListImagesRequest
+newListImagesRequest' _repositoryName customize = (ListImagesRequest <<< customize) { "repositoryName": _repositoryName, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing, "registryId": Nothing }
 
 
 
 newtype ListImagesResponse = ListImagesResponse 
-  { "imageIds" :: NullOrUndefined (ImageIdentifierList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "imageIds" :: Maybe (ImageIdentifierList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListImagesResponse :: Newtype ListImagesResponse _
 derive instance repGenericListImagesResponse :: Generic ListImagesResponse _
@@ -1679,12 +1678,12 @@ instance encodeListImagesResponse :: Encode ListImagesResponse where encode = ge
 
 -- | Constructs ListImagesResponse from required parameters
 newListImagesResponse :: ListImagesResponse
-newListImagesResponse  = ListImagesResponse { "imageIds": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListImagesResponse  = ListImagesResponse { "imageIds": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListImagesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListImagesResponse' :: ( { "imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"imageIds" :: NullOrUndefined (ImageIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> ListImagesResponse
-newListImagesResponse'  customize = (ListImagesResponse <<< customize) { "imageIds": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListImagesResponse' :: ( { "imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) } -> {"imageIds" :: Maybe (ImageIdentifierList) , "nextToken" :: Maybe (NextToken) } ) -> ListImagesResponse
+newListImagesResponse'  customize = (ListImagesResponse <<< customize) { "imageIds": Nothing, "nextToken": Nothing }
 
 
 
@@ -1752,10 +1751,10 @@ instance encodePushTimestamp :: Encode PushTimestamp where encode = genericEncod
 
 
 newtype PutImageRequest = PutImageRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "imageManifest" :: (ImageManifest)
-  , "imageTag" :: NullOrUndefined (ImageTag)
+  , "imageTag" :: Maybe (ImageTag)
   }
 derive instance newtypePutImageRequest :: Newtype PutImageRequest _
 derive instance repGenericPutImageRequest :: Generic PutImageRequest _
@@ -1765,17 +1764,17 @@ instance encodePutImageRequest :: Encode PutImageRequest where encode = genericE
 
 -- | Constructs PutImageRequest from required parameters
 newPutImageRequest :: ImageManifest -> RepositoryName -> PutImageRequest
-newPutImageRequest _imageManifest _repositoryName = PutImageRequest { "imageManifest": _imageManifest, "repositoryName": _repositoryName, "imageTag": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newPutImageRequest _imageManifest _repositoryName = PutImageRequest { "imageManifest": _imageManifest, "repositoryName": _repositoryName, "imageTag": Nothing, "registryId": Nothing }
 
 -- | Constructs PutImageRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutImageRequest' :: ImageManifest -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageManifest" :: (ImageManifest) , "imageTag" :: NullOrUndefined (ImageTag) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "imageManifest" :: (ImageManifest) , "imageTag" :: NullOrUndefined (ImageTag) } ) -> PutImageRequest
-newPutImageRequest' _imageManifest _repositoryName customize = (PutImageRequest <<< customize) { "imageManifest": _imageManifest, "repositoryName": _repositoryName, "imageTag": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newPutImageRequest' :: ImageManifest -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageManifest" :: (ImageManifest) , "imageTag" :: Maybe (ImageTag) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "imageManifest" :: (ImageManifest) , "imageTag" :: Maybe (ImageTag) } ) -> PutImageRequest
+newPutImageRequest' _imageManifest _repositoryName customize = (PutImageRequest <<< customize) { "imageManifest": _imageManifest, "repositoryName": _repositoryName, "imageTag": Nothing, "registryId": Nothing }
 
 
 
 newtype PutImageResponse = PutImageResponse 
-  { "image" :: NullOrUndefined (Image)
+  { "image" :: Maybe (Image)
   }
 derive instance newtypePutImageResponse :: Newtype PutImageResponse _
 derive instance repGenericPutImageResponse :: Generic PutImageResponse _
@@ -1785,17 +1784,17 @@ instance encodePutImageResponse :: Encode PutImageResponse where encode = generi
 
 -- | Constructs PutImageResponse from required parameters
 newPutImageResponse :: PutImageResponse
-newPutImageResponse  = PutImageResponse { "image": (NullOrUndefined Nothing) }
+newPutImageResponse  = PutImageResponse { "image": Nothing }
 
 -- | Constructs PutImageResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutImageResponse' :: ( { "image" :: NullOrUndefined (Image) } -> {"image" :: NullOrUndefined (Image) } ) -> PutImageResponse
-newPutImageResponse'  customize = (PutImageResponse <<< customize) { "image": (NullOrUndefined Nothing) }
+newPutImageResponse' :: ( { "image" :: Maybe (Image) } -> {"image" :: Maybe (Image) } ) -> PutImageResponse
+newPutImageResponse'  customize = (PutImageResponse <<< customize) { "image": Nothing }
 
 
 
 newtype PutLifecyclePolicyRequest = PutLifecyclePolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "lifecyclePolicyText" :: (LifecyclePolicyText)
   }
@@ -1807,19 +1806,19 @@ instance encodePutLifecyclePolicyRequest :: Encode PutLifecyclePolicyRequest whe
 
 -- | Constructs PutLifecyclePolicyRequest from required parameters
 newPutLifecyclePolicyRequest :: LifecyclePolicyText -> RepositoryName -> PutLifecyclePolicyRequest
-newPutLifecyclePolicyRequest _lifecyclePolicyText _repositoryName = PutLifecyclePolicyRequest { "lifecyclePolicyText": _lifecyclePolicyText, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newPutLifecyclePolicyRequest _lifecyclePolicyText _repositoryName = PutLifecyclePolicyRequest { "lifecyclePolicyText": _lifecyclePolicyText, "repositoryName": _repositoryName, "registryId": Nothing }
 
 -- | Constructs PutLifecyclePolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutLifecyclePolicyRequest' :: LifecyclePolicyText -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: (LifecyclePolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: (LifecyclePolicyText) } ) -> PutLifecyclePolicyRequest
-newPutLifecyclePolicyRequest' _lifecyclePolicyText _repositoryName customize = (PutLifecyclePolicyRequest <<< customize) { "lifecyclePolicyText": _lifecyclePolicyText, "repositoryName": _repositoryName, "registryId": (NullOrUndefined Nothing) }
+newPutLifecyclePolicyRequest' :: LifecyclePolicyText -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: (LifecyclePolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: (LifecyclePolicyText) } ) -> PutLifecyclePolicyRequest
+newPutLifecyclePolicyRequest' _lifecyclePolicyText _repositoryName customize = (PutLifecyclePolicyRequest <<< customize) { "lifecyclePolicyText": _lifecyclePolicyText, "repositoryName": _repositoryName, "registryId": Nothing }
 
 
 
 newtype PutLifecyclePolicyResponse = PutLifecyclePolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
   }
 derive instance newtypePutLifecyclePolicyResponse :: Newtype PutLifecyclePolicyResponse _
 derive instance repGenericPutLifecyclePolicyResponse :: Generic PutLifecyclePolicyResponse _
@@ -1829,12 +1828,12 @@ instance encodePutLifecyclePolicyResponse :: Encode PutLifecyclePolicyResponse w
 
 -- | Constructs PutLifecyclePolicyResponse from required parameters
 newPutLifecyclePolicyResponse :: PutLifecyclePolicyResponse
-newPutLifecyclePolicyResponse  = PutLifecyclePolicyResponse { "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newPutLifecyclePolicyResponse  = PutLifecyclePolicyResponse { "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs PutLifecyclePolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutLifecyclePolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) } ) -> PutLifecyclePolicyResponse
-newPutLifecyclePolicyResponse'  customize = (PutLifecyclePolicyResponse <<< customize) { "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newPutLifecyclePolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) } ) -> PutLifecyclePolicyResponse
+newPutLifecyclePolicyResponse'  customize = (PutLifecyclePolicyResponse <<< customize) { "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
@@ -1849,11 +1848,11 @@ instance encodeRegistryId :: Encode RegistryId where encode = genericEncode opti
 
 -- | <p>An object representing a repository.</p>
 newtype Repository = Repository 
-  { "repositoryArn" :: NullOrUndefined (Arn)
-  , "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "repositoryUri" :: NullOrUndefined (Url)
-  , "createdAt" :: NullOrUndefined (CreationTimestamp)
+  { "repositoryArn" :: Maybe (Arn)
+  , "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "repositoryUri" :: Maybe (Url)
+  , "createdAt" :: Maybe (CreationTimestamp)
   }
 derive instance newtypeRepository :: Newtype Repository _
 derive instance repGenericRepository :: Generic Repository _
@@ -1863,18 +1862,18 @@ instance encodeRepository :: Encode Repository where encode = genericEncode opti
 
 -- | Constructs Repository from required parameters
 newRepository :: Repository
-newRepository  = Repository { "createdAt": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryArn": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "repositoryUri": (NullOrUndefined Nothing) }
+newRepository  = Repository { "createdAt": Nothing, "registryId": Nothing, "repositoryArn": Nothing, "repositoryName": Nothing, "repositoryUri": Nothing }
 
 -- | Constructs Repository's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRepository' :: ( { "repositoryArn" :: NullOrUndefined (Arn) , "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "repositoryUri" :: NullOrUndefined (Url) , "createdAt" :: NullOrUndefined (CreationTimestamp) } -> {"repositoryArn" :: NullOrUndefined (Arn) , "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "repositoryUri" :: NullOrUndefined (Url) , "createdAt" :: NullOrUndefined (CreationTimestamp) } ) -> Repository
-newRepository'  customize = (Repository <<< customize) { "createdAt": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryArn": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "repositoryUri": (NullOrUndefined Nothing) }
+newRepository' :: ( { "repositoryArn" :: Maybe (Arn) , "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "repositoryUri" :: Maybe (Url) , "createdAt" :: Maybe (CreationTimestamp) } -> {"repositoryArn" :: Maybe (Arn) , "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "repositoryUri" :: Maybe (Url) , "createdAt" :: Maybe (CreationTimestamp) } ) -> Repository
+newRepository'  customize = (Repository <<< customize) { "createdAt": Nothing, "registryId": Nothing, "repositoryArn": Nothing, "repositoryName": Nothing, "repositoryUri": Nothing }
 
 
 
 -- | <p>The specified repository already exists in the specified registry.</p>
 newtype RepositoryAlreadyExistsException = RepositoryAlreadyExistsException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeRepositoryAlreadyExistsException :: Newtype RepositoryAlreadyExistsException _
 derive instance repGenericRepositoryAlreadyExistsException :: Generic RepositoryAlreadyExistsException _
@@ -1884,12 +1883,12 @@ instance encodeRepositoryAlreadyExistsException :: Encode RepositoryAlreadyExist
 
 -- | Constructs RepositoryAlreadyExistsException from required parameters
 newRepositoryAlreadyExistsException :: RepositoryAlreadyExistsException
-newRepositoryAlreadyExistsException  = RepositoryAlreadyExistsException { "message": (NullOrUndefined Nothing) }
+newRepositoryAlreadyExistsException  = RepositoryAlreadyExistsException { "message": Nothing }
 
 -- | Constructs RepositoryAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRepositoryAlreadyExistsException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> RepositoryAlreadyExistsException
-newRepositoryAlreadyExistsException'  customize = (RepositoryAlreadyExistsException <<< customize) { "message": (NullOrUndefined Nothing) }
+newRepositoryAlreadyExistsException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> RepositoryAlreadyExistsException
+newRepositoryAlreadyExistsException'  customize = (RepositoryAlreadyExistsException <<< customize) { "message": Nothing }
 
 
 
@@ -1922,7 +1921,7 @@ instance encodeRepositoryNameList :: Encode RepositoryNameList where encode = ge
 
 -- | <p>The specified repository contains images. To delete a repository that contains images, you must force the deletion with the <code>force</code> parameter.</p>
 newtype RepositoryNotEmptyException = RepositoryNotEmptyException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeRepositoryNotEmptyException :: Newtype RepositoryNotEmptyException _
 derive instance repGenericRepositoryNotEmptyException :: Generic RepositoryNotEmptyException _
@@ -1932,18 +1931,18 @@ instance encodeRepositoryNotEmptyException :: Encode RepositoryNotEmptyException
 
 -- | Constructs RepositoryNotEmptyException from required parameters
 newRepositoryNotEmptyException :: RepositoryNotEmptyException
-newRepositoryNotEmptyException  = RepositoryNotEmptyException { "message": (NullOrUndefined Nothing) }
+newRepositoryNotEmptyException  = RepositoryNotEmptyException { "message": Nothing }
 
 -- | Constructs RepositoryNotEmptyException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRepositoryNotEmptyException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> RepositoryNotEmptyException
-newRepositoryNotEmptyException'  customize = (RepositoryNotEmptyException <<< customize) { "message": (NullOrUndefined Nothing) }
+newRepositoryNotEmptyException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> RepositoryNotEmptyException
+newRepositoryNotEmptyException'  customize = (RepositoryNotEmptyException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The specified repository could not be found. Check the spelling of the specified repository and ensure that you are performing operations on the correct registry.</p>
 newtype RepositoryNotFoundException = RepositoryNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeRepositoryNotFoundException :: Newtype RepositoryNotFoundException _
 derive instance repGenericRepositoryNotFoundException :: Generic RepositoryNotFoundException _
@@ -1953,18 +1952,18 @@ instance encodeRepositoryNotFoundException :: Encode RepositoryNotFoundException
 
 -- | Constructs RepositoryNotFoundException from required parameters
 newRepositoryNotFoundException :: RepositoryNotFoundException
-newRepositoryNotFoundException  = RepositoryNotFoundException { "message": (NullOrUndefined Nothing) }
+newRepositoryNotFoundException  = RepositoryNotFoundException { "message": Nothing }
 
 -- | Constructs RepositoryNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRepositoryNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> RepositoryNotFoundException
-newRepositoryNotFoundException'  customize = (RepositoryNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newRepositoryNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> RepositoryNotFoundException
+newRepositoryNotFoundException'  customize = (RepositoryNotFoundException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The specified repository and registry combination does not have an associated repository policy.</p>
 newtype RepositoryPolicyNotFoundException = RepositoryPolicyNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeRepositoryPolicyNotFoundException :: Newtype RepositoryPolicyNotFoundException _
 derive instance repGenericRepositoryPolicyNotFoundException :: Generic RepositoryPolicyNotFoundException _
@@ -1974,12 +1973,12 @@ instance encodeRepositoryPolicyNotFoundException :: Encode RepositoryPolicyNotFo
 
 -- | Constructs RepositoryPolicyNotFoundException from required parameters
 newRepositoryPolicyNotFoundException :: RepositoryPolicyNotFoundException
-newRepositoryPolicyNotFoundException  = RepositoryPolicyNotFoundException { "message": (NullOrUndefined Nothing) }
+newRepositoryPolicyNotFoundException  = RepositoryPolicyNotFoundException { "message": Nothing }
 
 -- | Constructs RepositoryPolicyNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRepositoryPolicyNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> RepositoryPolicyNotFoundException
-newRepositoryPolicyNotFoundException'  customize = (RepositoryPolicyNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newRepositoryPolicyNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> RepositoryPolicyNotFoundException
+newRepositoryPolicyNotFoundException'  customize = (RepositoryPolicyNotFoundException <<< customize) { "message": Nothing }
 
 
 
@@ -1994,7 +1993,7 @@ instance encodeRepositoryPolicyText :: Encode RepositoryPolicyText where encode 
 
 -- | <p>These errors are usually caused by a server-side issue.</p>
 newtype ServerException = ServerException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeServerException :: Newtype ServerException _
 derive instance repGenericServerException :: Generic ServerException _
@@ -2004,20 +2003,20 @@ instance encodeServerException :: Encode ServerException where encode = genericE
 
 -- | Constructs ServerException from required parameters
 newServerException :: ServerException
-newServerException  = ServerException { "message": (NullOrUndefined Nothing) }
+newServerException  = ServerException { "message": Nothing }
 
 -- | Constructs ServerException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newServerException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> ServerException
-newServerException'  customize = (ServerException <<< customize) { "message": (NullOrUndefined Nothing) }
+newServerException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> ServerException
+newServerException'  customize = (ServerException <<< customize) { "message": Nothing }
 
 
 
 newtype SetRepositoryPolicyRequest = SetRepositoryPolicyRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "policyText" :: (RepositoryPolicyText)
-  , "force" :: NullOrUndefined (ForceFlag)
+  , "force" :: Maybe (ForceFlag)
   }
 derive instance newtypeSetRepositoryPolicyRequest :: Newtype SetRepositoryPolicyRequest _
 derive instance repGenericSetRepositoryPolicyRequest :: Generic SetRepositoryPolicyRequest _
@@ -2027,19 +2026,19 @@ instance encodeSetRepositoryPolicyRequest :: Encode SetRepositoryPolicyRequest w
 
 -- | Constructs SetRepositoryPolicyRequest from required parameters
 newSetRepositoryPolicyRequest :: RepositoryPolicyText -> RepositoryName -> SetRepositoryPolicyRequest
-newSetRepositoryPolicyRequest _policyText _repositoryName = SetRepositoryPolicyRequest { "policyText": _policyText, "repositoryName": _repositoryName, "force": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newSetRepositoryPolicyRequest _policyText _repositoryName = SetRepositoryPolicyRequest { "policyText": _policyText, "repositoryName": _repositoryName, "force": Nothing, "registryId": Nothing }
 
 -- | Constructs SetRepositoryPolicyRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetRepositoryPolicyRequest' :: RepositoryPolicyText -> RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "policyText" :: (RepositoryPolicyText) , "force" :: NullOrUndefined (ForceFlag) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "policyText" :: (RepositoryPolicyText) , "force" :: NullOrUndefined (ForceFlag) } ) -> SetRepositoryPolicyRequest
-newSetRepositoryPolicyRequest' _policyText _repositoryName customize = (SetRepositoryPolicyRequest <<< customize) { "policyText": _policyText, "repositoryName": _repositoryName, "force": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newSetRepositoryPolicyRequest' :: RepositoryPolicyText -> RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "policyText" :: (RepositoryPolicyText) , "force" :: Maybe (ForceFlag) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "policyText" :: (RepositoryPolicyText) , "force" :: Maybe (ForceFlag) } ) -> SetRepositoryPolicyRequest
+newSetRepositoryPolicyRequest' _policyText _repositoryName customize = (SetRepositoryPolicyRequest <<< customize) { "policyText": _policyText, "repositoryName": _repositoryName, "force": Nothing, "registryId": Nothing }
 
 
 
 newtype SetRepositoryPolicyResponse = SetRepositoryPolicyResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "policyText" :: NullOrUndefined (RepositoryPolicyText)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "policyText" :: Maybe (RepositoryPolicyText)
   }
 derive instance newtypeSetRepositoryPolicyResponse :: Newtype SetRepositoryPolicyResponse _
 derive instance repGenericSetRepositoryPolicyResponse :: Generic SetRepositoryPolicyResponse _
@@ -2049,19 +2048,19 @@ instance encodeSetRepositoryPolicyResponse :: Encode SetRepositoryPolicyResponse
 
 -- | Constructs SetRepositoryPolicyResponse from required parameters
 newSetRepositoryPolicyResponse :: SetRepositoryPolicyResponse
-newSetRepositoryPolicyResponse  = SetRepositoryPolicyResponse { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newSetRepositoryPolicyResponse  = SetRepositoryPolicyResponse { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 -- | Constructs SetRepositoryPolicyResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetRepositoryPolicyResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "policyText" :: NullOrUndefined (RepositoryPolicyText) } ) -> SetRepositoryPolicyResponse
-newSetRepositoryPolicyResponse'  customize = (SetRepositoryPolicyResponse <<< customize) { "policyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing) }
+newSetRepositoryPolicyResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "policyText" :: Maybe (RepositoryPolicyText) } ) -> SetRepositoryPolicyResponse
+newSetRepositoryPolicyResponse'  customize = (SetRepositoryPolicyResponse <<< customize) { "policyText": Nothing, "registryId": Nothing, "repositoryName": Nothing }
 
 
 
 newtype StartLifecyclePolicyPreviewRequest = StartLifecyclePolicyPreviewRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
   }
 derive instance newtypeStartLifecyclePolicyPreviewRequest :: Newtype StartLifecyclePolicyPreviewRequest _
 derive instance repGenericStartLifecyclePolicyPreviewRequest :: Generic StartLifecyclePolicyPreviewRequest _
@@ -2071,20 +2070,20 @@ instance encodeStartLifecyclePolicyPreviewRequest :: Encode StartLifecyclePolicy
 
 -- | Constructs StartLifecyclePolicyPreviewRequest from required parameters
 newStartLifecyclePolicyPreviewRequest :: RepositoryName -> StartLifecyclePolicyPreviewRequest
-newStartLifecyclePolicyPreviewRequest _repositoryName = StartLifecyclePolicyPreviewRequest { "repositoryName": _repositoryName, "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newStartLifecyclePolicyPreviewRequest _repositoryName = StartLifecyclePolicyPreviewRequest { "repositoryName": _repositoryName, "lifecyclePolicyText": Nothing, "registryId": Nothing }
 
 -- | Constructs StartLifecyclePolicyPreviewRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartLifecyclePolicyPreviewRequest' :: RepositoryName -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) } ) -> StartLifecyclePolicyPreviewRequest
-newStartLifecyclePolicyPreviewRequest' _repositoryName customize = (StartLifecyclePolicyPreviewRequest <<< customize) { "repositoryName": _repositoryName, "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing) }
+newStartLifecyclePolicyPreviewRequest' :: RepositoryName -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) } ) -> StartLifecyclePolicyPreviewRequest
+newStartLifecyclePolicyPreviewRequest' _repositoryName customize = (StartLifecyclePolicyPreviewRequest <<< customize) { "repositoryName": _repositoryName, "lifecyclePolicyText": Nothing, "registryId": Nothing }
 
 
 
 newtype StartLifecyclePolicyPreviewResponse = StartLifecyclePolicyPreviewResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText)
-  , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText)
+  , "status" :: Maybe (LifecyclePolicyPreviewStatus)
   }
 derive instance newtypeStartLifecyclePolicyPreviewResponse :: Newtype StartLifecyclePolicyPreviewResponse _
 derive instance repGenericStartLifecyclePolicyPreviewResponse :: Generic StartLifecyclePolicyPreviewResponse _
@@ -2094,12 +2093,12 @@ instance encodeStartLifecyclePolicyPreviewResponse :: Encode StartLifecyclePolic
 
 -- | Constructs StartLifecyclePolicyPreviewResponse from required parameters
 newStartLifecyclePolicyPreviewResponse :: StartLifecyclePolicyPreviewResponse
-newStartLifecyclePolicyPreviewResponse  = StartLifecyclePolicyPreviewResponse { "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newStartLifecyclePolicyPreviewResponse  = StartLifecyclePolicyPreviewResponse { "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing, "status": Nothing }
 
 -- | Constructs StartLifecyclePolicyPreviewResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartLifecyclePolicyPreviewResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "lifecyclePolicyText" :: NullOrUndefined (LifecyclePolicyText) , "status" :: NullOrUndefined (LifecyclePolicyPreviewStatus) } ) -> StartLifecyclePolicyPreviewResponse
-newStartLifecyclePolicyPreviewResponse'  customize = (StartLifecyclePolicyPreviewResponse <<< customize) { "lifecyclePolicyText": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newStartLifecyclePolicyPreviewResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "status" :: Maybe (LifecyclePolicyPreviewStatus) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "lifecyclePolicyText" :: Maybe (LifecyclePolicyText) , "status" :: Maybe (LifecyclePolicyPreviewStatus) } ) -> StartLifecyclePolicyPreviewResponse
+newStartLifecyclePolicyPreviewResponse'  customize = (StartLifecyclePolicyPreviewResponse <<< customize) { "lifecyclePolicyText": Nothing, "registryId": Nothing, "repositoryName": Nothing, "status": Nothing }
 
 
 
@@ -2122,7 +2121,7 @@ instance encodeUploadId :: Encode UploadId where encode = genericEncode options
 
 
 newtype UploadLayerPartRequest = UploadLayerPartRequest 
-  { "registryId" :: NullOrUndefined (RegistryId)
+  { "registryId" :: Maybe (RegistryId)
   , "repositoryName" :: (RepositoryName)
   , "uploadId" :: (UploadId)
   , "partFirstByte" :: (PartSize)
@@ -2137,20 +2136,20 @@ instance encodeUploadLayerPartRequest :: Encode UploadLayerPartRequest where enc
 
 -- | Constructs UploadLayerPartRequest from required parameters
 newUploadLayerPartRequest :: LayerPartBlob -> PartSize -> PartSize -> RepositoryName -> UploadId -> UploadLayerPartRequest
-newUploadLayerPartRequest _layerPartBlob _partFirstByte _partLastByte _repositoryName _uploadId = UploadLayerPartRequest { "layerPartBlob": _layerPartBlob, "partFirstByte": _partFirstByte, "partLastByte": _partLastByte, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": (NullOrUndefined Nothing) }
+newUploadLayerPartRequest _layerPartBlob _partFirstByte _partLastByte _repositoryName _uploadId = UploadLayerPartRequest { "layerPartBlob": _layerPartBlob, "partFirstByte": _partFirstByte, "partLastByte": _partLastByte, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": Nothing }
 
 -- | Constructs UploadLayerPartRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUploadLayerPartRequest' :: LayerPartBlob -> PartSize -> PartSize -> RepositoryName -> UploadId -> ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "partFirstByte" :: (PartSize) , "partLastByte" :: (PartSize) , "layerPartBlob" :: (LayerPartBlob) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "partFirstByte" :: (PartSize) , "partLastByte" :: (PartSize) , "layerPartBlob" :: (LayerPartBlob) } ) -> UploadLayerPartRequest
-newUploadLayerPartRequest' _layerPartBlob _partFirstByte _partLastByte _repositoryName _uploadId customize = (UploadLayerPartRequest <<< customize) { "layerPartBlob": _layerPartBlob, "partFirstByte": _partFirstByte, "partLastByte": _partLastByte, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": (NullOrUndefined Nothing) }
+newUploadLayerPartRequest' :: LayerPartBlob -> PartSize -> PartSize -> RepositoryName -> UploadId -> ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "partFirstByte" :: (PartSize) , "partLastByte" :: (PartSize) , "layerPartBlob" :: (LayerPartBlob) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: (RepositoryName) , "uploadId" :: (UploadId) , "partFirstByte" :: (PartSize) , "partLastByte" :: (PartSize) , "layerPartBlob" :: (LayerPartBlob) } ) -> UploadLayerPartRequest
+newUploadLayerPartRequest' _layerPartBlob _partFirstByte _partLastByte _repositoryName _uploadId customize = (UploadLayerPartRequest <<< customize) { "layerPartBlob": _layerPartBlob, "partFirstByte": _partFirstByte, "partLastByte": _partLastByte, "repositoryName": _repositoryName, "uploadId": _uploadId, "registryId": Nothing }
 
 
 
 newtype UploadLayerPartResponse = UploadLayerPartResponse 
-  { "registryId" :: NullOrUndefined (RegistryId)
-  , "repositoryName" :: NullOrUndefined (RepositoryName)
-  , "uploadId" :: NullOrUndefined (UploadId)
-  , "lastByteReceived" :: NullOrUndefined (PartSize)
+  { "registryId" :: Maybe (RegistryId)
+  , "repositoryName" :: Maybe (RepositoryName)
+  , "uploadId" :: Maybe (UploadId)
+  , "lastByteReceived" :: Maybe (PartSize)
   }
 derive instance newtypeUploadLayerPartResponse :: Newtype UploadLayerPartResponse _
 derive instance repGenericUploadLayerPartResponse :: Generic UploadLayerPartResponse _
@@ -2160,18 +2159,18 @@ instance encodeUploadLayerPartResponse :: Encode UploadLayerPartResponse where e
 
 -- | Constructs UploadLayerPartResponse from required parameters
 newUploadLayerPartResponse :: UploadLayerPartResponse
-newUploadLayerPartResponse  = UploadLayerPartResponse { "lastByteReceived": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newUploadLayerPartResponse  = UploadLayerPartResponse { "lastByteReceived": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 -- | Constructs UploadLayerPartResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUploadLayerPartResponse' :: ( { "registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "lastByteReceived" :: NullOrUndefined (PartSize) } -> {"registryId" :: NullOrUndefined (RegistryId) , "repositoryName" :: NullOrUndefined (RepositoryName) , "uploadId" :: NullOrUndefined (UploadId) , "lastByteReceived" :: NullOrUndefined (PartSize) } ) -> UploadLayerPartResponse
-newUploadLayerPartResponse'  customize = (UploadLayerPartResponse <<< customize) { "lastByteReceived": (NullOrUndefined Nothing), "registryId": (NullOrUndefined Nothing), "repositoryName": (NullOrUndefined Nothing), "uploadId": (NullOrUndefined Nothing) }
+newUploadLayerPartResponse' :: ( { "registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "lastByteReceived" :: Maybe (PartSize) } -> {"registryId" :: Maybe (RegistryId) , "repositoryName" :: Maybe (RepositoryName) , "uploadId" :: Maybe (UploadId) , "lastByteReceived" :: Maybe (PartSize) } ) -> UploadLayerPartResponse
+newUploadLayerPartResponse'  customize = (UploadLayerPartResponse <<< customize) { "lastByteReceived": Nothing, "registryId": Nothing, "repositoryName": Nothing, "uploadId": Nothing }
 
 
 
 -- | <p>The upload could not be found, or the specified upload id is not valid for this repository.</p>
 newtype UploadNotFoundException = UploadNotFoundException 
-  { "message" :: NullOrUndefined (ExceptionMessage)
+  { "message" :: Maybe (ExceptionMessage)
   }
 derive instance newtypeUploadNotFoundException :: Newtype UploadNotFoundException _
 derive instance repGenericUploadNotFoundException :: Generic UploadNotFoundException _
@@ -2181,12 +2180,12 @@ instance encodeUploadNotFoundException :: Encode UploadNotFoundException where e
 
 -- | Constructs UploadNotFoundException from required parameters
 newUploadNotFoundException :: UploadNotFoundException
-newUploadNotFoundException  = UploadNotFoundException { "message": (NullOrUndefined Nothing) }
+newUploadNotFoundException  = UploadNotFoundException { "message": Nothing }
 
 -- | Constructs UploadNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUploadNotFoundException' :: ( { "message" :: NullOrUndefined (ExceptionMessage) } -> {"message" :: NullOrUndefined (ExceptionMessage) } ) -> UploadNotFoundException
-newUploadNotFoundException'  customize = (UploadNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newUploadNotFoundException' :: ( { "message" :: Maybe (ExceptionMessage) } -> {"message" :: Maybe (ExceptionMessage) } ) -> UploadNotFoundException
+newUploadNotFoundException'  customize = (UploadNotFoundException <<< customize) { "message": Nothing }
 
 
 
